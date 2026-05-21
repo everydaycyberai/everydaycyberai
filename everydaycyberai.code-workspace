@@ -1,0 +1,118 @@
+export default function Home() {
+  return (
+    <main className="min-h-screen bg-black text-white">
+
+      {/* Navbar */}
+      <nav className="fixed top-0 left-0 w-full backdrop-blur-md bg-black/40 border-b border-gray-800 z-50">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+          <div>
+            <h1 className="text-2xl font-bold text-cyan-400">
+              Everyday Cyber AI
+            </h1>
+            <p className="text-xs text-gray-400">
+              IT Support & Cyber Security Specialist – Mumbai
+            </p>
+          </div>
+
+          <div className="hidden md:flex gap-8 text-sm text-gray-300">
+            <a href="#">Home</a>
+            <a href="#">Services</a>
+            <a href="#">Tools</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+          </div>
+
+          <button className="bg-cyan-500 hover:bg-cyan-400 text-black px-5 py-2 rounded-xl font-semibold transition">
+            Request Support
+          </button>
+
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="pt-40 pb-24 px-6">
+
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-14 items-center">
+
+          {/* Left Content */}
+          <div>
+
+            <div className="inline-block bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 px-4 py-2 rounded-full text-sm mb-6">
+              Everyday IT Solutions Powered by AI
+            </div>
+
+            <h2 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
+              Smart IT Support,
+              <span className="text-cyan-400"> Surveillance </span>
+              & Automation Solutions
+            </h2>
+
+            <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+              Professional IT infrastructure, remote support,
+              surveillance systems, firewall management,
+              data center assistance and AI-powered utility tools
+              for modern businesses.
+            </p>
+
+            <div className="flex gap-4">
+
+              <button className="bg-cyan-500 hover:bg-cyan-400 text-black px-6 py-3 rounded-xl font-semibold transition">
+                Request Support
+              </button>
+
+              <button className="border border-gray-700 hover:border-cyan-400 px-6 py-3 rounded-xl transition">
+                Explore Services
+              </button>
+
+            </div>
+
+          </div>
+
+          {/* Right Side */}
+          <div className="relative">
+
+            <div className="bg-gradient-to-br from-cyan-500/20 to-blue-500/10 border border-cyan-500/20 rounded-3xl p-10 backdrop-blur-sm">
+
+              <div className="space-y-6">
+
+                <div className="bg-black/40 border border-gray-800 rounded-2xl p-5">
+                  <h3 className="text-cyan-400 font-semibold mb-2">
+                    Remote IT Support
+                  </h3>
+                  <p className="text-gray-400 text-sm">
+                    Fast troubleshooting & support for offices and businesses.
+                  </p>
+                </div>
+
+                <div className="bg-black/40 border border-gray-800 rounded-2xl p-5">
+                  <h3 className="text-cyan-400 font-semibold mb-2">
+                    Data Center Support
+                  </h3>
+                  <p className="text-gray-400 text-sm">
+                    Rack, hardware replacement & remote hands assistance.
+                  </p>
+                </div>
+
+                <div className="bg-black/40 border border-gray-800 rounded-2xl p-5">
+                  <h3 className="text-cyan-400 font-semibold mb-2">
+                    AI Utility Tools
+                  </h3>
+                  <p className="text-gray-400 text-sm">
+                    Smart automation tools to simplify IT operations.
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+  );
+}
