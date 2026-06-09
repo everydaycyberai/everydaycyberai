@@ -61,6 +61,8 @@ export default function AdminPage() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
   const [blogTitle, setBlogTitle] = useState("");
+  const [leads, setLeads] = useState<{id:string;name:string;phone:string;page:string;createdAt:any}[]>([]);
+  const [activeTab, setActiveTab] = useState<"requests"|"blogs"|"leads">("requests");
   const [blogDescription, setBlogDescription] = useState("");
   const [blogContent, setBlogContent] = useState("");
   const [blogCategory, setBlogCategory] = useState("Cyber Security");
@@ -106,6 +108,14 @@ export default function AdminPage() {
       setLoading(false);
     }
   };
+  const fetchLeads = async () => {
+    try {
+      const { collection: col, getDocs: gd, query: q, orderBy: ob } = await import("firebase/firestore");
+      const snap = await gd(q(col(db, "leads"), ob("createdAt","desc")));
+      setLeads(snap.docs.map(d => ({id:d.id,...d.data()} as any)));
+    } catch(e){console.error(e);}
+  };
+
   const fetchBlogs = async () => {
   try {
 

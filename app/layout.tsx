@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "@/lib/firebase";
 import Navbar from "../components/Navbar";
+import LeadCapturePopup from "../components/LeadCapturePopup";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -54,6 +55,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <Navbar />
         {children}
+        <LeadCapturePopup />
       </body>
     </html>
   );

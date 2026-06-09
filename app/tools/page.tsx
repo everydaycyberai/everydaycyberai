@@ -56,10 +56,10 @@ const categories = [
     name: "⌨️ Text & Dev Tools",
     desc: "For developers, writers and content creators",
     tools: [
-      { icon: "🔡", title: "Case Converter",       desc: "Convert text to UPPERCASE, lowercase, Title Case, camelCase and more.",       tags: ["UPPER","lower","Title Case"],  href: "/tools/case-converter",   status: "coming" as Status },
-      { icon: "📋", title: "JSON Formatter",       desc: "Format, validate and beautify JSON data instantly.",                          tags: ["Validate","Beautify","Minify"], href: "/tools/json-formatter",  status: "coming" as Status },
-      { icon: "🔐", title: "Base64 Encoder",        desc: "Encode and decode Base64 text and files in your browser.",                   tags: ["Encode","Decode","File"],      href: "/tools/base64",           status: "coming" as Status },
-      { icon: "📄", title: "Lorem Ipsum Generator", desc: "Generate placeholder text for websites, designs and mockups.",              tags: ["Placeholder","Design","Words"], href: "/tools/lorem-ipsum",     status: "coming" as Status },
+      { icon: "🔡", title: "Case Converter",       desc: "Convert text to UPPERCASE, lowercase, Title Case, camelCase and more.",       tags: ["UPPER","lower","Title Case"],  href: "/tools/case-converter",   status: "live" as Status },
+      { icon: "📋", title: "JSON Formatter",       desc: "Format, validate and beautify JSON data instantly.",                          tags: ["Validate","Beautify","Minify"], href: "/tools/json-formatter",  status: "live" as Status },
+      { icon: "🔐", title: "Base64 Encoder",        desc: "Encode and decode Base64 text and files in your browser.",                   tags: ["Encode","Decode","File"],      href: "/tools/base64",           status: "live" as Status },
+      { icon: "📄", title: "Lorem Ipsum Generator", desc: "Generate placeholder text for websites, designs and mockups.",              tags: ["Placeholder","Design","Words"], href: "/tools/lorem-ipsum",     status: "live" as Status },
     ],
   },
 ];
