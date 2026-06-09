@@ -9,18 +9,19 @@ export default function LeadCapturePopup() {
   const [phone, setPhone]     = useState("");
   const [loading, setLoading] = useState(false);
   const [done, setDone]       = useState(false);
+  const [error, setError]     = useState("");
 
   useEffect(() => {
-    // Show popup after 30 seconds, only once per session
     const seen = sessionStorage.getItem("lead_popup_seen");
     if (seen) return;
-    const timer = setTimeout(() => setShow(true), 30000);
+    const timer = setTimeout(() => setShow(true), 20000);
     return () => clearTimeout(timer);
   }, []);
 
   const handleSubmit = async () => {
-    if (!name.trim() || !phone.trim()) return;
-    if (phone.replace(/\D/g,"").length < 10) { alert("Please enter a valid phone number"); return; }
+    setError("");
+    if (!name.trim()) { setError("Please enter your name"); return; }
+    if (phone.replace(/\D/g,"").length < 10) { setError("Please enter a valid 10-digit mobile number"); return; }
     setLoading(true);
     try {
       await addDoc(collection(db, "leads"), {
@@ -33,61 +34,66 @@ export default function LeadCapturePopup() {
       sessionStorage.setItem("lead_popup_seen", "1");
       setDone(true);
       setTimeout(() => setShow(false), 3000);
-    } catch (e) { console.error(e); }
+    } catch (e) { console.error(e); setError("Something went wrong. Please try again."); }
     finally { setLoading(false); }
-  };
-
-  const dismiss = () => {
-    sessionStorage.setItem("lead_popup_seen", "1");
-    setShow(false);
   };
 
   if (!show) return null;
 
   return (
-    <div className="fixed inset-0 z-[999] flex items-end sm:items-center justify-center p-4"
-      style={{background:"rgba(0,0,0,0.7)", backdropFilter:"blur(4px)"}}>
-      <div className="bg-zinc-900 border border-cyan-500/30 rounded-3xl p-8 w-full max-w-sm shadow-[0_0_60px_rgba(34,211,238,0.15)] relative">
-
-        {/* Close */}
-        <button onClick={dismiss}
-          className="absolute top-4 right-4 text-gray-500 hover:text-gray-300 transition text-xl leading-none">✕</button>
+    <div className="fixed inset-0 z-[999] flex items-center justify-center p-4"
+      style={{background:"rgba(0,0,0,0.88)", backdropFilter:"blur(8px)"}}>
+      <div className="bg-zinc-900 border border-cyan-500/30 rounded-3xl p-8 w-full max-w-sm shadow-[0_0_80px_rgba(34,211,238,0.15)]">
 
         {done ? (
           <div className="text-center py-4">
-            <div className="text-5xl mb-3">✅</div>
-            <h3 className="text-xl font-bold text-cyan-400 mb-2">Thanks, {name}!</h3>
-            <p className="text-gray-400 text-sm">We will reach out to you shortly on WhatsApp.</p>
+            <div className="text-6xl mb-4">✅</div>
+            <h3 className="text-2xl font-bold text-cyan-400 mb-2">Thanks, {name}!</h3>
+            <p className="text-gray-400">We will reach out to you on WhatsApp shortly.</p>
           </div>
         ) : (
           <>
-            {/* Header */}
-            <div className="text-center mb-6">
-              <div className="text-4xl mb-3">🛡️</div>
-              <h3 className="text-xl font-bold mb-2">Get Free IT Support Consultation</h3>
+            <div className="text-center mb-7">
+              <div className="text-5xl mb-4">🛡️</div>
+              <h3 className="text-xl font-bold mb-2 text-white">
+                Get Free IT Support Consultation
+              </h3>
               <p className="text-gray-400 text-sm leading-relaxed">
-                Leave your details — our team will reach out on WhatsApp within 24 hours.
+                Enter your details below — our team will contact you on WhatsApp within 24 hours.
               </p>
             </div>
 
             <div className="space-y-3">
-              <input type="text" placeholder="Your Name *" value={name} onChange={e=>setName(e.target.value)}
-                className="w-full bg-black border border-zinc-700 rounded-2xl px-4 py-3 text-white outline-none focus:border-cyan-400 transition"/>
-              <input type="tel" placeholder="Mobile Number (WhatsApp) *" value={phone} onChange={e=>setPhone(e.target.value)}
-                onKeyDown={e => e.key==="Enter" && handleSubmit()}
-                className="w-full bg-black border border-zinc-700 rounded-2xl px-4 py-3 text-white outline-none focus:border-cyan-400 transition"/>
+              <input
+                type="text"
+                placeholder="Your Full Name *"
+                value={name}
+                onChange={e => setName(e.target.value)}
+                className="w-full bg-black border border-zinc-700 rounded-2xl px-4 py-3 text-white outline-none focus:border-cyan-400 transition placeholder-gray-600"
+              />
+              <input
+                type="tel"
+                placeholder="WhatsApp Mobile Number *"
+                value={phone}
+                onChange={e => setPhone(e.target.value)}
+                onKeyDown={e => e.key === "Enter" && handleSubmit()}
+                className="w-full bg-black border border-zinc-700 rounded-2xl px-4 py-3 text-white outline-none focus:border-cyan-400 transition placeholder-gray-600"
+              />
 
-              <button onClick={handleSubmit} disabled={loading||!name.trim()||!phone.trim()}
-                className="w-full bg-cyan-500 hover:bg-cyan-400 disabled:opacity-50 text-black py-3 rounded-2xl font-bold transition hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]">
-                {loading ? "Saving..." : "Get Free Consultation 🚀"}
-              </button>
+              {error && (
+                <p className="text-red-400 text-sm">⚠️ {error}</p>
+              )}
 
-              <button onClick={dismiss} className="w-full text-gray-500 hover:text-gray-400 text-sm transition py-1">
-                No thanks, maybe later
+              <button
+                onClick={handleSubmit}
+                disabled={loading || !name.trim() || !phone.trim()}
+                className="w-full bg-cyan-500 hover:bg-cyan-400 disabled:opacity-40 disabled:cursor-not-allowed text-black py-3.5 rounded-2xl font-bold transition hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]"
+              >
+                {loading ? "Please wait..." : "Get Free Consultation 🚀"}
               </button>
             </div>
 
-            <p className="text-xs text-gray-600 text-center mt-3">
+            <p className="text-xs text-gray-600 text-center mt-4">
               🔒 We never spam. Your number is safe with us.
             </p>
           </>
