@@ -16,9 +16,9 @@ const services = [
   },
   {
     icon: "🛡️",
-    title: "Firewall & Security",
-    desc: "Firewall configuration, VPN setup, access management, network security and cybersecurity assistance.",
-    features: ["Firewall configuration", "VPN & IPsec tunnels", "Access control policies", "Network security audit"],
+    title: "Cyber Security",
+    desc: "End-to-end cyber security solutions — firewall setup, VPN, threat detection, network hardening and security audits for businesses.",
+    features: ["Firewall & VPN configuration", "Network security audit", "Threat detection & prevention", "Data protection & encryption", "Security policy setup", "Phishing & malware protection"],
   },
   {
     icon: "📹",
