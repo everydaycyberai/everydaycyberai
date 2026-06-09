@@ -26,12 +26,22 @@ export default function QRGeneratorPage() {
     }, 500);
   }, [input, type, wifi]);
 
-  const download = () => {
+  const download = async () => {
     if (!qrUrl) return;
-    const a = document.createElement("a");
-    a.href = qrUrl;
-    a.download = "qrcode.png";
-    a.click();
+    try {
+      const response = await fetch(qrUrl);
+      const blob = await response.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = blobUrl;
+      a.download = "qrcode-everydaycyberai.png";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(blobUrl);
+    } catch {
+      window.open(qrUrl, "_blank");
+    }
   };
 
   const types = [
