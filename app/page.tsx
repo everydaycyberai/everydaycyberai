@@ -346,6 +346,39 @@ export default function Home() {
         </div>
       </footer>
 
+      {/* ── Blog Preview ── */}
+      <section className="py-24 px-6 bg-black text-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="inline-block border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 px-5 py-2 rounded-full text-sm mb-6">
+              Latest Articles
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              IT &amp; Cyber Security
+              <span className="text-cyan-400"> Blog</span>
+            </h2>
+            <p className="text-gray-400 max-w-3xl mx-auto text-lg">
+              Technical insights, troubleshooting guides, and IT solutions for businesses and professionals.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { title: "Firewall Setup Guide", desc: "Learn how to configure and secure your office firewall properly." },
+              { title: "CCTV Troubleshooting", desc: "Common DVR and surveillance issues with quick fixes." },
+              { title: "Remote IT Support", desc: "Best practices for secure remote technical support." },
+            ].map((post) => (
+              <div key={post.title} className="bg-zinc-900 border border-zinc-800 hover:border-cyan-400/40 rounded-2xl p-8 transition duration-300 hover:-translate-y-1">
+                <h3 className="text-2xl font-semibold mb-4">{post.title}</h3>
+                <p className="text-gray-400 mb-6">{post.desc}</p>
+                <Link href="/blog" className="text-cyan-400 hover:text-cyan-300 transition font-medium">
+                  Read More →
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Floating WhatsApp */}
       <a
         href="https://wa.me/918454031225"

@@ -8,32 +8,36 @@ export const metadata: Metadata = {
 
 const tools = [
   {
-    icon: "📄",
-    title: "PDF Tools",
-    desc: "Merge PDF, compress files, split PDF and image-to-PDF utilities.",
-    tags: ["Merge PDF", "Split PDF", "Compress", "Image to PDF"],
+    icon: "🔐",
+    title: "Password Generator",
+    desc: "Generate strong, secure passwords instantly for better account security.",
+    tags: ["Strong Passwords", "Custom Length", "Instant"],
     status: "available" as const,
+    href: "/tools/password-generator",
   },
   {
     icon: "🌐",
-    title: "Network Tools",
-    desc: "IP checker, DNS lookup, port checker and password generators.",
-    tags: ["IP Checker", "DNS Lookup", "Port Tester", "Password Gen"],
+    title: "IP Calculator",
+    desc: "IP checker, subnet calculator and networking utility tool for quick calculations.",
+    tags: ["IP Lookup", "Subnet Calc", "Network"],
     status: "available" as const,
+    href: "/tools/ip-calculator",
   },
   {
     icon: "📹",
     title: "CCTV Calculators",
     desc: "Storage calculators, bitrate estimators and surveillance planning utilities.",
     tags: ["Storage Calc", "Bitrate Est.", "Camera Planner"],
-    status: "available" as const,
+    status: "coming" as const,
+    href: "#",
   },
   {
     icon: "🤖",
     title: "AI Writing Tools",
     desc: "Generate emails, SOPs, complaint letters and IT documentation.",
     tags: ["Email Gen", "SOP Writer", "IT Docs"],
-    status: "available" as const,
+    status: "coming" as const,
+    href: "#",
   },
   {
     icon: "🧾",
@@ -41,6 +45,7 @@ const tools = [
     desc: "GST invoice generators, quotation creators and salary slip tools.",
     tags: ["GST Invoice", "Quotation", "Salary Slip"],
     status: "coming" as const,
+    href: "#",
   },
   {
     icon: "⚙️",
@@ -48,6 +53,7 @@ const tools = [
     desc: "Smart utilities for automation, monitoring and workflow management.",
     tags: ["Monitoring", "Workflow", "Alerts"],
     status: "coming" as const,
+    href: "#",
   },
 ];
 
@@ -83,21 +89,21 @@ export default function ToolsPage() {
                   Coming Soon
                 </span>
               )}
-
               <div className="text-5xl mb-6">{tool.icon}</div>
               <h2 className="text-2xl font-semibold mb-4 group-hover:text-cyan-400 transition">{tool.title}</h2>
               <p className="text-gray-400 leading-relaxed mb-6">{tool.desc}</p>
-
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mb-6">
                 {tool.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full"
-                  >
+                  <span key={tag} className="text-xs bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full">
                     {tag}
                   </span>
                 ))}
               </div>
+              {tool.status === "available" && tool.href !== "#" && (
+                <a href={tool.href} className="text-cyan-400 hover:text-cyan-300 font-semibold transition">
+                  Open Tool →
+                </a>
+              )}
             </div>
           ))}
         </div>
