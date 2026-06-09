@@ -63,6 +63,8 @@ export default function AdminPage() {
   const [blogTitle, setBlogTitle] = useState("");
   const [blogDescription, setBlogDescription] = useState("");
   const [blogContent, setBlogContent] = useState("");
+  const [blogCategory, setBlogCategory] = useState("Cyber Security");
+  const [blogTags, setBlogTags] = useState("");
   useEffect(() => {
 
   const unsubscribe = onAuthStateChanged(
@@ -178,16 +180,20 @@ const handleCreateBlog = async () => {
       return;
     }
 
+    const tagsArray = blogTags.split(",").map((t) => t.trim()).filter(Boolean);
     await addDoc(collection(db, "blogs"), {
-  title: blogTitle,
-  description: blogDescription,
-  content: blogContent,
-  createdAt: serverTimestamp(),
-});
-
-   setBlogTitle("");
-setBlogDescription("");
-setBlogContent("");
+      title: blogTitle,
+      description: blogDescription,
+      content: blogContent,
+      category: blogCategory,
+      tags: tagsArray,
+      createdAt: serverTimestamp(),
+    });
+    setBlogTitle("");
+    setBlogDescription("");
+    setBlogContent("");
+    setBlogCategory("Cyber Security");
+    setBlogTags("");
 
     alert("Blog created successfully");
     fetchBlogs();
@@ -306,11 +312,30 @@ setBlogContent("");
   rows={10}
   className="bg-black border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-cyan-400"
 />
+    <select
+      value={blogCategory}
+      onChange={(e) => setBlogCategory(e.target.value)}
+      className="bg-black border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-cyan-400 text-white"
+    >
+      <option>Cyber Security</option>
+      <option>Networking</option>
+      <option>CCTV</option>
+      <option>Windows</option>
+      <option>Firewall</option>
+      <option>AI & Automation</option>
+    </select>
+    <input
+      type="text"
+      placeholder="Tags (comma separated): firewall, vpn, security"
+      value={blogTags}
+      onChange={(e) => setBlogTags(e.target.value)}
+      className="bg-black border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-cyan-400"
+    />
     <button
       onClick={handleCreateBlog}
       className="bg-cyan-500 hover:bg-cyan-400 text-black px-6 py-3 rounded-xl font-semibold transition"
     >
-      Create Blog
+      Publish Blog Post
     </button>
 
   </div>

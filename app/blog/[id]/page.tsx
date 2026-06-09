@@ -1,115 +1,45 @@
-"use client";
+import type { Metadata } from "next";
+import BlogDetailClient from "./BlogDetailClient";
 
-import { use, useEffect, useState } from "react";
-import { db } from "@/lib/firebase";
-import { doc, getDoc } from "firebase/firestore";
+// Dynamic metadata for each blog post
+// Since content is in Firebase (client-side only), we set strong default SEO
+// that covers the blog section, and the client renders the actual content.
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
 
-interface Blog {
-  title: string;
-  description: string;
-  content?: string;
-  createdAt?: any;
+  return {
+    title: "Cyber Security Article — Everyday Cyber AI",
+    description:
+      "Read our latest cyber security and IT infrastructure guide on Everyday Cyber AI. Practical tips for businesses in India.",
+    keywords:
+      "cyber security India, IT support guide, network security tips, firewall setup, CCTV troubleshooting, Windows server, Mumbai IT",
+    openGraph: {
+      title: "Cyber Security Article — Everyday Cyber AI",
+      description: "Practical cyber security and IT guides for businesses in India.",
+      url: `https://everydaycyberai.com/blog/${id}`,
+      siteName: "Everyday Cyber AI",
+      locale: "en_IN",
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Cyber Security Article — Everyday Cyber AI",
+      description: "Practical cyber security and IT guides for businesses in India.",
+    },
+    alternates: {
+      canonical: `https://everydaycyberai.com/blog/${id}`,
+    },
+  };
 }
 
-export default function BlogDetailsPage({
+export default function BlogDetailPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const { id } = use(params);
-
-  const [blog, setBlog] = useState<Blog | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchBlog = async () => {
-      try {
-        const docRef = doc(db, "blogs", id);
-
-        const docSnap = await getDoc(docRef);
-
-        if (docSnap.exists()) {
-          setBlog(docSnap.data() as Blog);
-        }
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBlog();
-  }, [id]);
-
-  if (loading) {
-    return (
-      <main className="min-h-screen bg-black text-white flex items-center justify-center">
-        Loading...
-      </main>
-    );
-  }
-
-  if (!blog) {
-    return (
-      <main className="min-h-screen bg-black text-white flex items-center justify-center">
-        Blog not found
-      </main>
-    );
-  }
-
-  return (
-    <main className="min-h-screen bg-black text-white px-6 py-24">
-
-      <div className="max-w-4xl mx-auto">
-
-        <div className="mb-6">
-          <span className="bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 px-4 py-2 rounded-full text-sm">
-            Cyber Security Blog
-          </span>
-        </div>
-
-        <h1 className="text-5xl font-bold text-cyan-400 mb-6">
-          {blog.title}
-        </h1>
-
-        {blog.createdAt && (
-          <p className="text-gray-500 mb-8">
-            Published:
-            {" "}
-            {new Date(
-              blog.createdAt.seconds * 1000
-            ).toLocaleDateString()}
-          </p>
-        )}
-
-        <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 mb-8">
-
-          <h2 className="text-2xl font-semibold text-white mb-4">
-            Overview
-          </h2>
-
-          <p className="text-lg text-gray-300 leading-relaxed">
-            {blog.description}
-          </p>
-
-        </div>
-
-        {blog.content && (
-          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8">
-
-            <h2 className="text-2xl font-semibold text-cyan-400 mb-6">
-              Full Article
-            </h2>
-
-            <div className="text-gray-300 leading-8 whitespace-pre-wrap">
-              {blog.content}
-            </div>
-
-          </div>
-        )}
-
-      </div>
-
-    </main>
-  );
+  return <BlogDetailClient params={params} />;
 }
