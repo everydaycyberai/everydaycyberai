@@ -24,45 +24,71 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
 html {
   scroll-behavior: smooth;
 }
+
+/* Float animations for hero cards */
 @keyframes floatCard {
-  0% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 
-.float-card {
-  animation: floatCard 4s ease-in-out infinite;
-}
-.float-card-delay {
-  animation: floatCard 5s ease-in-out infinite;
-}
+.float-card       { animation: floatCard 4s ease-in-out infinite; }
+.float-card-delay { animation: floatCard 5s ease-in-out infinite; }
+.float-card-slow  { animation: floatCard 6s ease-in-out infinite; }
 
-.float-card-slow {
-  animation: floatCard 6s ease-in-out infinite;
-}
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* Scroll-triggered fade-up — hidden by default, JS adds .visible */
 .fade-up {
-  animation: fadeUp 1s ease forwards;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .float-card,
+  .float-card-delay,
+  .float-card-slow {
+    animation: none;
+  }
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Typing cursor blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Subtle grid overlay for hero */
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(34,211,238,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,211,238,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Pulse ring for WhatsApp button */
+@keyframes pulseRing {
+  0%   { box-shadow: 0 0 0 0 rgba(34,211,238,0.4); }
+  70%  { box-shadow: 0 0 0 14px rgba(34,211,238,0); }
+  100% { box-shadow: 0 0 0 0 rgba(34,211,238,0); }
+}
+.pulse-ring {
+  animation: pulseRing 2s ease-out infinite;
 }

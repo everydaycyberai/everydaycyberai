@@ -1,134 +1,107 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Services — Everyday Cyber AI",
+  description:
+    "IT support, firewall & security, CCTV surveillance, data center support, e-waste management and AI automation services in Mumbai.",
+};
+
+const services = [
+  {
+    icon: "💻",
+    title: "Remote IT Support",
+    desc: "Fast troubleshooting, software installation, Windows support, printer setup and remote assistance for office environments.",
+    features: ["Windows & Linux support", "Remote desktop assistance", "Software installation", "Printer & peripheral setup"],
+  },
+  {
+    icon: "🛡️",
+    title: "Firewall & Security",
+    desc: "Firewall configuration, VPN setup, access management, network security and cybersecurity assistance.",
+    features: ["Firewall configuration", "VPN & IPsec tunnels", "Access control policies", "Network security audit"],
+  },
+  {
+    icon: "📹",
+    title: "Surveillance Support",
+    desc: "CCTV setup, DVR/NVR troubleshooting, ATM surveillance systems and remote monitoring support.",
+    features: ["CCTV installation & setup", "DVR/NVR troubleshooting", "ATM camera management", "Remote monitoring support"],
+  },
+  {
+    icon: "🏢",
+    title: "Data Center Support",
+    desc: "Rack installation, hardware replacement, smart hands support and infrastructure assistance.",
+    features: ["Rack & stack installation", "Hardware replacement", "Remote hands support", "Cable management"],
+  },
+  {
+    icon: "♻️",
+    title: "E-Waste Management",
+    desc: "Safe IT asset disposal, e-waste handling, hardware recycling and office equipment management.",
+    features: ["IT asset disposal", "Hardware recycling", "Data destruction", "Equipment decommission"],
+  },
+  {
+    icon: "🤖",
+    title: "AI Automation",
+    desc: "AI-powered tools, workflow automation, reporting utilities and smart business solutions.",
+    features: ["Workflow automation", "AI document generation", "IT reporting tools", "Smart monitoring utilities"],
+  },
+];
+
 export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-black text-white px-6 py-32">
-
       <div className="max-w-7xl mx-auto">
 
         {/* Heading */}
         <div className="mb-16 text-center">
-
           <div className="inline-block bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 px-4 py-2 rounded-full text-sm mb-6">
             Professional IT Services
           </div>
-
           <h1 className="text-5xl font-bold mb-6">
-            Complete Technology &
+            Complete Technology &amp;
             <span className="text-cyan-400"> Infrastructure Support</span>
           </h1>
-
           <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
-            Professional IT support, surveillance solutions,
-            cybersecurity services and enterprise infrastructure
-            assistance for businesses and organizations.
+            Professional IT support, surveillance solutions, cybersecurity services and
+            enterprise infrastructure assistance for businesses and organizations.
           </p>
-
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {services.map((s) => (
+            <div
+              key={s.title}
+              className="bg-black border border-gray-800 rounded-3xl p-8 hover:border-cyan-400 transition duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.12)] group"
+            >
+              <div className="text-5xl mb-6">{s.icon}</div>
+              <h2 className="text-2xl font-semibold mb-4 text-cyan-400">{s.title}</h2>
+              <p className="text-gray-400 leading-relaxed mb-6">{s.desc}</p>
+              <ul className="space-y-2">
+                {s.features.map((f) => (
+                  <li key={f} className="text-gray-500 text-sm flex items-center gap-2">
+                    <span className="text-cyan-500">✓</span> {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
 
-          {/* Card 1 */}
-          <div className="bg-black border border-gray-800 rounded-3xl p-8 hover:border-cyan-400 transition duration-300 hover:-translate-y-2">
-
-            <div className="text-5xl mb-6">💻</div>
-
-            <h2 className="text-2xl font-semibold mb-4 text-cyan-400">
-              Remote IT Support
-            </h2>
-
-            <p className="text-gray-400 leading-relaxed">
-              Fast troubleshooting, software installation,
-              Windows support, printer setup and remote assistance
-              for office environments.
-            </p>
-
-          </div>
-
-          {/* Card 2 */}
-          <div className="bg-black border border-gray-800 rounded-3xl p-8 hover:border-cyan-400 transition duration-300 hover:-translate-y-2">
-
-            <div className="text-5xl mb-6">🛡️</div>
-
-            <h2 className="text-2xl font-semibold mb-4 text-cyan-400">
-              Firewall & Security
-            </h2>
-
-            <p className="text-gray-400 leading-relaxed">
-              Firewall configuration, VPN setup,
-              access management, network security
-              and cybersecurity assistance.
-            </p>
-
-          </div>
-
-          {/* Card 3 */}
-          <div className="bg-black border border-gray-800 rounded-3xl p-8 hover:border-cyan-400 transition duration-300 hover:-translate-y-2">
-
-            <div className="text-5xl mb-6">📹</div>
-
-            <h2 className="text-2xl font-semibold mb-4 text-cyan-400">
-              Surveillance Support
-            </h2>
-
-            <p className="text-gray-400 leading-relaxed">
-              CCTV setup, DVR/NVR troubleshooting,
-              ATM surveillance systems and remote monitoring support.
-            </p>
-
-          </div>
-
-          {/* Card 4 */}
-          <div className="bg-black border border-gray-800 rounded-3xl p-8 hover:border-cyan-400 transition duration-300 hover:-translate-y-2">
-
-            <div className="text-5xl mb-6">🏢</div>
-
-            <h2 className="text-2xl font-semibold mb-4 text-cyan-400">
-              Data Center Support
-            </h2>
-
-            <p className="text-gray-400 leading-relaxed">
-              Rack installation, hardware replacement,
-              smart hands support and infrastructure assistance.
-            </p>
-
-          </div>
-
-          {/* Card 5 */}
-          <div className="bg-black border border-gray-800 rounded-3xl p-8 hover:border-cyan-400 transition duration-300 hover:-translate-y-2">
-
-            <div className="text-5xl mb-6">♻️</div>
-
-            <h2 className="text-2xl font-semibold mb-4 text-cyan-400">
-              E-Waste Management
-            </h2>
-
-            <p className="text-gray-400 leading-relaxed">
-              Safe IT asset disposal, e-waste handling,
-              hardware recycling and office equipment management.
-            </p>
-
-          </div>
-
-          {/* Card 6 */}
-          <div className="bg-black border border-gray-800 rounded-3xl p-8 hover:border-cyan-400 transition duration-300 hover:-translate-y-2">
-
-            <div className="text-5xl mb-6">🤖</div>
-
-            <h2 className="text-2xl font-semibold mb-4 text-cyan-400">
-              AI Automation
-            </h2>
-
-            <p className="text-gray-400 leading-relaxed">
-              AI-powered tools, workflow automation,
-              reporting utilities and smart business solutions.
-            </p>
-
-          </div>
-
+        {/* CTA */}
+        <div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-3xl p-10 text-center">
+          <h2 className="text-3xl font-bold mb-4">Need a service not listed here?</h2>
+          <p className="text-gray-400 mb-8">
+            Contact us and we will assess your requirements and provide the right solution.
+          </p>
+          <Link
+            href="/contact"
+            className="bg-cyan-500 hover:bg-cyan-400 hover:shadow-[0_0_25px_rgba(34,211,238,0.4)] text-black px-8 py-4 rounded-xl font-semibold transition duration-300 inline-block"
+          >
+            Request Support
+          </Link>
         </div>
 
       </div>
-
     </main>
   );
 }
