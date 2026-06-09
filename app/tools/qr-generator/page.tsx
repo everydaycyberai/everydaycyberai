@@ -7,7 +7,7 @@ export default function QRGeneratorPage() {
   const [qrUrl, setQrUrl]   = useState("");
   const [type, setType]     = useState<"url"|"text"|"email"|"phone"|"wifi">("url");
   const [wifi, setWifi]     = useState({ ssid: "", password: "", enc: "WPA" });
-  const debounceRef = useRef<ReturnType<typeof setTimeout>>();
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const buildValue = () => {
     if (type === "email")  return `mailto:${input}`;
