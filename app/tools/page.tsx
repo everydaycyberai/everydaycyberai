@@ -29,7 +29,7 @@ const categories = [
       { icon: "📝", title: "Word Counter",       desc: "Count words, characters, sentences with reading time and social media limits.", tags: ["Reading Time","Social Limits","Sentences"], href: "/tools/word-counter",     status: "live" as Status },
       { icon: "📐", title: "Unit Converter",     desc: "Convert length, weight, temperature, area, speed and data units.",             tags: ["Length","Weight","Temp","Data"],             href: "/tools/unit-converter",   status: "live" as Status },
       { icon: "🧮", title: "Age Calculator",     desc: "Exact age in years/months/days, zodiac sign, next birthday countdown.",       tags: ["Zodiac","Birthday","Total Days"],            href: "/tools/age-calculator",   status: "live" as Status },
-      { icon: "📊", title: "Percentage Calculator", desc: "Calculate percentage, increase/decrease and marks percentage.",            tags: ["Marks %","Discount","Increase"],             href: "/tools/percentage-calc",  status: "coming" as Status },
+      { icon: "📊", title: "Percentage Calculator", desc: "Calculate percentage, increase/decrease and marks percentage.",            tags: ["Marks %","Discount","Increase"],             href: "/tools/percentage-calculator",  status: "live" as Status },
     ],
   },
   {
@@ -37,19 +37,19 @@ const categories = [
     desc: "Tools everyone uses every day — instant and no login needed",
     tools: [
       { icon: "▦",  title: "QR Code Generator",  desc: "Generate QR codes for URLs, text, Wi-Fi, email and phone numbers.",       tags: ["URL","Wi-Fi","Download PNG"],             href: "/tools/qr-generator",     status: "live" as Status },
-      { icon: "🔗", title: "URL Shortener",       desc: "Shorten long URLs for sharing on WhatsApp, Instagram and social media.",  tags: ["Short Link","Share","Track"],             href: "/tools/url-shortener",    status: "coming" as Status },
-      { icon: "🖼️", title: "Image Compressor",    desc: "Compress images without losing quality — perfect for sending on WhatsApp.", tags: ["Reduce Size","JPG","PNG"],             href: "/tools/image-compressor", status: "coming" as Status },
-      { icon: "🎨", title: "Color Picker",         desc: "Pick colors, get HEX, RGB, HSL codes — for designers and developers.",   tags: ["HEX","RGB","HSL"],                        href: "/tools/color-picker",     status: "coming" as Status },
+      { icon: "🔗", title: "URL Shortener",       desc: "Shorten long URLs for sharing on WhatsApp, Instagram and social media.",  tags: ["Short Link","Share","Track"],             href: "/tools/url-shortener",    status: "live" as Status },
+      { icon: "🖼️", title: "Image Compressor",    desc: "Compress images without losing quality — perfect for sending on WhatsApp.", tags: ["Reduce Size","JPG","PNG"],             href: "/tools/image-compressor", status: "live" as Status },
+      { icon: "🎨", title: "Color Picker",         desc: "Pick colors, get HEX, RGB, HSL codes — for designers and developers.",   tags: ["HEX","RGB","HSL"],                        href: "/tools/color-picker",     status: "live" as Status },
     ],
   },
   {
     name: "💰 Finance Tools (India)",
     desc: "GST, EMI, salary and tax calculators for Indian users",
     tools: [
-      { icon: "🧾", title: "GST Calculator",      desc: "Calculate GST inclusive/exclusive amounts for any tax slab (5%, 12%, 18%, 28%).", tags: ["5%","12%","18%","28%"],       href: "/tools/gst-calculator",   status: "coming" as Status },
-      { icon: "🏦", title: "EMI Calculator",       desc: "Calculate monthly EMI for home, car or personal loans with full breakdown.",    tags: ["Home Loan","Car Loan","EMI"],  href: "/tools/emi-calculator",   status: "coming" as Status },
-      { icon: "💵", title: "Salary Calculator",    desc: "Calculate in-hand salary from CTC with PF, tax and deduction breakdown.",      tags: ["CTC","In-Hand","Tax"],        href: "/tools/salary-calculator",status: "coming" as Status },
-      { icon: "📈", title: "SIP Calculator",       desc: "Calculate SIP returns and maturity amount for your mutual fund investment.",    tags: ["SIP","Returns","Maturity"],   href: "/tools/sip-calculator",   status: "coming" as Status },
+      { icon: "🧾", title: "GST Calculator",      desc: "Calculate GST inclusive/exclusive amounts for any tax slab (5%, 12%, 18%, 28%).", tags: ["5%","12%","18%","28%"],       href: "/tools/gst-calculator",   status: "live" as Status },
+      { icon: "🏦", title: "EMI Calculator",       desc: "Calculate monthly EMI for home, car or personal loans with full breakdown.",    tags: ["Home Loan","Car Loan","EMI"],  href: "/tools/emi-calculator",   status: "live" as Status },
+      { icon: "💵", title: "Salary Calculator",    desc: "Calculate in-hand salary from CTC with PF, tax and deduction breakdown.",      tags: ["CTC","In-Hand","Tax"],        href: "/tools/salary-calculator",status: "live" as Status },
+      { icon: "📈", title: "SIP Calculator",       desc: "Calculate SIP returns and maturity amount for your mutual fund investment.",    tags: ["SIP","Returns","Maturity"],   href: "/tools/sip-calculator",   status: "live" as Status },
     ],
   },
   {
