@@ -85,7 +85,7 @@ export default function CaseConverterPage() {
           )}
 
           {!input && (
-            <div className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6">
+            <div className="bg-black/35 backdrop-blur-sm border border-zinc-700/50 rounded-2xl p-6">
               <h2 className="text-cyan-400 font-semibold mb-3">💡 When to use which case?</h2>
               <div className="grid grid-cols-2 gap-2 text-sm text-gray-400">
                 {[["camelCase","JavaScript variables"],["PascalCase","React components, classes"],["snake_case","Python variables, DB columns"],["kebab-case","CSS classes, URLs"],["CONSTANT_CASE","Constants in any language"],["Title Case","Blog titles, headings"]].map(([c,u])=>(

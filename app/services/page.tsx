@@ -71,7 +71,7 @@ export default function ServicesPage() {
           {services.map((s) => (
             <div
               key={s.title}
-              className="bg-black border border-gray-800 rounded-3xl p-8 hover:border-cyan-400 transition duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.12)] group"
+              className="bg-black/40 backdrop-blur-sm border border-gray-700/60 rounded-3xl p-8 hover:border-cyan-400 transition duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.12)] group"
             >
               <div className="text-5xl mb-6">{s.icon}</div>
               <h2 className="text-2xl font-semibold mb-4 text-cyan-400">{s.title}</h2>

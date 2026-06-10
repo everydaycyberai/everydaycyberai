@@ -62,7 +62,7 @@ export default function QRGeneratorPage() {
             <p className="text-gray-400">Generate QR codes for URLs, text, email, phone or Wi-Fi — free, instant download</p>
           </div>
 
-          <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 space-y-6">
+          <div className="bg-black/40 backdrop-blur-sm border border-zinc-700/60 rounded-3xl p-8 space-y-6">
 
             {/* Type selector */}
             <div>

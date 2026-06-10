@@ -44,7 +44,7 @@ export default function URLShortenerPage() {
             <p className="text-gray-400">Shorten long links for WhatsApp, Instagram, bio and social media</p>
           </div>
 
-          <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 space-y-5">
+          <div className="bg-black/40 backdrop-blur-sm border border-zinc-700/60 rounded-3xl p-8 space-y-5">
             <div>
               <label className="block text-gray-300 font-medium mb-3">Enter Long URL</label>
               <textarea rows={3} value={url} onChange={e=>{setUrl(e.target.value); setError(""); setShort("");}}

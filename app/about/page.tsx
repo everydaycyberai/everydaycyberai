@@ -66,7 +66,7 @@ export default function AboutPage() {
             {expertise.map((item) => (
               <div
                 key={item.title}
-                className="bg-black border border-gray-800 hover:border-cyan-400/40 rounded-2xl p-6 transition duration-300"
+                className="bg-black/40 backdrop-blur-sm border border-gray-700/60 hover:border-cyan-400/40 rounded-2xl p-6 transition duration-300"
               >
                 <div className="text-3xl mb-4">{item.icon}</div>
                 <h3 className="text-lg font-semibold mb-2 text-cyan-400">{item.title}</h3>

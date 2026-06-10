@@ -109,7 +109,7 @@ export default function UnitConverterPage() {
             ))}
           </div>
 
-          <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 space-y-5">
+          <div className="bg-black/40 backdrop-blur-sm border border-zinc-700/60 rounded-3xl p-8 space-y-5">
 
             {/* From */}
             <div>
@@ -119,7 +119,7 @@ export default function UnitConverterPage() {
                   onChange={(e) => setValue(e.target.value)}
                   className="flex-1 bg-black/80 border border-zinc-700 rounded-2xl px-5 py-4 outline-none focus:border-cyan-400 transition text-white" />
                 <select value={from} onChange={(e) => setFrom(e.target.value)}
-                  className="bg-black border border-zinc-700 rounded-2xl px-4 py-4 text-white outline-none focus:border-cyan-400 min-w-[140px]">
+                  className="bg-black/60 border border-zinc-700/70 rounded-2xl px-4 py-4 text-white outline-none focus:border-cyan-400 min-w-[140px]">
                   {cat.units.map(u => <option key={u.id} value={u.id}>{u.name}</option>)}
                 </select>
               </div>
@@ -141,7 +141,7 @@ export default function UnitConverterPage() {
                   {result || <span className="text-gray-600 font-normal text-base">Result will appear here</span>}
                 </div>
                 <select value={to} onChange={(e) => setTo(e.target.value)}
-                  className="bg-black border border-zinc-700 rounded-2xl px-4 py-4 text-white outline-none focus:border-cyan-400 min-w-[140px]">
+                  className="bg-black/60 border border-zinc-700/70 rounded-2xl px-4 py-4 text-white outline-none focus:border-cyan-400 min-w-[140px]">
                   {cat.units.map(u => <option key={u.id} value={u.id}>{u.name}</option>)}
                 </select>
               </div>

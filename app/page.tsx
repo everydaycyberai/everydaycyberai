@@ -121,7 +121,7 @@ export default function Home() {
       <section
         ref={serviceRef as React.RefObject<HTMLElement>}
         id="services"
-        className="fade-up py-24 px-6 bg-gradient-to-b from-black to-gray-950"
+        className="fade-up py-24 px-6"
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -142,7 +142,7 @@ export default function Home() {
             {services.map((s) => (
               <div
                 key={s.title}
-                className="bg-black border border-gray-800 hover:border-cyan-400 rounded-3xl p-8 transition duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)]"
+                className="bg-black/40 backdrop-blur-sm border border-gray-700/60 hover:border-cyan-400 rounded-3xl p-8 transition duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)]"
               >
                 <div className="text-cyan-400 text-4xl mb-6">{s.icon}</div>
                 <h3 className="text-2xl font-semibold mb-4">{s.title}</h3>
@@ -165,7 +165,7 @@ export default function Home() {
       {/* ── Why Choose Us ── */}
       <section
         ref={whyRef as React.RefObject<HTMLElement>}
-        className="fade-up py-24 px-6 bg-black"
+        className="fade-up py-24 px-6"
       >
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -221,7 +221,7 @@ export default function Home() {
       <section
         ref={toolsRef as React.RefObject<HTMLElement>}
         id="tools"
-        className="fade-up py-24 px-6 bg-gradient-to-b from-black to-gray-950"
+        className="fade-up py-24 px-6"
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -243,7 +243,7 @@ export default function Home() {
               <Link
                 key={tool.title}
                 href={tool.href}
-                className="group bg-black border border-gray-800 hover:border-cyan-400 rounded-3xl p-8 transition duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)] block"
+                className="group bg-black/40 backdrop-blur-sm border border-gray-700/60 hover:border-cyan-400 rounded-3xl p-8 transition duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)] block"
               >
                 <div className="text-5xl mb-6">{tool.icon}</div>
                 <h3 className="text-2xl font-semibold mb-4 group-hover:text-cyan-400 transition">{tool.title}</h3>
@@ -259,7 +259,7 @@ export default function Home() {
       <footer
         ref={footerRef as React.RefObject<HTMLElement>}
         id="contact"
-        className="fade-up bg-black border-t border-gray-800 py-16 px-6"
+        className="fade-up border-t border-cyan-500/20 py-16 px-6"
       >
         <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
 
@@ -345,7 +345,7 @@ export default function Home() {
       </footer>
 
       {/* ── Blog Preview ── */}
-      <section className="py-24 px-6 bg-black text-white">
+      <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-block border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 px-5 py-2 rounded-full text-sm mb-6">

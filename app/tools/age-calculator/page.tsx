@@ -64,7 +64,7 @@ export default function AgeCalculatorPage() {
             <p className="text-gray-400">Find your exact age in years, months, days — with zodiac sign and next birthday</p>
           </div>
 
-          <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 space-y-5">
+          <div className="bg-black/40 backdrop-blur-sm border border-zinc-700/60 rounded-3xl p-8 space-y-5">
 
             <div>
               <label className="block text-gray-300 font-medium mb-2">Date of Birth *</label>

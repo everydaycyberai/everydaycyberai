@@ -50,7 +50,7 @@ export default function PercentageCalculatorPage() {
             ))}
           </div>
 
-          <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 space-y-5">
+          <div className="bg-black/40 backdrop-blur-sm border border-zinc-700/60 rounded-3xl p-8 space-y-5">
             {mode === "percent_of" && (<>
               <div className="grid grid-cols-2 gap-4">
                 <div><label className="block text-gray-300 text-sm mb-2">Percentage (%)</label>

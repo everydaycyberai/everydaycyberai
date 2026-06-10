@@ -61,7 +61,7 @@ export default function SIPCalculatorPage() {
             <p className="text-gray-400">Calculate SIP and lumpsum mutual fund returns with yearly breakdown</p>
           </div>
 
-          <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 space-y-5">
+          <div className="bg-black/40 backdrop-blur-sm border border-zinc-700/60 rounded-3xl p-8 space-y-5">
             {/* Mode */}
             <div className="grid grid-cols-2 gap-3">
               {(["sip","lumpsum"] as const).map(m=>(

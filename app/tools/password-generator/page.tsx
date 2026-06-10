@@ -74,7 +74,7 @@ export default function PasswordGeneratorPage() {
             <p className="text-gray-400">Generate cryptographically secure passwords using <code className="text-cyan-400 text-sm">crypto.getRandomValues()</code></p>
           </div>
 
-          <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 space-y-8">
+          <div className="bg-black/40 backdrop-blur-sm border border-zinc-700/60 rounded-3xl p-8 space-y-8">
             <div>
               <div className="flex justify-between mb-3">
                 <span className="text-gray-300 font-medium">Password Length</span>
@@ -110,7 +110,7 @@ export default function PasswordGeneratorPage() {
             <div className="flex items-center gap-4">
               <span className="text-gray-300 font-medium">Generate</span>
               <select value={count} onChange={(e) => setCount(Number(e.target.value))}
-                className="bg-black border border-zinc-700 text-white px-4 py-2 rounded-xl focus:outline-none focus:border-cyan-400">
+                className="bg-black/60 border border-zinc-700/70 text-white px-4 py-2 rounded-xl focus:outline-none focus:border-cyan-400">
                 {[1,3,5,10].map(n => <option key={n} value={n}>{n} password{n > 1 ? "s" : ""}</option>)}
               </select>
             </div>

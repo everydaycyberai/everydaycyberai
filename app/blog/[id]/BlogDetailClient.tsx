@@ -97,7 +97,7 @@ export default function BlogDetailClient({ params }: { params: Promise<{ id: str
 
         {/* Content */}
         {blog.content && (
-          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 mb-8">
+          <div className="bg-black/50 backdrop-blur-sm border border-zinc-700/60 rounded-2xl p-8 mb-8">
             <div className="prose-custom text-gray-300 leading-8 whitespace-pre-wrap text-base">
               {blog.content}
             </div>

@@ -63,7 +63,7 @@ export default function SalaryCalculatorPage() {
             <p className="text-gray-400">Calculate in-hand salary from CTC with PF, tax and deductions — India FY 2024-25</p>
           </div>
 
-          <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 space-y-6">
+          <div className="bg-black/40 backdrop-blur-sm border border-zinc-700/60 rounded-3xl p-8 space-y-6">
             <div>
               <label className="block text-gray-300 font-medium mb-2">Annual CTC (₹)</label>
               <input type="number" placeholder="e.g. 1200000" value={ctc} onChange={e=>setCtc(e.target.value)}

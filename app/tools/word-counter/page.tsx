@@ -47,7 +47,7 @@ export default function WordCounterPage() {
           </div>
 
           {/* Textarea */}
-          <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-3xl p-6 mb-6">
+          <div className="bg-black/40 backdrop-blur-sm border border-zinc-700/60 rounded-3xl p-6 mb-6">
             <div className="flex justify-between items-center mb-3">
               <label className="text-gray-300 font-medium">Type or paste your text</label>
               {text && (

@@ -43,7 +43,7 @@ export default function PasswordStrengthPage() {
             <p className="text-gray-400">Check how strong your password is — analyzed locally, never sent anywhere</p>
           </div>
 
-          <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 space-y-6">
+          <div className="bg-black/40 backdrop-blur-sm border border-zinc-700/60 rounded-3xl p-8 space-y-6">
             <div>
               <label className="block text-gray-300 font-medium mb-3">Enter Your Password</label>
               <div className="relative">

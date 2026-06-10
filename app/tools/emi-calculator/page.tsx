@@ -60,7 +60,7 @@ export default function EMICalculatorPage() {
             ))}
           </div>
 
-          <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 space-y-5">
+          <div className="bg-black/40 backdrop-blur-sm border border-zinc-700/60 rounded-3xl p-8 space-y-5">
             <div>
               <label className="block text-gray-300 font-medium mb-2">Loan Amount (₹)</label>
               <input type="number" placeholder="e.g. 1000000" value={principal} onChange={e=>setPrincipal(e.target.value)}

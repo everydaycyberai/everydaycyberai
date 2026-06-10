@@ -90,7 +90,7 @@ export default function IPCalculatorPage() {
             <p className="text-gray-400">Subnet calculator, IP class detector and network range analyzer</p>
           </div>
 
-          <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 mb-6">
+          <div className="bg-black/40 backdrop-blur-sm border border-zinc-700/60 rounded-3xl p-8 mb-6">
             <label className="block text-gray-300 font-medium mb-3">Enter IP Address or CIDR</label>
             <div className="flex gap-3">
               <input
@@ -127,7 +127,7 @@ export default function IPCalculatorPage() {
                   <p className="text-gray-400 text-sm">{result.isPrivate ? "Not reachable from internet" : "Reachable from internet"}</p>
                 </div>
               </div>
-              <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-2xl p-6">
+              <div className="bg-black/40 backdrop-blur-sm border border-zinc-700/60 rounded-2xl p-6">
                 <h2 className="text-cyan-400 font-semibold mb-4">Network Details</h2>
                 <Row label="IP Address"      value={result.ip} accent />
                 <Row label="CIDR Notation"   value={`/${result.cidr}`} />

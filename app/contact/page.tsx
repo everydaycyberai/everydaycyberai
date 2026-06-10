@@ -77,7 +77,7 @@ export default function ContactPage() {
 
           {/* Contact Info Sidebar */}
           <div className="space-y-6">
-            <div className="bg-black border border-gray-800 rounded-2xl p-6">
+            <div className="bg-black/40 backdrop-blur-sm border border-gray-700/60 rounded-2xl p-6">
               <h3 className="text-cyan-400 font-semibold mb-4">Quick Contact</h3>
               <div className="space-y-4 text-gray-400 text-sm">
                 <div className="flex items-start gap-3">
@@ -140,7 +140,7 @@ export default function ContactPage() {
                 </button>
               </div>
             ) : (
-              <div className="bg-black border border-gray-800 rounded-3xl p-10">
+              <div className="bg-black/40 backdrop-blur-sm border border-gray-700/60 rounded-3xl p-10">
                 <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
 
                   <div>

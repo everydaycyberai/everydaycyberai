@@ -116,7 +116,7 @@ export default function BlogClient() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filtered.map((blog) => (
             <Link href={`/blog/${blog.id}`} key={blog.id} className="group">
-              <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 hover:border-cyan-400 hover:-translate-y-2 transition duration-300 cursor-pointer h-full flex flex-col">
+              <div className="bg-black/50 backdrop-blur-sm border border-zinc-700/60 rounded-2xl p-6 hover:border-cyan-400 hover:-translate-y-2 transition duration-300 cursor-pointer h-full flex flex-col">
 
                 {/* Top meta */}
                 <div className="flex items-center justify-between mb-4">
