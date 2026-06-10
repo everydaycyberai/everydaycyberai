@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #061a22;
+  --background: #0a2535;
   --foreground: #e2f8ff;
   --cyan: #22d3ee;
   --cyan-dim: rgba(34,211,238,0.15);
@@ -36,12 +36,14 @@ body::before {
   z-index: 0;
   pointer-events: none;
 
-  /* Layer 1 — deep dark teal base gradient */
+  /* Layer 1 — SVG circuit board + teal gradient overlay */
   background:
-    radial-gradient(ellipse 80% 60% at 20% 10%,  rgba(6,182,212,0.14) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 80% 80%,  rgba(59,130,246,0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 50% 50%,  rgba(34,211,238,0.08) 0%, transparent 70%),
-    linear-gradient(160deg, #061a22 0%, #071e28 40%, #051820 70%, #04141c 100%);
+    radial-gradient(ellipse 70% 50% at 15% 10%,  rgba(6,182,212,0.20) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 85% 85%,  rgba(59,130,246,0.16) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 50% 50%,  rgba(34,211,238,0.10) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 30% at 70% 20%,  rgba(16,185,129,0.07) 0%, transparent 50%),
+    url('/cyber-bg.svg') center/cover no-repeat,
+    linear-gradient(160deg, #0a2535 0%, #0c2d3d 30%, #0a2030 60%, #08192a 100%);
 }
 
 body::after {
@@ -53,9 +55,11 @@ body::after {
 
   /* Layer 2 — cyan grid lines */
   background-image:
-    linear-gradient(rgba(34,211,238,0.09) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34,211,238,0.09) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(rgba(34,211,238,0.13) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,211,238,0.13) 1px, transparent 1px),
+    linear-gradient(rgba(34,211,238,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,211,238,0.04) 1px, transparent 1px);
+  background-size: 48px 48px, 48px 48px, 12px 12px, 12px 12px;
 }
 
 /* Ensure all page content sits above background layers */

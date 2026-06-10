@@ -48,7 +48,7 @@ export default function CyberBackground() {
       frame++;
 
       // Fade trail
-      ctx.fillStyle = "rgba(2,11,15, 0.12)";
+      ctx.fillStyle = "rgba(10,32,48, 0.10)";
       ctx.fillRect(0, 0, W, H);
 
       // ── Matrix rain ──
@@ -144,7 +144,7 @@ export default function CyberBackground() {
       id="cyber-canvas"
       aria-hidden="true"
       className="fixed top-0 left-0 w-full h-full pointer-events-none"
-      style={{ zIndex: 0, opacity: 0.65 }}
+      style={{ zIndex: 0, opacity: 0.75 }}
     />
   );
 }
