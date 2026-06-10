@@ -54,7 +54,7 @@ export default function Home() {
   const footerRef = useFadeUp() as React.RefObject<HTMLElement>;
 
   return (
-    <main className="min-h-screen text-white relative overflow-hidden" style={{background:"transparent"}}>
+    <main className="min-h-screen text-white relative overflow-hidden z-10" style={{background:"transparent"}}>
 
 
 

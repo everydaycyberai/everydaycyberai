@@ -13,7 +13,7 @@ export default function ToolPageWrapper({
   const router = useRouter();
 
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-hidden">
+    <div className="relative min-h-screen text-white overflow-hidden z-10">
 
       {/* ── Cyber Background ── */}
 

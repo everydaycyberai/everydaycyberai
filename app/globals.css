@@ -59,7 +59,7 @@ body::after {
 }
 
 /* Ensure all page content sits above background layers */
-#__next > * { position: relative; z-index: 1; }
+main, section, footer, header, nav { position: relative; z-index: 1; }
 
 /* ══════════════════════════════════════════
    ANIMATED CYBER CANVAS (matrix + particles)
