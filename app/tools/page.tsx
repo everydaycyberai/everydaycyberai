@@ -20,13 +20,13 @@ type Status = "live" | "coming";
 
 const categories = [
   {
-    name: "🤖 AI Tools",
-    desc: "Free AI-powered tools — write emails, essays, cover letters and more in seconds",
+    name: "📝 Writing & Text Tools",
+    desc: "Free writing tools for students and professionals — word counter, case converter, text utilities",
     tools: [
-      { icon: "✍️", title: "AI Writing Assistant",    desc: "Free AI tool to write emails, essays, cover letters, product descriptions and any content instantly. Powered by Claude AI — best ChatGPT alternative India 2025.", tags: ["Email Writer","Essay Helper","Free AI India"],    href: "/tools/ai-writer",          status: "live" as Status },
-      { icon: "📧", title: "AI Email Generator",       desc: "Generate professional emails in one click — office emails, complaint letters, job applications, follow-ups. Free AI email writer for students and professionals.", tags: ["Professional Email","Job Application","Office"],  href: "/tools/ai-email",           status: "live" as Status },
-      { icon: "📝", title: "AI Cover Letter Writer",   desc: "Create a job-winning cover letter instantly with AI. Free cover letter generator for freshers and experienced professionals in India.", tags: ["Cover Letter","Fresher Jobs","HR"],              href: "/tools/ai-cover-letter",    status: "coming" as Status },
-      { icon: "🤖", title: "AI Paraphraser",           desc: "Rewrite any paragraph in your own words using AI. Free paraphrasing tool for students — avoid plagiarism, improve writing style.", tags: ["Rewrite","Anti-Plagiarism","Students"],          href: "/tools/ai-paraphraser",     status: "coming" as Status },
+      { icon: "📝", title: "Word Counter",              desc: "Free online word counter — count words, characters, sentences, reading time instantly. Check Twitter, Instagram, LinkedIn character limits. Best tool for students writing assignments.", tags: ["Word Count","Reading Time","Assignment Help"],  href: "/tools/word-counter",        status: "live" as Status },
+      { icon: "🔡", title: "Case Converter",            desc: "Free text case converter — convert to UPPERCASE, lowercase, Title Case, camelCase, snake_case, kebab-case instantly. Useful for developers and content writers.", tags: ["camelCase","snake_case","UPPERCASE","Writers"],  href: "/tools/case-converter",      status: "live" as Status },
+      { icon: "📄", title: "Lorem Ipsum Generator",     desc: "Free Lorem Ipsum placeholder text generator — generate paragraphs, sentences or words for websites, UI mockups and design projects instantly.", tags: ["Placeholder Text","UI Design","Mockup","Web"],  href: "/tools/lorem-ipsum",         status: "live" as Status },
+      { icon: "📋", title: "JSON Formatter",            desc: "Free JSON formatter and validator online — format, beautify, minify and validate JSON data instantly. Useful for developers and API testing.", tags: ["JSON Validate","Beautify","API Testing","Dev"],  href: "/tools/json-formatter",      status: "live" as Status },
     ],
   },
   {
