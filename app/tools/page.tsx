@@ -37,6 +37,7 @@ const categories = [
     desc: "Tools everyone uses every day — instant and no login needed",
     tools: [
       { icon: "▦",  title: "QR Code Generator",  desc: "Generate QR codes for URLs, text, Wi-Fi, email and phone numbers.",       tags: ["URL","Wi-Fi","Download PNG"],             href: "/tools/qr-generator",     status: "live" as Status },
+      { icon: "📄", title: "Resume Builder",       desc: "Build a professional resume with 3 templates and download as PDF instantly.", tags: ["3 Templates","PDF Download","No Signup"],  href: "/tools/resume-builder",   status: "live" as Status },
       { icon: "🔗", title: "URL Shortener",       desc: "Shorten long URLs for sharing on WhatsApp, Instagram and social media.",  tags: ["Short Link","Share","Track"],             href: "/tools/url-shortener",    status: "live" as Status },
       { icon: "🖼️", title: "Image Compressor",    desc: "Compress images without losing quality — perfect for sending on WhatsApp.", tags: ["Reduce Size","JPG","PNG"],             href: "/tools/image-compressor", status: "live" as Status },
       { icon: "🎨", title: "Color Picker",         desc: "Pick colors, get HEX, RGB, HSL codes — for designers and developers.",   tags: ["HEX","RGB","HSL"],                        href: "/tools/color-picker",     status: "live" as Status },
