@@ -54,11 +54,9 @@ export default function Home() {
   const footerRef = useFadeUp() as React.RefObject<HTMLElement>;
 
   return (
-    <main className="min-h-screen bg-black text-white relative overflow-hidden">
+    <main className="min-h-screen text-white relative overflow-hidden" style={{background:"transparent"}}>
 
-      {/* Background Glow */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute top-[600px] right-0 w-[400px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
+
 
       {/* ── Hero ── */}
       <section id="home" className="hero-grid pt-40 pb-24 px-6">

@@ -4,6 +4,7 @@ import "./globals.css";
 import "@/lib/firebase";
 import Navbar from "../components/Navbar";
 import LeadCapturePopup from "../components/LeadCapturePopup";
+import CyberBackground from "../components/CyberBackground";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,6 +54,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <CyberBackground />
         <Navbar />
         {children}
         <LeadCapturePopup />

@@ -68,7 +68,7 @@ export default function ToolsPage() {
   const totalLive = categories.reduce((acc, cat) => acc + cat.tools.filter(t => t.status === "live").length, 0);
 
   return (
-    <main className="min-h-screen bg-black text-white px-6 py-32">
+    <main className="min-h-screen text-white px-6 py-32">
       <div className="max-w-7xl mx-auto">
 
         {/* Heading */}

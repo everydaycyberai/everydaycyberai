@@ -48,7 +48,7 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-black text-white px-6 py-32">
+    <main className="min-h-screen text-white px-6 py-32">
       <div className="max-w-7xl mx-auto">
 
         {/* Heading */}

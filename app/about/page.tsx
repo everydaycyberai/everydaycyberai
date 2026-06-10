@@ -18,7 +18,7 @@ const expertise = [
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-black text-white px-6 py-32">
+    <main className="min-h-screen text-white px-6 py-32">
       <div className="max-w-5xl mx-auto">
 
         {/* Heading */}
