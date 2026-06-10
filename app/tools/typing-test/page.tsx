@@ -33,7 +33,7 @@ export default function TypingTestPage() {
   const [accuracy, setAccuracy] = useState(0);
   const [errors, setErrors]   = useState(0);
   const inputRef              = useRef<HTMLInputElement>(null);
-  const timerRef              = useRef<ReturnType<typeof setInterval>>();
+  const timerRef              = useRef<ReturnType<typeof setInterval> | undefined>(undefined);
 
   const newTest = useCallback(() => {
     const arr = TEXTS[diff];
