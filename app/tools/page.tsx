@@ -25,8 +25,7 @@ const categories = [
     tools: [
       { icon: "✍️", title: "AI Writing Assistant",    desc: "Free AI tool to write emails, essays, cover letters, product descriptions instantly. Powered by Groq + Llama — fastest free AI writer India 2025. No login needed.", tags: ["Email Writer","Essay Helper","Free AI India"], href: "/tools/ai-writer",  status: "live" as Status },
       { icon: "📧", title: "AI Email Generator",       desc: "Generate professional emails in seconds — leave application, job application, complaint, resignation. Free AI email writer for students and professionals India.", tags: ["Leave Application","Job Apply","Office Email"], href: "/tools/ai-email",   status: "live" as Status },
-      { icon: "📝", title: "AI Cover Letter Writer",   desc: "Create a job-winning cover letter instantly with free AI. Best cover letter generator for freshers and experienced professionals in India.", tags: ["Cover Letter","Fresher Jobs","HR India"],       href: "/tools/ai-cover-letter", status: "coming" as Status },
-      { icon: "🔄", title: "AI Paraphraser",           desc: "Rewrite any paragraph in your own words using free AI. Best paraphrasing tool for students — avoid plagiarism and improve your writing style.", tags: ["Rewrite Text","Anti-Plagiarism","Students"],   href: "/tools/ai-paraphraser",  status: "coming" as Status },
+
     ],
   },
   {

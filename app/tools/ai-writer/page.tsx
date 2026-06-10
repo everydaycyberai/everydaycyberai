@@ -5,7 +5,8 @@ import ToolPageWrapper from "@/components/ToolPageWrapper";
 const TEMPLATES = [
   { id: "email",        label: "📧 Professional Email",   prompt: (t: string) => `Write a professional email about: ${t}. Include subject line, greeting, body and closing.` },
   { id: "essay",        label: "📝 Essay / Article",      prompt: (t: string) => `Write a well-structured essay on: ${t}. Include introduction, body paragraphs and conclusion.` },
-  { id: "cover_letter", label: "📄 Cover Letter",         prompt: (t: string) => `Write a compelling cover letter for: ${t}. Highlight skills and enthusiasm.` },
+  { id: "cover_letter", label: "📄 Cover Letter",         prompt: (t: string) => `Write a compelling job cover letter for: ${t}. Highlight relevant skills, experience and enthusiasm. Format professionally.` },
+  { id: "paraphrase",   label: "🔄 Paraphraser",          prompt: (t: string) => `Rewrite the following text in different words while keeping the same meaning. Make it clear and natural:\n\n${t}` },
   { id: "product_desc", label: "🛍️ Product Description",  prompt: (t: string) => `Write an engaging product description for: ${t}. Focus on features, benefits and call to action.` },
   { id: "social_post",  label: "📱 Social Media Post",    prompt: (t: string) => `Write an engaging social media post about: ${t}. Add relevant hashtags.` },
   { id: "summary",      label: "📋 Summarize Text",       prompt: (t: string) => `Summarize the following text in clear bullet points:\n\n${t}` },
@@ -73,13 +74,16 @@ export default function AIWriterPage() {
 
             <div>
               <label className="block text-gray-300 font-medium mb-2">
-                {template==="custom" ? "Enter your full prompt" : template==="summary" ? "Paste text to summarize" : "Topic / Subject"}
+                {template==="custom" ? "Enter your full prompt" :
+                 template==="summary" || template==="paraphrase" ? "Paste your text here" :
+                 "Topic / Subject"}
               </label>
               <textarea rows={4} value={topic} onChange={e => setTopic(e.target.value)}
                 placeholder={
                   template==="email" ? "e.g. Request for leave on Monday due to medical appointment" :
                   template==="essay" ? "e.g. Impact of AI on jobs in India" :
                   template==="cover_letter" ? "e.g. Software Engineer at TCS, 2 years React experience" :
+                  template==="paraphrase" ? "Paste the text you want to rewrite/paraphrase here..." :
                   template==="summary" ? "Paste the text you want to summarize here..." :
                   "Describe what you want to write..."
                 }
