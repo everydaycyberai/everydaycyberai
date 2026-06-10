@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #020b0f;
+  --background: #061a22;
   --foreground: #e2f8ff;
   --cyan: #22d3ee;
   --cyan-dim: rgba(34,211,238,0.15);
@@ -38,10 +38,10 @@ body::before {
 
   /* Layer 1 — deep dark teal base gradient */
   background:
-    radial-gradient(ellipse 80% 60% at 20% 10%,  rgba(6,182,212,0.07) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 80% 80%,  rgba(59,130,246,0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 50% 50%,  rgba(34,211,238,0.04) 0%, transparent 70%),
-    linear-gradient(160deg, #020b0f 0%, #030d14 40%, #020a12 70%, #010810 100%);
+    radial-gradient(ellipse 80% 60% at 20% 10%,  rgba(6,182,212,0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 80%,  rgba(59,130,246,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 50% 50%,  rgba(34,211,238,0.08) 0%, transparent 70%),
+    linear-gradient(160deg, #061a22 0%, #071e28 40%, #051820 70%, #04141c 100%);
 }
 
 body::after {
@@ -53,8 +53,8 @@ body::after {
 
   /* Layer 2 — cyan grid lines */
   background-image:
-    linear-gradient(rgba(34,211,238,0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34,211,238,0.045) 1px, transparent 1px);
+    linear-gradient(rgba(34,211,238,0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,211,238,0.09) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 

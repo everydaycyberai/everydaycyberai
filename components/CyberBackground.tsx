@@ -63,7 +63,7 @@ export default function CyberBackground() {
           ctx.fillStyle = `rgba(200,255,255,${drop.opacity})`;
         } else {
           ctx.shadowBlur = 0;
-          ctx.fillStyle = `rgba(34,211,238,${drop.opacity * 0.7})`;
+          ctx.fillStyle = `rgba(34,211,238,${drop.opacity * 0.9})`;
         }
 
         ctx.font = `${fontSize}px monospace`;
@@ -71,7 +71,7 @@ export default function CyberBackground() {
 
         // Tail chars — dimmer green-cyan
         ctx.shadowBlur = 0;
-        ctx.fillStyle = `rgba(0,180,160,${drop.opacity * 0.25})`;
+        ctx.fillStyle = `rgba(0,210,180,${drop.opacity * 0.4})`;
         ctx.fillText(
           CHARS[Math.floor(Math.random() * CHARS.length)],
           x,
@@ -144,7 +144,7 @@ export default function CyberBackground() {
       id="cyber-canvas"
       aria-hidden="true"
       className="fixed top-0 left-0 w-full h-full pointer-events-none"
-      style={{ zIndex: 0, opacity: 0.45 }}
+      style={{ zIndex: 0, opacity: 0.65 }}
     />
   );
 }
