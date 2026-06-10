@@ -20,6 +20,16 @@ type Status = "live" | "coming";
 
 const categories = [
   {
+    name: "🆘 Cyber Security Help — India",
+    desc: "Scam hua? Hack hua? — Turant help pao, kahan report karo, paisa kaise milega wapas",
+    tools: [
+      { icon: "🔍", title: "Scam Analyzer",          desc: "Scam ho gaya? Describe karo — AI batayega kaunsa scam hua, turant kya karo, kahan report karo aur paisa wapas milne ke chances kitne hain. India ka sabse useful cyber help tool.", tags: ["UPI Fraud","Digital Arrest","Phishing Help","1930"],    href: "/tools/scam-analyzer",       status: "live" as Status },
+      { icon: "🛡️", title: "Hack Checker",           desc: "Pata karo aapka phone ya account hack hua hai ya nahi — 14 simple questions ka jawab do aur instant risk report pao. Free system security check India.", tags: ["Phone Hacked","Account Check","Risk Report"],              href: "/tools/hack-checker",        status: "live" as Status },
+      { icon: "🔒", title: "Digital Safety Score",   desc: "Aap online kitne safe hain? 12 questions ka jawab do — apna cyber security score janiye aur personalized improvement tips pao. Free security audit India.", tags: ["Security Score","Safety Tips","Cyber Audit"],              href: "/tools/safety-score",        status: "live" as Status },
+      { icon: "🆘", title: "Emergency Response Guide",desc: "UPI fraud, account hack, digital arrest, SIM swap — kisi bhi cyber emergency mein exact step-by-step action plan aur India ke official helpline numbers.", tags: ["1930 Helpline","UPI Fraud Steps","Emergency Plan"],       href: "/tools/emergency-response",  status: "live" as Status },
+    ],
+  },
+  {
     name: "🤖 AI Tools — Free",
     desc: "Free AI-powered tools — write emails, essays, cover letters instantly using Groq + Llama AI",
     tools: [
