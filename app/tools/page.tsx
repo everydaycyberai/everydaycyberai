@@ -2,65 +2,87 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Free Online Tools — Everyday Cyber AI",
+  title: "Free Online Tools India — AI, PDF, Security, Finance & More | Everyday Cyber AI",
   description:
-    "Free online tools for students and professionals — word counter, QR code generator, unit converter, age calculator, password generator, IP calculator, SSL checker and more.",
+    "100+ free online tools for India — AI writing assistant, password generator, resume builder, GST calculator, EMI calculator, QR code generator, unit converter, image compressor and more. No login, no signup required.",
   keywords:
-    "free online tools India, word counter, QR code generator, unit converter, age calculator, password generator, IP calculator, subnet calculator, SSL checker, free tools students",
+    "free online tools India, AI writing tool free, password generator India, resume builder free, GST calculator India, EMI calculator, QR code generator free, unit converter, image compressor, word counter, age calculator, free tools students India 2025",
+  openGraph: {
+    title: "Free Online Tools India — Everyday Cyber AI",
+    description: "Free AI tools, security tools, finance calculators and productivity tools for India. No login needed.",
+    url: "https://everydaycyberai.com/tools",
+    siteName: "Everyday Cyber AI",
+  },
+  alternates: { canonical: "https://everydaycyberai.com/tools" },
 };
 
 type Status = "live" | "coming";
 
 const categories = [
   {
-    name: "🔐 Security Tools",
-    desc: "Check your passwords, networks and SSL — stay safe online",
+    name: "🤖 AI Tools",
+    desc: "Free AI-powered tools — write emails, essays, cover letters and more in seconds",
     tools: [
-      { icon: "🔐", title: "Password Generator",        desc: "Generate secure passwords with strength meter and custom options.",  tags: ["Strength Meter","Custom Length"],      href: "/tools/password-generator",    status: "live" as Status },
-      { icon: "🛡️", title: "Password Strength Checker", desc: "Check how strong your password is with entropy and crack time.",    tags: ["Entropy Score","Crack Time"],          href: "/tools/password-strength",     status: "live" as Status },
-      { icon: "🌐", title: "IP / Subnet Calculator",     desc: "Full subnet calc — network range, host count, IP class detection.", tags: ["CIDR","Subnet Mask","Host Range"],     href: "/tools/ip-calculator",         status: "live" as Status },
-      { icon: "🔒", title: "SSL Certificate Checker",   desc: "Check if a website has valid SSL and HTTPS redirect.",             tags: ["HTTPS Check","Redirect Check"],        href: "/tools/ssl-checker",           status: "live" as Status },
+      { icon: "✍️", title: "AI Writing Assistant",    desc: "Free AI tool to write emails, essays, cover letters, product descriptions and any content instantly. Powered by Claude AI — best ChatGPT alternative India 2025.", tags: ["Email Writer","Essay Helper","Free AI India"],    href: "/tools/ai-writer",          status: "live" as Status },
+      { icon: "📧", title: "AI Email Generator",       desc: "Generate professional emails in one click — office emails, complaint letters, job applications, follow-ups. Free AI email writer for students and professionals.", tags: ["Professional Email","Job Application","Office"],  href: "/tools/ai-email",           status: "live" as Status },
+      { icon: "📝", title: "AI Cover Letter Writer",   desc: "Create a job-winning cover letter instantly with AI. Free cover letter generator for freshers and experienced professionals in India.", tags: ["Cover Letter","Fresher Jobs","HR"],              href: "/tools/ai-cover-letter",    status: "coming" as Status },
+      { icon: "🤖", title: "AI Paraphraser",           desc: "Rewrite any paragraph in your own words using AI. Free paraphrasing tool for students — avoid plagiarism, improve writing style.", tags: ["Rewrite","Anti-Plagiarism","Students"],          href: "/tools/ai-paraphraser",     status: "coming" as Status },
+    ],
+  },
+  {
+    name: "🔐 Cyber Security Tools",
+    desc: "Check passwords, networks, SSL — protect yourself online with free security tools",
+    tools: [
+      { icon: "🔐", title: "Password Generator",              desc: "Generate strong, secure passwords instantly — free password generator India with length slider, character types and strength meter. Never get hacked again.", tags: ["Strong Password","Strength Meter","Free India"], href: "/tools/password-generator",    status: "live" as Status },
+      { icon: "🛡️", title: "Password Strength Checker",       desc: "Check how strong your password is in seconds — entropy score, estimated crack time and security checklist. 100% private, analyzed in browser only.", tags: ["Password Check","Crack Time","Privacy"],        href: "/tools/password-strength",     status: "live" as Status },
+      { icon: "🔍", title: "Password Breach Checker",         desc: "Check if your email or password has been leaked in a data breach. Free tool to find out if your account is hacked — safe and private.", tags: ["Data Breach","Hacked Check","HaveIBeenPwned"],  href: "/tools/breach-checker",        status: "live" as Status },
+      { icon: "🌐", title: "IP / Subnet Calculator",           desc: "Free IP subnet calculator — find network address, broadcast, host range, CIDR notation and IP class. Essential tool for network engineers India.", tags: ["Subnet Mask","CIDR","Network Engineers"],        href: "/tools/ip-calculator",         status: "live" as Status },
+      { icon: "🔒", title: "SSL Certificate Checker",         desc: "Check if any website has valid SSL certificate and HTTPS enabled. Free online SSL checker — verify website security before entering your data.", tags: ["HTTPS Check","SSL Valid","Website Safety"],     href: "/tools/ssl-checker",           status: "live" as Status },
     ],
   },
   {
     name: "📚 Study Tools",
-    desc: "For students — assignments, essays, exams and daily learning",
+    desc: "Free tools for students — word counter, unit converter, plagiarism checker and more",
     tools: [
-      { icon: "📝", title: "Word Counter",       desc: "Count words, characters, sentences with reading time and social media limits.", tags: ["Reading Time","Social Limits","Sentences"], href: "/tools/word-counter",     status: "live" as Status },
-      { icon: "📐", title: "Unit Converter",     desc: "Convert length, weight, temperature, area, speed and data units.",             tags: ["Length","Weight","Temp","Data"],             href: "/tools/unit-converter",   status: "live" as Status },
-      { icon: "🧮", title: "Age Calculator",     desc: "Exact age in years/months/days, zodiac sign, next birthday countdown.",       tags: ["Zodiac","Birthday","Total Days"],            href: "/tools/age-calculator",   status: "live" as Status },
-      { icon: "📊", title: "Percentage Calculator", desc: "Calculate percentage, increase/decrease and marks percentage.",            tags: ["Marks %","Discount","Increase"],             href: "/tools/percentage-calculator",  status: "live" as Status },
+      { icon: "📝", title: "Word Counter",                    desc: "Free online word counter — count words, characters, sentences, reading time instantly. Check Twitter, Instagram, LinkedIn character limits. Best tool for students writing assignments.", tags: ["Word Count","Reading Time","Assignment Help"],  href: "/tools/word-counter",        status: "live" as Status },
+      { icon: "📐", title: "Unit Converter",                  desc: "Free unit converter India — convert length, weight, temperature, area, speed and data units instantly. Covers metric and imperial units. Best for science students.", tags: ["Length","Weight","Temperature","CBSE"],         href: "/tools/unit-converter",       status: "live" as Status },
+      { icon: "🧮", title: "Age Calculator",                  desc: "Calculate your exact age in years, months and days — with zodiac sign, day of birth and next birthday countdown. Free age calculator India for Aadhaar, passport forms.", tags: ["Exact Age","Zodiac","Birthday Countdown"],      href: "/tools/age-calculator",       status: "live" as Status },
+      { icon: "📊", title: "Percentage Calculator",           desc: "Free percentage calculator — calculate marks percentage, discount, percentage change and more. Most useful tool for students, shoppers and professionals in India.", tags: ["Marks %","Discount","Grade Calculator"],        href: "/tools/percentage-calculator",status: "live" as Status },
+      { icon: "⌨️", title: "Typing Speed Test",               desc: "Test your typing speed in WPM (words per minute) free online — improve your typing for government exams, bank jobs, SSC, data entry and office work.", tags: ["WPM Test","Govt Exam","Data Entry","SSC"],       href: "/tools/typing-test",          status: "live" as Status },
+      { icon: "🔎", title: "Plagiarism Checker",              desc: "Free plagiarism checker for students — check your essay, assignment or article for duplicate content. Browser-based, no file upload needed.", tags: ["Duplicate Content","Assignment","College"],     href: "/tools/plagiarism-checker",   status: "coming" as Status },
     ],
   },
   {
     name: "⚡ Daily Use Tools",
-    desc: "Tools everyone uses every day — instant and no login needed",
+    desc: "Tools everyone uses everyday — QR codes, photos, images, URLs — free and instant",
     tools: [
-      { icon: "▦",  title: "QR Code Generator",  desc: "Generate QR codes for URLs, text, Wi-Fi, email and phone numbers.",       tags: ["URL","Wi-Fi","Download PNG"],             href: "/tools/qr-generator",     status: "live" as Status },
-      { icon: "📄", title: "Resume Builder",       desc: "Build a professional resume with 3 templates and download as PDF instantly.", tags: ["3 Templates","PDF Download","No Signup"],  href: "/tools/resume-builder",   status: "live" as Status },
-      { icon: "🔗", title: "URL Shortener",       desc: "Shorten long URLs for sharing on WhatsApp, Instagram and social media.",  tags: ["Short Link","Share","Track"],             href: "/tools/url-shortener",    status: "live" as Status },
-      { icon: "🖼️", title: "Image Compressor",    desc: "Compress images without losing quality — perfect for sending on WhatsApp.", tags: ["Reduce Size","JPG","PNG"],             href: "/tools/image-compressor", status: "live" as Status },
-      { icon: "🎨", title: "Color Picker",         desc: "Pick colors, get HEX, RGB, HSL codes — for designers and developers.",   tags: ["HEX","RGB","HSL"],                        href: "/tools/color-picker",     status: "live" as Status },
+      { icon: "📄", title: "Resume Builder",                  desc: "Free resume builder India — create professional resume with 3 templates and download as PDF instantly. No watermark, no signup. Best free CV maker for freshers and experienced.", tags: ["Free CV Maker","PDF Resume","Fresher India"],   href: "/tools/resume-builder",       status: "live" as Status },
+      { icon: "▦",  title: "QR Code Generator",              desc: "Free QR code generator — create QR codes for URL, Wi-Fi password, phone number, email and text. Download PNG instantly. Best free QR maker for business cards and shops.", tags: ["WiFi QR","URL QR","Business Card","Free PNG"],  href: "/tools/qr-generator",         status: "live" as Status },
+      { icon: "🖼️", title: "Image Compressor",               desc: "Free image compressor online India — reduce JPG, PNG image size without losing quality. Perfect for compressing photos for WhatsApp, website and email. 100% private.", tags: ["Reduce Image Size","WhatsApp Photo","Website"], href: "/tools/image-compressor",     status: "live" as Status },
+      { icon: "🔗", title: "URL Shortener",                   desc: "Free URL shortener India — shorten long links for sharing on WhatsApp, Instagram bio, Twitter. Create short links instantly with copy button.", tags: ["Short Link","Instagram Bio","WhatsApp Share"],  href: "/tools/url-shortener",        status: "live" as Status },
+      { icon: "📸", title: "Passport Size Photo Maker",       desc: "Free passport size photo maker online India — resize any photo to 35x45mm passport size. Download instantly for Aadhaar, PAN, visa, exam forms. No watermark.", tags: ["Passport Photo","Aadhaar","Visa Form","35x45"], href: "/tools/passport-photo",       status: "live" as Status },
+      { icon: "🎨", title: "Color Picker",                    desc: "Free online color picker — pick any color and get HEX, RGB, HSL, CMYK codes instantly. Includes shade generator and popular palettes for designers and developers.", tags: ["HEX Code","RGB","Color Codes","Designers"],    href: "/tools/color-picker",         status: "live" as Status },
+      { icon: "🏃", title: "BMI Calculator",                  desc: "Free BMI calculator India — calculate Body Mass Index for adults and children. Know if you are underweight, normal, overweight or obese with health tips.", tags: ["Body Mass Index","Health Check","Weight"],      href: "/tools/bmi-calculator",       status: "live" as Status },
     ],
   },
   {
-    name: "💰 Finance Tools (India)",
-    desc: "GST, EMI, salary and tax calculators for Indian users",
+    name: "💰 Finance Tools India",
+    desc: "GST, EMI, salary and investment calculators — made for Indian users",
     tools: [
-      { icon: "🧾", title: "GST Calculator",      desc: "Calculate GST inclusive/exclusive amounts for any tax slab (5%, 12%, 18%, 28%).", tags: ["5%","12%","18%","28%"],       href: "/tools/gst-calculator",   status: "live" as Status },
-      { icon: "🏦", title: "EMI Calculator",       desc: "Calculate monthly EMI for home, car or personal loans with full breakdown.",    tags: ["Home Loan","Car Loan","EMI"],  href: "/tools/emi-calculator",   status: "live" as Status },
-      { icon: "💵", title: "Salary Calculator",    desc: "Calculate in-hand salary from CTC with PF, tax and deduction breakdown.",      tags: ["CTC","In-Hand","Tax"],        href: "/tools/salary-calculator",status: "live" as Status },
-      { icon: "📈", title: "SIP Calculator",       desc: "Calculate SIP returns and maturity amount for your mutual fund investment.",    tags: ["SIP","Returns","Maturity"],   href: "/tools/sip-calculator",   status: "live" as Status },
+      { icon: "🧾", title: "GST Calculator",                  desc: "Free GST calculator India 2025 — calculate GST inclusive and exclusive amounts for 3%, 5%, 12%, 18% and 28% tax slabs. Shows CGST and SGST breakup for businesses.", tags: ["GST India","CGST SGST","Tax Slab","Business"],  href: "/tools/gst-calculator",       status: "live" as Status },
+      { icon: "🏦", title: "EMI Calculator",                  desc: "Free EMI calculator India — calculate monthly EMI for home loan, car loan and personal loan with full amortization schedule. Shows total interest payable.", tags: ["Home Loan EMI","Car Loan","Interest Rate"],     href: "/tools/emi-calculator",       status: "live" as Status },
+      { icon: "💵", title: "Salary / CTC Calculator",         desc: "Free salary calculator India 2025 — calculate in-hand salary from CTC with new and old tax regime. Shows PF deduction, income tax and take-home pay.", tags: ["In-Hand Salary","CTC to Salary","Tax Regime"],  href: "/tools/salary-calculator",    status: "live" as Status },
+      { icon: "📈", title: "SIP Calculator",                  desc: "Free SIP calculator India — calculate mutual fund SIP returns and maturity amount. Compare lumpsum vs SIP investment with yearly growth chart.", tags: ["SIP Returns","Mutual Fund","Investment India"], href: "/tools/sip-calculator",       status: "live" as Status },
     ],
   },
   {
-    name: "⌨️ Text & Dev Tools",
-    desc: "For developers, writers and content creators",
+    name: "⌨️ Text & Developer Tools",
+    desc: "For developers, writers and content creators — code formatters, converters and more",
     tools: [
-      { icon: "🔡", title: "Case Converter",       desc: "Convert text to UPPERCASE, lowercase, Title Case, camelCase and more.",       tags: ["UPPER","lower","Title Case"],  href: "/tools/case-converter",   status: "live" as Status },
-      { icon: "📋", title: "JSON Formatter",       desc: "Format, validate and beautify JSON data instantly.",                          tags: ["Validate","Beautify","Minify"], href: "/tools/json-formatter",  status: "live" as Status },
-      { icon: "🔐", title: "Base64 Encoder",        desc: "Encode and decode Base64 text and files in your browser.",                   tags: ["Encode","Decode","File"],      href: "/tools/base64",           status: "live" as Status },
-      { icon: "📄", title: "Lorem Ipsum Generator", desc: "Generate placeholder text for websites, designs and mockups.",              tags: ["Placeholder","Design","Words"], href: "/tools/lorem-ipsum",     status: "live" as Status },
+      { icon: "🔡", title: "Case Converter",                  desc: "Free text case converter — convert to UPPERCASE, lowercase, Title Case, camelCase, snake_case, kebab-case and more. Useful for developers and content writers.", tags: ["camelCase","snake_case","UPPERCASE","Devs"],    href: "/tools/case-converter",       status: "live" as Status },
+      { icon: "📋", title: "JSON Formatter",                  desc: "Free JSON formatter and validator online — format, beautify, minify and validate JSON data instantly. Useful for developers and API testing in India.", tags: ["JSON Validate","Beautify","API Testing","Dev"],  href: "/tools/json-formatter",       status: "live" as Status },
+      { icon: "🔐", title: "Base64 Encoder / Decoder",        desc: "Free Base64 encoder and decoder online — encode text to Base64 or decode Base64 to text instantly in browser. Used for JWT tokens and API authentication.", tags: ["Base64 Encode","JWT Token","API Auth"],         href: "/tools/base64",               status: "live" as Status },
+      { icon: "📄", title: "Lorem Ipsum Generator",           desc: "Free Lorem Ipsum text generator — generate placeholder text for websites, UI mockups and design projects. Choose paragraphs, sentences or words count.", tags: ["Placeholder Text","UI Design","Mockup","Web"],  href: "/tools/lorem-ipsum",          status: "live" as Status },
     ],
   },
 ];
@@ -78,12 +100,11 @@ export default function ToolsPage() {
             Free Online Tools — No Login Required
           </div>
           <h1 className="text-5xl font-bold mb-6">
-            Tools for
+            Free Tools for
             <span className="text-cyan-400"> Students & Professionals</span>
           </h1>
           <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
-            {totalLive} free tools live — word counter, QR generator, unit converter,
-            password tools, IP calculator, age calculator and more. All run in your browser, no login needed.
+            {totalLive}+ free tools — AI writing assistant, password generator, resume builder, GST calculator, QR code generator and more. All run in your browser, no login needed.
           </p>
         </div>
 
@@ -105,10 +126,10 @@ export default function ToolsPage() {
                 {cat.tools.map((tool) =>
                   tool.status === "live" ? (
                     <Link key={tool.title} href={tool.href}
-                      className="group bg-black border border-gray-800 hover:border-cyan-400 rounded-2xl p-6 transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_0_25px_rgba(34,211,238,0.12)] block">
+                      className="group bg-black/40 backdrop-blur-sm border border-gray-700/60 hover:border-cyan-400 rounded-2xl p-6 transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_0_25px_rgba(34,211,238,0.12)] block">
                       <div className="text-4xl mb-4">{tool.icon}</div>
                       <h3 className="text-lg font-semibold mb-2 group-hover:text-cyan-400 transition">{tool.title}</h3>
-                      <p className="text-gray-500 text-sm leading-relaxed mb-4">{tool.desc}</p>
+                      <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-3">{tool.desc}</p>
                       <div className="flex flex-wrap gap-1.5 mb-4">
                         {tool.tags.map(tag => (
                           <span key={tag} className="text-xs bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded-full">{tag}</span>
@@ -118,7 +139,7 @@ export default function ToolsPage() {
                     </Link>
                   ) : (
                     <div key={tool.title}
-                      className="relative bg-black/40 border border-gray-800/40 rounded-2xl p-6 opacity-60">
+                      className="relative bg-black/30 border border-gray-800/40 rounded-2xl p-6 opacity-60">
                       <span className="absolute top-3 right-3 text-xs bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 px-2 py-0.5 rounded-full">Soon</span>
                       <div className="text-4xl mb-4 grayscale">{tool.icon}</div>
                       <h3 className="text-lg font-semibold mb-2 text-gray-500">{tool.title}</h3>
