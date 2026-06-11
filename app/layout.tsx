@@ -57,8 +57,11 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <CyberBackground />
-        <Navbar />
-        <CyberHelpBar />
+        {/* Sticky header wrapper — both bars stay fixed together */}
+        <div className="fixed top-0 left-0 right-0 z-[100] flex flex-col">
+          <Navbar />
+          <CyberHelpBar />
+        </div>
         <div className="pt-[104px] flex-1 relative z-10">{children}</div>
         <LeadCapturePopup />
         <FloatingButtons />
