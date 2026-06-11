@@ -344,6 +344,47 @@ export default function Home() {
         </div>
       </footer>
 
+      {/* ── Pricing Preview ── */}
+      <section className="py-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-3xl p-10">
+            <div className="grid md:grid-cols-2 gap-10 items-center">
+              <div>
+                <div className="inline-block bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 px-4 py-1.5 rounded-full text-xs mb-4">
+                  💰 Affordable Plans
+                </div>
+                <h2 className="text-3xl font-bold mb-4">Professional IT Support<br/><span className="text-cyan-400">Starting ₹999</span></h2>
+                <p className="text-gray-400 mb-6 leading-relaxed">Remote IT support, cyber security audit, CCTV setup, firewall management — professional services at affordable prices for businesses and individuals.</p>
+                <div className="flex gap-3">
+                  <Link href="/pricing" className="bg-cyan-500 hover:bg-cyan-400 text-black px-6 py-3 rounded-xl font-bold transition">
+                    View Plans →
+                  </Link>
+                  <a href="https://wa.me/918454031225?text=Hi!%20I%20want%20to%20know%20about%20your%20IT%20support%20plans."
+                    target="_blank" rel="noopener noreferrer"
+                    className="border border-cyan-500/40 hover:border-cyan-400 text-cyan-400 px-6 py-3 rounded-xl transition">
+                    WhatsApp Us
+                  </a>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { plan: "Basic", price: "₹999", desc: "Per Session" },
+                  { plan: "Business", price: "₹2,999", desc: "Per Month" },
+                  { plan: "Enterprise", price: "₹7,999", desc: "Per Month" },
+                  { plan: "Custom", price: "Contact", desc: "Large Teams" },
+                ].map(p => (
+                  <div key={p.plan} className="bg-black/40 border border-zinc-700/60 rounded-2xl p-4 text-center hover:border-cyan-400/40 transition">
+                    <p className="text-gray-400 text-xs mb-1">{p.plan}</p>
+                    <p className="text-cyan-400 font-black text-xl">{p.price}</p>
+                    <p className="text-gray-500 text-xs">{p.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Blog Preview ── */}
       <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
