@@ -9,9 +9,9 @@ export const metadata: Metadata = {
     title: "Best Antivirus for India 2025 — Top 5 Reviewed",
     description: "Quick Heal, Kaspersky, Bitdefender compared for Indian users. Find the best antivirus for your budget.",
     type: "article",
-    url: "https://everydaycyberai.com/blog/best-antivirus-india-2025",
+    url: "https://everydaycyberai.in/blog/best-antivirus-india-2025",
   },
-  alternates: { canonical: "https://everydaycyberai.com/blog/best-antivirus-india-2025" },
+  alternates: { canonical: "https://everydaycyberai.in/blog/best-antivirus-india-2025" },
 };
 
 const antiviruses = [

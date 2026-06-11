@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Cyber Security & IT Blog — Everyday Cyber AI",
     description:
       "Free cyber security tips, IT guides and network security articles for businesses in India.",
-    url: "https://everydaycyberai.com/blog",
+    url: "https://everydaycyberai.in/blog",
     siteName: "Everyday Cyber AI",
     locale: "en_IN",
     type: "website",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description: "Free cyber security tips and IT guides for businesses in India.",
   },
   alternates: {
-    canonical: "https://everydaycyberai.com/blog",
+    canonical: "https://everydaycyberai.in/blog",
   },
 };
 

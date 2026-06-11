@@ -20,7 +20,7 @@ export async function generateMetadata({
     openGraph: {
       title: "Cyber Security Article — Everyday Cyber AI",
       description: "Practical cyber security and IT guides for businesses in India.",
-      url: `https://everydaycyberai.com/blog/${id}`,
+      url: `https://everydaycyberai.in/blog/${id}`,
       siteName: "Everyday Cyber AI",
       locale: "en_IN",
       type: "article",
@@ -31,7 +31,7 @@ export async function generateMetadata({
       description: "Practical cyber security and IT guides for businesses in India.",
     },
     alternates: {
-      canonical: `https://everydaycyberai.com/blog/${id}`,
+      canonical: `https://everydaycyberai.in/blog/${id}`,
     },
   };
 }

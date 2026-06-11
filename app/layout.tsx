@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Everyday Cyber AI — IT Support & Security Mumbai",
     description:
       "Professional IT support, surveillance systems and AI-powered tools for modern businesses.",
-    url: "https://everydaycyberai.com",
+    url: "https://everydaycyberai.in",
     siteName: "Everyday Cyber AI",
     locale: "en_IN",
     type: "website",

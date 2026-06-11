@@ -48,7 +48,7 @@ export default function JSONFormatterPage() {
     setCopied(true); setTimeout(() => setCopied(false), 2000);
   };
 
-  const SAMPLE = `{"name":"Everyday Cyber AI","type":"IT Security","services":["firewall","CCTV","support"],"contact":{"email":"info@everydaycyberai.com","phone":"+91 84540 31225"},"active":true}`;
+  const SAMPLE = `{"name":"Everyday Cyber AI","type":"IT Security","services":["firewall","CCTV","support"],"contact":{"email":"info@everydaycyberai.in","phone":"+91 84540 31225"},"active":true}`;
 
   return (
     <ToolPageWrapper badge="Dev Tool">

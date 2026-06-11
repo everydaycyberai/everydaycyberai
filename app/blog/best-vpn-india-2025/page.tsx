@@ -9,9 +9,9 @@ export const metadata: Metadata = {
     title: "Best VPN for India 2025 — Top 5 Compared",
     description: "NordVPN, ExpressVPN, Proton VPN compared for Indian users. Speed tests, pricing and privacy analysis.",
     type: "article",
-    url: "https://everydaycyberai.com/blog/best-vpn-india-2025",
+    url: "https://everydaycyberai.in/blog/best-vpn-india-2025",
   },
-  alternates: { canonical: "https://everydaycyberai.com/blog/best-vpn-india-2025" },
+  alternates: { canonical: "https://everydaycyberai.in/blog/best-vpn-india-2025" },
 };
 
 const vpns = [

@@ -9,9 +9,9 @@ export const metadata: Metadata = {
     title: "UPI Fraud Se Kaise Bachen 2025 — Complete Guide",
     description: "UPI fraud se bachne ke complete tips Hindi mein. GPay, PhonePe, Paytm fraud kaise hota hai aur kya karein.",
     type: "article",
-    url: "https://everydaycyberai.com/blog/upi-fraud-se-kaise-bachen",
+    url: "https://everydaycyberai.in/blog/upi-fraud-se-kaise-bachen",
   },
-  alternates: { canonical: "https://everydaycyberai.com/blog/upi-fraud-se-kaise-bachen" },
+  alternates: { canonical: "https://everydaycyberai.in/blog/upi-fraud-se-kaise-bachen" },
 };
 
 const fraudTypes = [

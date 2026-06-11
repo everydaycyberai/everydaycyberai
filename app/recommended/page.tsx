@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     "Best antivirus, VPN, password manager and security tools for India 2025. Expert-reviewed recommendations to keep your devices safe. Trusted by Everyday Cyber AI.",
   keywords:
     "best antivirus India 2025, best VPN India, password manager India free, cyber security software India, Quick Heal vs Kaspersky, NordVPN India review",
-  alternates: { canonical: "https://everydaycyberai.com/recommended" },
+  alternates: { canonical: "https://everydaycyberai.in/recommended" },
 };
 
 const tools = [

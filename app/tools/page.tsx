@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Free Online Tools India — Everyday Cyber AI",
     description: "Free AI tools, security tools, finance calculators and productivity tools for India. No login needed.",
-    url: "https://everydaycyberai.com/tools",
+    url: "https://everydaycyberai.in/tools",
     siteName: "Everyday Cyber AI",
   },
-  alternates: { canonical: "https://everydaycyberai.com/tools" },
+  alternates: { canonical: "https://everydaycyberai.in/tools" },
 };
 
 type Status = "live" | "coming";

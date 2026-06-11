@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/admin", "/admin-login"],
     },
-    sitemap: "https://everydaycyberai.com/sitemap.xml",
+    sitemap: "https://everydaycyberai.in/sitemap.xml",
   };
 }

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     "Affordable IT support packages for businesses in India — remote support, CCTV setup, cyber security audit, firewall configuration. Monthly AMC plans starting ₹1,999.",
   keywords:
     "IT support pricing India, remote IT support cost, CCTV setup price Mumbai, cyber security audit cost India, IT AMC plans small business",
-  alternates: { canonical: "https://everydaycyberai.com/pricing" },
+  alternates: { canonical: "https://everydaycyberai.in/pricing" },
 };
 
 const plans = [

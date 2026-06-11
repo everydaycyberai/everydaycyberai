@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Windows Computer Secure Kaise Karein 2025 — Complete Guide | Everyday Cyber AI",
   description: "Windows PC/laptop ko hack hone se kaise bachayein — 15 essential security tips Hindi mein. Windows 10/11 security settings, antivirus, firewall, updates guide.",
   keywords: "Windows computer secure kaise karein, Windows 10 11 security tips Hindi, laptop secure karna, PC hack se bachao, Windows security settings India",
-  alternates: { canonical: "https://everydaycyberai.com/blog/windows-computer-secure-kaise-karein" },
+  alternates: { canonical: "https://everydaycyberai.in/blog/windows-computer-secure-kaise-karein" },
 };
 
 const tips = [
