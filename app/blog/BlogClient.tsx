@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import NewsletterSubscribe from "@/components/NewsletterSubscribe";
 import { useEffect, useState } from "react";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "@/lib/firebase";
@@ -203,6 +204,11 @@ export default function BlogClient() {
               </div>
             </Link>
           ))}
+        </div>
+
+        {/* Newsletter */}
+        <div className="mt-16 max-w-2xl mx-auto">
+          <NewsletterSubscribe variant="banner" />
         </div>
 
       </div>

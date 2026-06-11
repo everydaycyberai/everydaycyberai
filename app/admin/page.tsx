@@ -62,7 +62,7 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [blogTitle, setBlogTitle] = useState("");
   const [leads, setLeads] = useState<{id:string;name:string;phone:string;page:string;createdAt:any}[]>([]);
-  const [activeTab, setActiveTab] = useState<"requests"|"blogs"|"leads">("requests");
+  const [activeTab, setActiveTab] = useState<"requests"|"blogs"|"leads"|"subscribers">("requests");
   const [blogDescription, setBlogDescription] = useState("");
   const [blogContent, setBlogContent] = useState("");
   const [blogCategory, setBlogCategory] = useState("Cyber Security");
@@ -114,6 +114,50 @@ export default function AdminPage() {
       const snap = await gd(q(col(db, "leads"), ob("createdAt","desc")));
       setLeads(snap.docs.map(d => ({id:d.id,...d.data()} as any)));
     } catch(e){console.error(e);}
+  };
+
+  const [subscribers, setSubscribers] = useState<{id:string;name:string;email:string;createdAt:any}[]>([]);
+  const [newsletterSubject, setNewsletterSubject] = useState("");
+  const [newsletterBody, setNewsletterBody] = useState("");
+  const [sendingNewsletter, setSendingNewsletter] = useState(false);
+  const [newsletterSent, setNewsletterSent] = useState(0);
+
+  const fetchSubscribers = async () => {
+    try {
+      const { collection: col, getDocs: gd, query: q, orderBy: ob } = await import("firebase/firestore");
+      const snap = await gd(q(col(db, "subscribers"), ob("createdAt","desc")));
+      setSubscribers(snap.docs.map(d => ({id:d.id,...d.data()} as any)));
+    } catch(e){console.error(e);}
+  };
+
+  const sendNewsletterToAll = async () => {
+    if (!newsletterSubject || !newsletterBody) return;
+    setSendingNewsletter(true);
+    let sent = 0;
+    for (const sub of subscribers) {
+      try {
+        await import("@emailjs/browser").then(async (emailjs) => {
+          await emailjs.send(
+            "service_nlc4m47",
+            "template_u4ejosm",
+            {
+              to_name:  sub.name,
+              to_email: sub.email,
+              name:     sub.name,
+              email:    sub.email,
+              mobile:   "Newsletter",
+              message:  newsletterBody,
+              serviceType: newsletterSubject,
+            },
+            "2nt6KxxekpR_yNTb_"
+          );
+        });
+        sent++;
+      } catch(e) { console.error("Failed to send to", sub.email); }
+    }
+    setNewsletterSent(sent);
+    setSendingNewsletter(false);
+    alert(`Newsletter sent to ${sent} subscribers!`);
   };
 
   const fetchBlogs = async () => {

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import NewsletterSubscribe from "@/components/NewsletterSubscribe";
 
 export const metadata: Metadata = {
   title: "Best VPN for India 2025 — Top 5 Compared | Everyday Cyber AI",
@@ -138,6 +139,11 @@ export default function BestVPNPage() {
           <Link href="/contact" className="bg-cyan-500 hover:bg-cyan-400 text-black px-6 py-2.5 rounded-xl font-bold text-sm transition inline-block">
             Get Free Consultation →
           </Link>
+        </div>
+
+        {/* Newsletter */}
+        <div className="my-8">
+          <NewsletterSubscribe variant="inline" />
         </div>
 
         <div className="flex items-center justify-between pt-6 border-t border-zinc-800">

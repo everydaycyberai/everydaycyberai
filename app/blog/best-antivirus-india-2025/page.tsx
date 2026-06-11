@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import NewsletterSubscribe from "@/components/NewsletterSubscribe";
 
 export const metadata: Metadata = {
   title: "Best Antivirus for India 2025 — Top 5 Reviewed | Everyday Cyber AI",
@@ -206,6 +207,11 @@ export default function BestAntivirusPage() {
         </div>
 
         {/* Navigation */}
+        {/* Newsletter */}
+        <div className="my-8">
+          <NewsletterSubscribe variant="inline" />
+        </div>
+
         <div className="flex items-center justify-between pt-6 border-t border-zinc-800">
           <Link href="/blog" className="text-gray-400 hover:text-cyan-400 transition text-sm flex items-center gap-1">
             ← All Articles

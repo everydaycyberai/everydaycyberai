@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import NewsletterSubscribe from "@/components/NewsletterSubscribe";
 import Link from "next/link";
 
 // Scroll-triggered fade-up hook
@@ -252,6 +253,13 @@ export default function Home() {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── Newsletter ── */}
+      <section className="py-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <NewsletterSubscribe variant="banner" />
         </div>
       </section>
 

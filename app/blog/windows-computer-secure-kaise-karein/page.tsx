@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import NewsletterSubscribe from "@/components/NewsletterSubscribe";
 
 export const metadata: Metadata = {
   title: "Windows Computer Secure Kaise Karein 2025 — Complete Guide | Everyday Cyber AI",
@@ -107,6 +108,11 @@ export default function WindowsSecurePage() {
               🛡️ Hack Checker
             </Link>
           </div>
+        </div>
+
+        {/* Newsletter */}
+        <div className="my-8">
+          <NewsletterSubscribe variant="inline" />
         </div>
 
         <div className="flex items-center justify-between pt-6 border-t border-zinc-800">
