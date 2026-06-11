@@ -337,8 +337,12 @@ export default function Home() {
 
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-gray-500 text-sm">
           <p>© 2026 Everyday Cyber AI. All rights reserved.</p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-4">
             <Link href="/about" className="hover:text-cyan-400 transition">About</Link>
+            <Link href="/pricing" className="hover:text-cyan-400 transition">Pricing</Link>
+            <Link href="/privacy-policy" className="hover:text-cyan-400 transition">Privacy Policy</Link>
+            <Link href="/disclaimer" className="hover:text-cyan-400 transition">Disclaimer</Link>
+            <Link href="/terms" className="hover:text-cyan-400 transition">Terms of Use</Link>
             <Link href="/contact" className="hover:text-cyan-400 transition">Contact</Link>
           </div>
         </div>
