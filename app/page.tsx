@@ -59,7 +59,7 @@ export default function Home() {
 
 
       {/* ── Hero ── */}
-      <section id="home" className="hero-grid pt-40 pb-24 px-6">
+      <section id="home" className="hero-grid pt-8 pb-24 px-6">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-14 items-center">
 
           {/* Left */}

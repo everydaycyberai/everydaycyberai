@@ -59,7 +59,7 @@ export default function RootLayout({
         <CyberBackground />
         <Navbar />
         <CyberHelpBar />
-        {children}
+        <div className="pt-[104px] flex-1 relative z-10">{children}</div>
         <LeadCapturePopup />
         <FloatingButtons />
       </body>
