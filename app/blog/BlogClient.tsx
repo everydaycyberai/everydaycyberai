@@ -50,6 +50,14 @@ export default function BlogClient() {
     return matchCat && matchSearch;
   });
 
+
+  const STATIC_ARTICLES = [
+    { id: "upi-fraud-se-kaise-bachen",        title: "UPI Fraud Se Kaise Bachen — Complete Guide 2025",         desc: "UPI fraud ke 5 common tricks, red flags aur agar fraud ho jaaye to step-by-step kya karein.", category: "Cyber Security", mins: 6,  tags: ["UPI Fraud","GPay","PhonePe","1930"] },
+    { id: "best-antivirus-india-2025",         title: "Best Antivirus for India 2025 — Top 5 Reviewed",          desc: "Quick Heal, Kaspersky, Bitdefender compared. Which antivirus is best for your budget in India?", category: "Security Tools", mins: 8,  tags: ["Antivirus","Windows","Security"] },
+    { id: "windows-computer-secure-kaise-karein", title: "Windows Computer Secure Kaise Karein — 15 Essential Tips", desc: "Apna Windows PC 90% zyada secure banao in-built free settings se. Beginners ke liye Hindi guide.", category: "Windows",        mins: 10, tags: ["Windows","PC Security","Tips"] },
+    { id: "best-vpn-india-2025",               title: "Best VPN for India 2025 — Top 5 Compared",                desc: "NordVPN, Proton VPN, ExpressVPN compared for speed, privacy and price for Indian users.",        category: "VPN & Privacy",  mins: 7,  tags: ["VPN","Privacy","NordVPN"] },
+  ];
+
   return (
     <main className="min-h-screen text-white px-6 py-12 relative z-10">
       <div className="max-w-6xl mx-auto">
@@ -67,6 +75,35 @@ export default function BlogClient() {
             surveillance systems and automation — written for real-world use.
           </p>
         </div>
+
+        {/* Featured Articles */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold mb-2">📌 Featured Articles</h2>
+          <p className="text-gray-500 text-sm mb-6">Expert-written guides on cyber security, scam prevention and digital safety</p>
+          <div className="grid md:grid-cols-2 gap-5">
+            {STATIC_ARTICLES.map(article => (
+              <a key={article.id} href={`/blog/${article.id}`}
+                className="group bg-black/40 backdrop-blur-sm border border-zinc-700/60 hover:border-cyan-400 rounded-2xl p-5 transition duration-300 hover:-translate-y-1 block">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded-full">{article.category}</span>
+                  <span className="text-xs text-gray-600">{article.mins} min read</span>
+                </div>
+                <h3 className="font-bold text-white group-hover:text-cyan-400 transition mb-2 leading-snug">{article.title}</h3>
+                <p className="text-gray-500 text-sm mb-3">{article.desc}</p>
+                <div className="flex flex-wrap gap-1">
+                  {article.tags.map(t => <span key={t} className="text-xs bg-zinc-800 text-gray-500 px-2 py-0.5 rounded">#{t}</span>)}
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Dynamic Blogs from Firebase */}
+        {blogs.length > 0 && (
+          <div className="mb-4">
+            <h2 className="text-2xl font-bold mb-2">📝 Latest Posts</h2>
+          </div>
+        )}
 
         {/* Search */}
         <div className="mb-8">
