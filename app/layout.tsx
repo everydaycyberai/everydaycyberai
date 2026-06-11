@@ -19,6 +19,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  verification: {
+    google: "hwPUvQ6gV-_FoIXs7c2DbEeC5D3XqCmJ8QUybBoF5Is",
+  },
   title: "Everyday Cyber AI — IT Support, Surveillance & Security Mumbai",
   description:
     "Professional IT support, firewall management, CCTV surveillance, data center assistance and AI-powered business tools for modern businesses in Mumbai.",
