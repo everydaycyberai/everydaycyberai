@@ -377,22 +377,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Floating WhatsApp */}
-      <a
-        href="https://wa.me/918454031225"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 bg-cyan-500 hover:bg-cyan-400 text-black px-5 py-4 rounded-full shadow-2xl font-semibold z-50 transition pulse-ring"
-      >
-        WhatsApp
-      </a>
-
       {/* Scroll To Top */}
-      <a
-        href="#home"
-        aria-label="Scroll to top"
-        className="fixed bottom-24 right-6 bg-white/10 backdrop-blur-md border border-gray-700 hover:border-cyan-400 hover:text-cyan-400 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-2xl z-50 transition duration-300"
-      >
+      <a href="#home" aria-label="Scroll to top"
+        className="fixed bottom-24 right-6 bg-white/10 backdrop-blur-md border border-gray-700 hover:border-cyan-400 hover:text-cyan-400 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-2xl z-50 transition duration-300">
         ↑
       </a>
 

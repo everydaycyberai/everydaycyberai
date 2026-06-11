@@ -5,6 +5,8 @@ import "@/lib/firebase";
 import Navbar from "../components/Navbar";
 import LeadCapturePopup from "../components/LeadCapturePopup";
 import CyberBackground from "../components/CyberBackground";
+import CyberHelpBar from "../components/CyberHelpBar";
+import FloatingButtons from "../components/FloatingButtons";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -56,8 +58,10 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <CyberBackground />
         <Navbar />
+        <CyberHelpBar />
         {children}
         <LeadCapturePopup />
+        <FloatingButtons />
       </body>
     </html>
   );

@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { db } from "@/lib/firebase";
 import { collection, addDoc } from "firebase/firestore";
+import emailjs from "@emailjs/browser";
 
 export default function LeadCapturePopup() {
   const [show, setShow]       = useState(false);
@@ -24,6 +25,7 @@ export default function LeadCapturePopup() {
     if (phone.replace(/\D/g,"").length < 10) { setError("Please enter a valid 10-digit mobile number"); return; }
     setLoading(true);
     try {
+      // Save to Firebase
       await addDoc(collection(db, "leads"), {
         name: name.trim(),
         phone: phone.trim(),
@@ -31,11 +33,30 @@ export default function LeadCapturePopup() {
         source: document.referrer || "direct",
         createdAt: new Date(),
       });
+
+      // Send email notification via EmailJS
+      await emailjs.send(
+        "service_nlc4m47",
+        "template_lead_notify",
+        {
+          lead_name:  name.trim(),
+          lead_phone: phone.trim(),
+          lead_page:  window.location.pathname,
+          lead_time:  new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
+        },
+        "2nt6KxxekpR_yNTb_"
+      );
+
       sessionStorage.setItem("lead_popup_seen", "1");
       setDone(true);
       setTimeout(() => setShow(false), 3000);
-    } catch (e) { console.error(e); setError("Something went wrong. Please try again."); }
-    finally { setLoading(false); }
+    } catch (e) {
+      console.error(e);
+      // Even if email fails, still mark as done (Firebase saved)
+      sessionStorage.setItem("lead_popup_seen", "1");
+      setDone(true);
+      setTimeout(() => setShow(false), 3000);
+    } finally { setLoading(false); }
   };
 
   if (!show) return null;
@@ -64,31 +85,19 @@ export default function LeadCapturePopup() {
             </div>
 
             <div className="space-y-3">
-              <input
-                type="text"
-                placeholder="Your Full Name *"
-                value={name}
+              <input type="text" placeholder="Your Full Name *" value={name}
                 onChange={e => setName(e.target.value)}
-                className="w-full bg-black border border-zinc-700 rounded-2xl px-4 py-3 text-white outline-none focus:border-cyan-400 transition placeholder-gray-600"
-              />
-              <input
-                type="tel"
-                placeholder="WhatsApp Mobile Number *"
-                value={phone}
+                className="w-full bg-black border border-zinc-700 rounded-2xl px-4 py-3 text-white outline-none focus:border-cyan-400 transition placeholder-gray-600"/>
+              <input type="tel" placeholder="WhatsApp Mobile Number *" value={phone}
                 onChange={e => setPhone(e.target.value)}
                 onKeyDown={e => e.key === "Enter" && handleSubmit()}
-                className="w-full bg-black border border-zinc-700 rounded-2xl px-4 py-3 text-white outline-none focus:border-cyan-400 transition placeholder-gray-600"
-              />
+                className="w-full bg-black border border-zinc-700 rounded-2xl px-4 py-3 text-white outline-none focus:border-cyan-400 transition placeholder-gray-600"/>
 
-              {error && (
-                <p className="text-red-400 text-sm">⚠️ {error}</p>
-              )}
+              {error && <p className="text-red-400 text-sm">⚠️ {error}</p>}
 
-              <button
-                onClick={handleSubmit}
+              <button onClick={handleSubmit}
                 disabled={loading || !name.trim() || !phone.trim()}
-                className="w-full bg-cyan-500 hover:bg-cyan-400 disabled:opacity-40 disabled:cursor-not-allowed text-black py-3.5 rounded-2xl font-bold transition hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]"
-              >
+                className="w-full bg-cyan-500 hover:bg-cyan-400 disabled:opacity-40 disabled:cursor-not-allowed text-black py-3.5 rounded-2xl font-bold transition hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]">
                 {loading ? "Please wait..." : "Get Free Consultation 🚀"}
               </button>
             </div>
