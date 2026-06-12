@@ -9,7 +9,7 @@ export default function FloatingButtons() {
   const waLink = `https://wa.me/918454031225?text=${waMsg}`;
 
   return (
-    <div className="fixed bottom-6 right-5 z-50 flex flex-col items-end gap-3">
+    <div className="fixed bottom-6 right-20 z-50 flex flex-col items-end gap-3">
 
       {/* Expanded menu */}
       {open && (

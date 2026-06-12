@@ -313,7 +313,7 @@ export default function EmailHeaderAnalyzerPage() {
                 { app: "Outlook", steps: "Open email → File → Properties → Copy from 'Internet headers' box" },
                 { app: "Yahoo Mail", steps: "Open email → 3 dots → View Raw Message → Copy all" },
               ].map(item => (
-                <div key={item.app} className="bg-black/30 rounded-xl p-3">
+                <div key={item.app} className="bg-zinc-800/80 rounded-xl p-3 border border-zinc-700/50">
                   <p className="text-white font-semibold mb-1">{item.app}</p>
                   <p>{item.steps}</p>
                 </div>

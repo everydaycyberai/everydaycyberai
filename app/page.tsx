@@ -325,7 +325,7 @@ export default function Home() {
               { title: "CCTV Troubleshooting", desc: "Common DVR and surveillance issues with quick fixes." },
               { title: "Remote IT Support", desc: "Best practices for secure remote technical support." },
             ].map((post) => (
-              <div key={post.title} className="bg-zinc-900 border border-zinc-800 hover:border-cyan-400/40 rounded-2xl p-8 transition duration-300 hover:-translate-y-1">
+              <div key={post.title} className="bg-zinc-800/80 border border-zinc-700 hover:border-cyan-400/40 rounded-2xl p-8 transition duration-300 hover:-translate-y-1">
                 <h3 className="text-2xl font-semibold mb-4">{post.title}</h3>
                 <p className="text-gray-400 mb-6">{post.desc}</p>
                 <Link href="/blog" className="text-cyan-400 hover:text-cyan-300 transition font-medium">
@@ -339,7 +339,7 @@ export default function Home() {
 
       {/* Scroll To Top */}
       <a href="#home" aria-label="Scroll to top"
-        className="fixed bottom-24 right-6 bg-white/10 backdrop-blur-md border border-gray-700 hover:border-cyan-400 hover:text-cyan-400 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-2xl z-50 transition duration-300">
+        className="fixed bottom-24 right-5 bg-zinc-800/90 backdrop-blur-md border border-zinc-600 hover:border-cyan-400 hover:text-cyan-400 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-2xl z-50 transition duration-300 text-sm">
         ↑
       </a>
 
@@ -348,7 +348,7 @@ export default function Home() {
       <footer
         ref={footerRef as React.RefObject<HTMLElement>}
         id="contact"
-        className="fade-up border-t border-cyan-500/20 py-16 px-6"
+        className="fade-up border-t border-cyan-500/20 py-16 px-6 bg-black/70 backdrop-blur-md"
       >
         <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
 
@@ -378,8 +378,8 @@ export default function Home() {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold mb-6">Services</h3>
-            <ul className="space-y-3 text-gray-400">
+            <h3 className="text-xl font-semibold mb-6 text-white">Services</h3>
+            <ul className="space-y-3 text-gray-300">
               {["IT Support", "Firewall & Security", "Data Center Support", "Surveillance Support", "AI Automation"].map((s) => (
                 <li key={s}>
                   <Link href="/services" className="hover:text-cyan-400 transition duration-300">{s}</Link>
@@ -389,8 +389,8 @@ export default function Home() {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold mb-6">Tools</h3>
-            <ul className="space-y-3 text-gray-400">
+            <h3 className="text-xl font-semibold mb-6 text-white">Tools</h3>
+            <ul className="space-y-3 text-gray-300">
               {["PDF Tools", "Network Tools", "CCTV Calculators", "AI Writing Tools", "Automation Tools"].map((t) => (
                 <li key={t}>
                   <Link href="/tools" className="hover:text-cyan-400 transition duration-300">{t}</Link>
@@ -400,8 +400,8 @@ export default function Home() {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold mb-6">Contact</h3>
-            <ul className="space-y-3 text-gray-400 text-sm">
+            <h3 className="text-xl font-semibold mb-6 text-white">Contact</h3>
+            <ul className="space-y-3 text-gray-300 text-sm">
               <li>📍 Mumbai, India</li>
               <li>💬 Remote IT Support Available</li>
               <li>
@@ -424,7 +424,7 @@ export default function Home() {
 
         </div>
 
-        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-gray-500 text-sm">
+        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-gray-400 text-sm">
           <p>© 2026 Everyday Cyber AI. All rights reserved.</p>
           <div className="flex flex-wrap gap-4">
             <Link href="/about" className="hover:text-cyan-400 transition">About</Link>
