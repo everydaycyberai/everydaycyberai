@@ -71,7 +71,7 @@ export default function DisclaimerPage() {
 
           <div className="bg-black/40 border border-zinc-700/60 rounded-2xl p-6">
             <h2 className="text-xl font-bold text-white mb-3">Contact</h2>
-            <p>Questions about this Disclaimer? Contact us at <strong className="text-cyan-400">systemengineer bkc@gmail.com</strong> or WhatsApp: <strong className="text-cyan-400">+91 84540 31225</strong></p>
+            <p>Questions about this Disclaimer? Contact us at <strong className="text-cyan-400">systemengineerbkc@gmail.com</strong> or WhatsApp: <strong className="text-cyan-400">+91 84540 31225</strong></p>
           </div>
 
         </div>

@@ -337,6 +337,13 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Scroll To Top */}
+      <a href="#home" aria-label="Scroll to top"
+        className="fixed bottom-24 right-6 bg-white/10 backdrop-blur-md border border-gray-700 hover:border-cyan-400 hover:text-cyan-400 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-2xl z-50 transition duration-300">
+        ↑
+      </a>
+
+
       {/* ── Footer ── */}
       <footer
         ref={footerRef as React.RefObject<HTMLElement>}
@@ -430,11 +437,6 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* Scroll To Top */}
-      <a href="#home" aria-label="Scroll to top"
-        className="fixed bottom-24 right-6 bg-white/10 backdrop-blur-md border border-gray-700 hover:border-cyan-400 hover:text-cyan-400 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-2xl z-50 transition duration-300">
-        ↑
-      </a>
 
     </main>
   );

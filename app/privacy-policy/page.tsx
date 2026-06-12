@@ -105,7 +105,7 @@ export default function PrivacyPolicyPage() {
                 <li key={r} className="flex gap-2"><span className="text-cyan-400 shrink-0">✓</span>{r}</li>
               ))}
             </ul>
-            <p className="mt-3">To exercise these rights, contact us at: <strong className="text-cyan-400">systemengineer bkc@gmail.com</strong></p>
+            <p className="mt-3">To exercise these rights, contact us at: <strong className="text-cyan-400">systemengineerbkc@gmail.com</strong></p>
           </div>
 
           <div className="bg-black/40 border border-zinc-700/60 rounded-2xl p-6">
@@ -119,7 +119,7 @@ export default function PrivacyPolicyPage() {
             <div className="space-y-2 text-sm">
               <p><strong className="text-white">Company:</strong> Everyday Cyber AI</p>
               <p><strong className="text-white">Location:</strong> Mumbai, India</p>
-              <p><strong className="text-white">Email:</strong> systemengineer bkc@gmail.com</p>
+              <p><strong className="text-white">Email:</strong> systemengineerbkc@gmail.com</p>
               <p><strong className="text-white">WhatsApp:</strong> +91 84540 31225</p>
               <p><strong className="text-white">Website:</strong> everydaycyberai.in</p>
             </div>
