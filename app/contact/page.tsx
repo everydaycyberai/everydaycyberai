@@ -108,6 +108,16 @@ export default function ContactPage() {
                     <p>24/7 Remote Support</p>
                   </div>
                 </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-xl">📧</span>
+                  <div>
+                    <p className="text-white font-medium">Email</p>
+                    <a href="mailto:systemengineerbkc@gmail.com"
+                      className="text-cyan-400 hover:text-cyan-300 transition">
+                      systemengineerbkc@gmail.com
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
 
