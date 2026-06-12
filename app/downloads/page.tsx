@@ -16,7 +16,7 @@ const tools = [
     desc: "Scans your Windows PC/laptop for 14 security issues — generates a color-coded HTML report with exact fix steps. Checks antivirus, firewall, updates, BitLocker, passwords, open ports and more.",
     version: "v2.0",
     size: "8 KB",
-    filename: "SecurityAudit.ps1",
+    filename: "SecurityAudit.bat",
     badge: "🔥 Most Popular",
     badgeColor: "bg-red-500/20 text-red-400 border-red-500/30",
     checks: [
@@ -33,7 +33,7 @@ const tools = [
       "Security Score out of 100 with grade",
       "Full HTML report saved to Desktop",
     ],
-    requirements: "Windows 10/11 | PowerShell 5.0+ | Admin rights recommended",
+    requirements: "Windows 10/11 | Double-click to run | Admin rights recommended for full results",
   },
   {
     id: "pc-optimizer",
@@ -42,7 +42,7 @@ const tools = [
     desc: "Safely cleans temp files, browser caches, Windows Update cache, DNS cache and Recycle Bin. Shows how much space was freed. Checks disk health, RAM usage and startup programs.",
     version: "v1.0",
     size: "5 KB",
-    filename: "PCOptimizer.ps1",
+    filename: "PCOptimizer.bat",
     badge: "✨ New",
     badgeColor: "bg-cyan-500/20 text-cyan-400 border-cyan-500/30",
     checks: [
@@ -56,7 +56,7 @@ const tools = [
       "Startup programs count & tips",
       "Shows total MB freed",
     ],
-    requirements: "Windows 10/11 | PowerShell 5.0+ | Run as Administrator",
+    requirements: "Windows 10/11 | Double-click to run | Run as Administrator for best results",
   },
   {
     id: "network-diagnostic",
@@ -65,7 +65,7 @@ const tools = [
     desc: "Diagnoses internet, WiFi and network issues in seconds. Tests connectivity to router, Google DNS, websites. Shows WiFi signal strength, IP config, DNS test and generates HTML report.",
     version: "v1.0",
     size: "6 KB",
-    filename: "NetworkDiagnostic.ps1",
+    filename: "NetworkDiagnostic.bat",
     badge: "🛠️ Useful",
     badgeColor: "bg-blue-500/20 text-blue-400 border-blue-500/30",
     checks: [
@@ -80,7 +80,7 @@ const tools = [
       "Specific recommendations for issues found",
       "Full HTML report saved to Desktop",
     ],
-    requirements: "Windows 10/11 | PowerShell 5.0+ | No admin needed",
+    requirements: "Windows 10/11 | Double-click to run | No admin rights needed",
   },
 ];
 
@@ -110,8 +110,8 @@ export default function DownloadsPage() {
           <div className="grid md:grid-cols-3 gap-4 text-sm">
             {[
               { step: "1", title: "Download", desc: "Click Download button — save .ps1 file anywhere on your PC" },
-              { step: "2", title: "Right-Click", desc: "Right-click the downloaded file → 'Run with PowerShell'" },
-              { step: "3", title: "Allow if asked", desc: "If Windows asks permission, click 'Open' or 'Run anyway'" },
+              { step: "2", title: "Double Click", desc: "Double-click the downloaded .bat file — it will open automatically" },
+              { step: "3", title: "Allow if asked", desc: "If Windows SmartScreen appears, click 'More info' → 'Run anyway'" },
             ].map(s => (
               <div key={s.step} className="flex gap-3 items-start">
                 <div className="w-8 h-8 bg-yellow-500 text-black rounded-full flex items-center justify-center font-black shrink-0">{s.step}</div>
@@ -122,9 +122,8 @@ export default function DownloadsPage() {
               </div>
             ))}
           </div>
-          <div className="mt-4 bg-black/30 rounded-xl p-3 text-xs text-gray-400 font-mono">
-            <span className="text-yellow-400">Alternative:</span> Open PowerShell as Admin → Type:
-            <span className="text-cyan-400"> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass</span> → Press Enter → Then run the script
+          <div className="mt-4 bg-black/30 rounded-xl p-3 text-xs text-gray-400">
+            <span className="text-yellow-400">💡 Tip:</span> If Windows shows a SmartScreen warning, click <span className="text-white font-semibold">"More info"</span> → <span className="text-white font-semibold">"Run anyway"</span> — these are safe open-source tools.
           </div>
         </div>
 
