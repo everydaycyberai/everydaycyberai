@@ -9,11 +9,11 @@ export default function FloatingButtons() {
   const waLink = `https://wa.me/918454031225?text=${waMsg}`;
 
   return (
-    <div className="fixed bottom-6 left-6 z-50 flex flex-col items-start gap-3">
+    <div className="fixed bottom-6 right-5 z-50 flex flex-col items-end gap-3">
 
       {/* Expanded menu */}
       {open && (
-        <div className="flex flex-col items-start gap-2 mb-1">
+        <div className="flex flex-col items-end gap-2 mb-1">
 
           {/* Cyber Help */}
           <Link href="/tools/scam-analyzer"
