@@ -64,7 +64,16 @@ export default function LeadCapturePopup() {
   return (
     <div className="fixed inset-0 z-[999] flex items-center justify-center p-4"
       style={{background:"rgba(0,0,0,0.88)", backdropFilter:"blur(8px)"}}>
-      <div className="bg-zinc-900 border border-cyan-500/30 rounded-3xl p-8 w-full max-w-sm shadow-[0_0_80px_rgba(34,211,238,0.15)]">
+      <div className="relative bg-zinc-900 border border-cyan-500/30 rounded-3xl p-8 w-full max-w-sm shadow-[0_0_80px_rgba(34,211,238,0.15)]">
+
+        {/* Close button */}
+        {!done && (
+          <button
+            onClick={() => { sessionStorage.setItem("lead_popup_seen","1"); setShow(false); }}
+            className="absolute top-4 right-4 text-gray-500 hover:text-white transition text-xl leading-none w-8 h-8 flex items-center justify-center rounded-full hover:bg-zinc-700">
+            ✕
+          </button>
+        )}
 
         {done ? (
           <div className="text-center py-4">
