@@ -53,6 +53,7 @@ export default function BlogClient() {
 
 
   const STATIC_ARTICLES = [
+    { id: "ai-se-hack-kaise-hote-hai",        title: "AI Se Hack Kaise Ho Rahe Hain Log — Voice Cloning Scam Guide", desc: "Real incidents ke saath samjho AI voice cloning aur deepfake scams kaise kaam karte hain, aur khud ko kaise bachayein.", category: "AI Threats",    mins: 12, tags: ["AI Scam","Voice Cloning","Deepfake","2026"] },
     { id: "upi-fraud-se-kaise-bachen",        title: "UPI Fraud Se Kaise Bachen — Complete Guide 2025",         desc: "UPI fraud ke 5 common tricks, red flags aur agar fraud ho jaaye to step-by-step kya karein.", category: "Cyber Security", mins: 6,  tags: ["UPI Fraud","GPay","PhonePe","1930"] },
     { id: "best-antivirus-india-2025",         title: "Best Antivirus for India 2025 — Top 5 Reviewed",          desc: "Quick Heal, Kaspersky, Bitdefender compared. Which antivirus is best for your budget in India?", category: "Security Tools", mins: 8,  tags: ["Antivirus","Windows","Security"] },
     { id: "windows-computer-secure-kaise-karein", title: "Windows Computer Secure Kaise Karein — 15 Essential Tips", desc: "Apna Windows PC 90% zyada secure banao in-built free settings se. Beginners ke liye Hindi guide.", category: "Windows",        mins: 10, tags: ["Windows","PC Security","Tips"] },
