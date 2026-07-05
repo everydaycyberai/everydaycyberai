@@ -105,7 +105,7 @@ export default function ResumeBuilderPage() {
     const skillsList = data.skills.split(",").map(s => s.trim()).filter(Boolean);
 
     if (data.template === "modern") return (
-      <div ref={previewRef} className="bg-white text-gray-800 w-full" style={{fontFamily:"Arial,sans-serif", minHeight:"297mm"}}>
+      <div ref={previewRef} className="w-full" style={{fontFamily:"Arial,sans-serif", minHeight:"297mm", backgroundColor:"#ffffff", color:"#1f2937"}}>
         {/* Header */}
         <div style={{background: ac, padding:"28px 32px 20px"}}>
           <h1 style={{color:"#fff", fontSize:28, fontWeight:700, margin:0}}>{data.name || "Your Name"}</h1>
@@ -199,7 +199,7 @@ export default function ResumeBuilderPage() {
     );
 
     if (data.template === "classic") return (
-      <div ref={previewRef} className="bg-white text-gray-800 w-full" style={{fontFamily:"Georgia,serif", padding:"32px 40px", minHeight:"297mm"}}>
+      <div ref={previewRef} className="w-full" style={{fontFamily:"Georgia,serif", padding:"32px 40px", minHeight:"297mm", backgroundColor:"#ffffff", color:"#1f2937"}}>
         <div style={{textAlign:"center", borderBottom:`3px double ${data.accentColor}`, paddingBottom:16, marginBottom:20}}>
           <h1 style={{fontSize:26, fontWeight:700, color:"#1e293b", margin:0}}>{data.name || "Your Name"}</h1>
           <div style={{display:"flex", justifyContent:"center", flexWrap:"wrap", gap:12, marginTop:8}}>
@@ -243,7 +243,7 @@ export default function ResumeBuilderPage() {
 
     // Minimal template
     return (
-      <div ref={previewRef} className="bg-white text-gray-800 w-full" style={{fontFamily:"'Arial',sans-serif", padding:"32px 36px", minHeight:"297mm"}}>
+      <div ref={previewRef} className="w-full" style={{fontFamily:"'Arial',sans-serif", padding:"32px 36px", minHeight:"297mm", backgroundColor:"#ffffff", color:"#1f2937"}}>
         <h1 style={{fontSize:24, fontWeight:700, color:"#111827", margin:"0 0 4px"}}>{data.name || "Your Name"}</h1>
         <div style={{display:"flex", gap:12, flexWrap:"wrap", marginBottom:16}}>
           {[data.email, data.phone, data.location, data.linkedin, data.github].filter(Boolean).map(v=>(

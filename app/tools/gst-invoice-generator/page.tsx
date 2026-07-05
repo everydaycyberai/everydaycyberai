@@ -118,7 +118,7 @@ export default function GSTInvoiceGeneratorPage() {
       pdf.save(`${meta.invoiceNo || "invoice"}.pdf`);
     } catch (err) {
       console.error(err);
-      alert("PDF download failed, please try again.");
+      alert("PDF download failed: " + (err instanceof Error ? err.message : "Unknown error") + "\n\nPlease screenshot this and share with support.");
     } finally {
       setDownloading(false);
     }
@@ -237,17 +237,17 @@ export default function GSTInvoiceGeneratorPage() {
 
             {/* ── PREVIEW ── */}
             <div className="lg:sticky lg:top-24 self-start">
-              <div ref={previewRef} className="bg-white text-black rounded-2xl p-8 shadow-2xl" style={{ minHeight: 600 }}>
-                <div className="flex justify-between items-start border-b-2 border-gray-800 pb-4 mb-4">
+              <div ref={previewRef} className="rounded-2xl p-8 shadow-2xl" style={{ minHeight: 600, backgroundColor: "#ffffff", color: "#000000" }}>
+                <div className="flex justify-between items-start pb-4 mb-4" style={{ borderBottom: "2px solid #1f2937" }}>
                   <div>
                     <h2 className="text-2xl font-bold">{seller.name || "Your Business Name"}</h2>
-                    <p className="text-xs text-gray-600 whitespace-pre-line mt-1">{seller.address || "Business Address"}</p>
-                    {seller.gstin && <p className="text-xs text-gray-600 mt-1">GSTIN: {seller.gstin}</p>}
-                    {seller.phone && <p className="text-xs text-gray-600">Phone: {seller.phone}</p>}
-                    {seller.email && <p className="text-xs text-gray-600">{seller.email}</p>}
+                    <p className="text-xs whitespace-pre-line mt-1" style={{ color: "#4b5563" }}>{seller.address || "Business Address"}</p>
+                    {seller.gstin && <p className="text-xs mt-1" style={{ color: "#4b5563" }}>GSTIN: {seller.gstin}</p>}
+                    {seller.phone && <p className="text-xs" style={{ color: "#4b5563" }}>Phone: {seller.phone}</p>}
+                    {seller.email && <p className="text-xs" style={{ color: "#4b5563" }}>{seller.email}</p>}
                   </div>
                   <div className="text-right">
-                    <h1 className="text-3xl font-bold text-gray-800">TAX INVOICE</h1>
+                    <h1 className="text-3xl font-bold" style={{ color: "#1f2937" }}>TAX INVOICE</h1>
                     <p className="text-sm mt-2"><b>Invoice #:</b> {meta.invoiceNo}</p>
                     <p className="text-sm"><b>Date:</b> {meta.date}</p>
                     {meta.dueDate && <p className="text-sm"><b>Due:</b> {meta.dueDate}</p>}
@@ -255,16 +255,16 @@ export default function GSTInvoiceGeneratorPage() {
                 </div>
 
                 <div className="mb-4">
-                  <p className="text-xs text-gray-500 uppercase font-semibold">Bill To</p>
+                  <p className="text-xs uppercase font-semibold" style={{ color: "#6b7280" }}>Bill To</p>
                   <p className="font-bold">{buyer.name || "Client Name"}</p>
-                  <p className="text-xs text-gray-600 whitespace-pre-line">{buyer.address}</p>
-                  {buyer.gstin && <p className="text-xs text-gray-600">GSTIN: {buyer.gstin}</p>}
-                  <p className="text-xs text-gray-600">State: {buyer.state}</p>
+                  <p className="text-xs whitespace-pre-line" style={{ color: "#4b5563" }}>{buyer.address}</p>
+                  {buyer.gstin && <p className="text-xs" style={{ color: "#4b5563" }}>GSTIN: {buyer.gstin}</p>}
+                  <p className="text-xs" style={{ color: "#4b5563" }}>State: {buyer.state}</p>
                 </div>
 
                 <table className="w-full text-xs mb-4">
                   <thead>
-                    <tr className="bg-gray-800 text-white">
+                    <tr style={{ backgroundColor: "#1f2937", color: "#ffffff" }}>
                       <th className="p-2 text-left">Description</th>
                       <th className="p-2 text-left">HSN</th>
                       <th className="p-2 text-right">Qty</th>
@@ -277,7 +277,7 @@ export default function GSTInvoiceGeneratorPage() {
                     {items.map((it, idx) => {
                       const c = lineCalc(it);
                       return (
-                        <tr key={it.id} className={idx % 2 ? "bg-gray-50" : ""}>
+                        <tr key={it.id} style={idx % 2 ? { backgroundColor: "#f9fafb" } : undefined}>
                           <td className="p-2">{it.desc || "-"}</td>
                           <td className="p-2">{it.hsn || "-"}</td>
                           <td className="p-2 text-right">{it.qty || 0}</td>
@@ -292,24 +292,24 @@ export default function GSTInvoiceGeneratorPage() {
 
                 <div className="flex justify-end mb-4">
                   <div className="w-64 text-sm space-y-1">
-                    <div className="flex justify-between"><span className="text-gray-600">Subtotal</span><span>{fmt(subtotal)}</span></div>
+                    <div className="flex justify-between"><span style={{ color: "#4b5563" }}>Subtotal</span><span>{fmt(subtotal)}</span></div>
                     {isIntraState ? (
                       <>
-                        <div className="flex justify-between"><span className="text-gray-600">CGST</span><span>{fmt(totalGst / 2)}</span></div>
-                        <div className="flex justify-between"><span className="text-gray-600">SGST</span><span>{fmt(totalGst / 2)}</span></div>
+                        <div className="flex justify-between"><span style={{ color: "#4b5563" }}>CGST</span><span>{fmt(totalGst / 2)}</span></div>
+                        <div className="flex justify-between"><span style={{ color: "#4b5563" }}>SGST</span><span>{fmt(totalGst / 2)}</span></div>
                       </>
                     ) : (
-                      <div className="flex justify-between"><span className="text-gray-600">IGST</span><span>{fmt(totalGst)}</span></div>
+                      <div className="flex justify-between"><span style={{ color: "#4b5563" }}>IGST</span><span>{fmt(totalGst)}</span></div>
                     )}
-                    <div className="flex justify-between font-bold text-base border-t border-gray-300 pt-2"><span>Grand Total</span><span>{fmt(grandTotal)}</span></div>
+                    <div className="flex justify-between font-bold text-base pt-2" style={{ borderTop: "1px solid #d1d5db" }}><span>Grand Total</span><span>{fmt(grandTotal)}</span></div>
                   </div>
                 </div>
 
-                <p className="text-xs text-gray-600 italic mb-4">{amountInWords(grandTotal)}</p>
+                <p className="text-xs italic mb-4" style={{ color: "#4b5563" }}>{amountInWords(grandTotal)}</p>
 
                 {(bank.accName || bank.accNumber) && (
-                  <div className="border-t border-gray-300 pt-3 mb-3 text-xs text-gray-600">
-                    <p className="font-semibold text-gray-800 mb-1">Bank Details</p>
+                  <div className="pt-3 mb-3 text-xs" style={{ borderTop: "1px solid #d1d5db", color: "#4b5563" }}>
+                    <p className="font-semibold mb-1" style={{ color: "#1f2937" }}>Bank Details</p>
                     {bank.accName && <p>A/c Name: {bank.accName}</p>}
                     {bank.accNumber && <p>A/c No: {bank.accNumber}</p>}
                     {bank.ifsc && <p>IFSC: {bank.ifsc}</p>}
@@ -317,7 +317,7 @@ export default function GSTInvoiceGeneratorPage() {
                   </div>
                 )}
 
-                {notes && <p className="text-xs text-gray-500 border-t border-gray-300 pt-3">{notes}</p>}
+                {notes && <p className="text-xs pt-3" style={{ color: "#6b7280", borderTop: "1px solid #d1d5db" }}>{notes}</p>}
               </div>
             </div>
           </div>
