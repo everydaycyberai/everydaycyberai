@@ -42,13 +42,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // Cyber Security Help Tools
     page("/tools/scam-analyzer", 0.95),
+    page("/tools/scam-message-checker", 0.93),
     page("/tools/hack-checker", 0.92),
     page("/tools/safety-score", 0.9),
     page("/tools/emergency-response", 0.95),
     page("/tools/email-header-analyzer", 0.9),
-    page("/tools/breach-checker", 0.88),
     page("/tools/password-generator", 0.85),
-    page("/tools/password-strength", 0.85),
+    page("/tools/password-strength", 0.88),
     page("/tools/ip-calculator", 0.85),
     page("/tools/ssl-checker", 0.85),
 
@@ -74,6 +74,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // Finance Tools
     page("/tools/gst-calculator", 0.88),
+    page("/tools/gst-invoice-generator", 0.9),
     page("/tools/emi-calculator", 0.88),
     page("/tools/salary-calculator", 0.88),
     page("/tools/sip-calculator", 0.88),
