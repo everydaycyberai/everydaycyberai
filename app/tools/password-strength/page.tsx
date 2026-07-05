@@ -28,10 +28,39 @@ function analyzePassword(pwd: string) {
   return               { checks, score, entropy, level: "Very Strong",  color: "text-cyan-400",   bar: "bg-cyan-400",   width: "w-full", crackTime: "Centuries" };
 }
 
+async function checkPwned(password: string): Promise<number | null> {
+  try {
+    const enc = new TextEncoder().encode(password);
+    const hashBuffer = await crypto.subtle.digest("SHA-1", enc);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, "0")).join("").toUpperCase();
+    const prefix = hashHex.slice(0, 5);
+    const suffix = hashHex.slice(5);
+    const res = await fetch(`https://api.pwnedpasswords.com/range/${prefix}`);
+    if (!res.ok) return null;
+    const text = await res.text();
+    const match = text.split("\n").find(line => line.startsWith(suffix));
+    return match ? parseInt(match.split(":")[1].trim(), 10) : 0;
+  } catch {
+    return null;
+  }
+}
+
 export default function PasswordStrengthPage() {
   const [password, setPassword] = useState("");
   const [show, setShow]         = useState(false);
+  const [pwnedCount, setPwnedCount] = useState<number | null>(null);
+  const [checkingBreach, setCheckingBreach] = useState(false);
   const result = password ? analyzePassword(password) : null;
+
+  const runBreachCheck = async () => {
+    if (!password) return;
+    setCheckingBreach(true);
+    setPwnedCount(null);
+    const count = await checkPwned(password);
+    setPwnedCount(count);
+    setCheckingBreach(false);
+  };
 
   return (
     <ToolPageWrapper badge="Security Tool">
@@ -50,7 +79,7 @@ export default function PasswordStrengthPage() {
                 <input type={show ? "text" : "password"}
                   placeholder="Type your password here..."
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => { setPassword(e.target.value); setPwnedCount(null); }}
                   className="w-full bg-black/80 border border-zinc-700 rounded-2xl px-5 py-4 font-mono outline-none focus:border-cyan-400 transition pr-16" />
                 <button onClick={() => setShow(!show)}
                   className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-cyan-400 transition text-sm">
@@ -99,6 +128,39 @@ export default function PasswordStrengthPage() {
                       </div>
                     ))}
                   </div>
+                </div>
+
+                <div className="border-t border-zinc-800 pt-6">
+                  <p className="text-gray-300 font-medium mb-2">Data Breach Check</p>
+                  <p className="text-xs text-gray-500 mb-4">Checks if this exact password has appeared in known breach dumps — via HaveIBeenPwned&apos;s free Pwned Passwords service. Only the first 5 characters of a hash are sent, never your real password.</p>
+
+                  {pwnedCount === null && !checkingBreach && (
+                    <button onClick={runBreachCheck}
+                      className="w-full bg-cyan-500/20 border border-cyan-500/40 text-cyan-400 py-3 rounded-xl font-semibold hover:bg-cyan-500/30 transition">
+                      🔍 Check if this password has been leaked
+                    </button>
+                  )}
+
+                  {checkingBreach && (
+                    <div className="text-center py-4 text-gray-400 text-sm">
+                      <div className="w-6 h-6 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin mx-auto mb-2" />
+                      Checking breach databases...
+                    </div>
+                  )}
+
+                  {pwnedCount !== null && (
+                    pwnedCount > 0 ? (
+                      <div className="bg-red-500/10 border border-red-500/30 rounded-2xl p-5">
+                        <p className="text-red-400 font-bold mb-1">🚨 This password has been leaked!</p>
+                        <p className="text-gray-300 text-sm">Found in known breach dumps <b>{pwnedCount.toLocaleString("en-IN")}</b> times. Do not use this password anywhere — change it immediately on any account that uses it.</p>
+                      </div>
+                    ) : (
+                      <div className="bg-green-500/10 border border-green-500/30 rounded-2xl p-5">
+                        <p className="text-green-400 font-bold mb-1">✅ Not found in known breaches</p>
+                        <p className="text-gray-300 text-sm">This exact password wasn&apos;t found in public breach dumps. Still make sure it&apos;s unique and not reused elsewhere.</p>
+                      </div>
+                    )
+                  )}
                 </div>
               </>
             )}

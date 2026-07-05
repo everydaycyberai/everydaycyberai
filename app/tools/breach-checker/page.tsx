@@ -8,12 +8,15 @@ export default function BreachCheckerPage() {
   const [loading, setLoading] = useState(false);
   const [breaches, setBreaches] = useState<{name:string;date:string;data:string}[]>([]);
   const [error, setError]   = useState("");
+  const [unavailable, setUnavailable] = useState(false);
 
   const check = async () => {
     if (!email.includes("@")) { setError("Please enter a valid email address"); return; }
-    setError(""); setLoading(true); setResult(null); setBreaches([]);
+    setError(""); setLoading(true); setResult(null); setBreaches([]); setUnavailable(false);
     try {
-      // Use HaveIBeenPwned v3 API via public proxy
+      // Note: HaveIBeenPwned's email-breach API now requires a paid API key.
+      // We do not show a false "safe" result when the check can't actually run —
+      // that would be misleading. Instead we're honest that we can't verify right now.
       const res = await fetch(
         `https://haveibeenpwned.com/api/v3/breachedaccount/${encodeURIComponent(email)}?truncateResponse=false`,
         { headers: { "hibp-api-key": "none", "User-Agent": "EverydayCyberAI-BreachChecker" } }
@@ -29,12 +32,10 @@ export default function BreachCheckerPage() {
           data: b.DataClasses?.slice(0,3).join(", ") || "Unknown"
         })));
       } else {
-        // Fallback: simulate check since HIBP requires paid API key
-        setResult("safe");
+        setUnavailable(true);
       }
     } catch {
-      // Fallback result when API unavailable
-      setResult("safe");
+      setUnavailable(true);
     } finally { setLoading(false); }
   };
 
@@ -72,6 +73,15 @@ export default function BreachCheckerPage() {
               <div className="text-center py-6 text-gray-400">
                 <div className="w-8 h-8 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin mx-auto mb-3"/>
                 <p className="text-sm">Checking breach databases...</p>
+              </div>
+            )}
+
+            {unavailable && !loading && (
+              <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-2xl p-6 text-center">
+                <div className="text-4xl mb-3">⚠️</div>
+                <h3 className="text-lg font-bold text-yellow-400 mb-2">Email Check Unavailable Right Now</h3>
+                <p className="text-gray-400 text-sm">We can&apos;t verify this email against breach databases at the moment — we&apos;d rather tell you that than show a false result.</p>
+                <p className="text-gray-400 text-sm mt-3">Instead, try our <a href="/tools/password-strength" className="text-cyan-400 underline">Password Strength Checker</a> — it can tell you instantly and for free if your actual password has appeared in a breach.</p>
               </div>
             )}
 
