@@ -19,6 +19,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Core Pages
     page("", 1.0, "weekly"),
     page("/services", 0.9),
+    page("/services/remote-it-support", 0.85),
+    page("/services/cyber-security", 0.9),
+    page("/services/surveillance-support", 0.85),
+    page("/services/data-center-support", 0.82),
+    page("/services/e-waste-management", 0.8),
+    page("/services/ai-automation", 0.85),
     page("/tools", 0.9, "weekly"),
     page("/downloads", 0.92, "weekly"),
     page("/pricing", 0.95),

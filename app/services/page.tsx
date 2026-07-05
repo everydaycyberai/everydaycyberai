@@ -13,36 +13,48 @@ const services = [
     title: "Remote IT Support",
     desc: "Fast troubleshooting, software installation, Windows support, printer setup and remote assistance for office environments.",
     features: ["Windows & Linux support", "Remote desktop assistance", "Software installation", "Printer & peripheral setup"],
+    href: "/services/remote-it-support",
+    price: "₹999 onwards",
   },
   {
     icon: "🛡️",
     title: "Cyber Security",
     desc: "End-to-end cyber security solutions — firewall setup, VPN, threat detection, network hardening and security audits for businesses.",
     features: ["Firewall & VPN configuration", "Network security audit", "Threat detection & prevention", "Data protection & encryption", "Security policy setup", "Phishing & malware protection"],
+    href: "/services/cyber-security",
+    price: "₹2,499 onwards",
   },
   {
     icon: "📹",
     title: "Surveillance Support",
     desc: "CCTV setup, DVR/NVR troubleshooting, ATM surveillance systems and remote monitoring support.",
     features: ["CCTV installation & setup", "DVR/NVR troubleshooting", "ATM camera management", "Remote monitoring support"],
+    href: "/services/surveillance-support",
+    price: "₹1,499 onwards",
   },
   {
     icon: "🏢",
     title: "Data Center Support",
     desc: "Rack installation, hardware replacement, smart hands support and infrastructure assistance.",
     features: ["Rack & stack installation", "Hardware replacement", "Remote hands support", "Cable management"],
+    href: "/services/data-center-support",
+    price: "₹4,999 onwards",
   },
   {
     icon: "♻️",
     title: "E-Waste Management",
     desc: "Safe IT asset disposal, e-waste handling, hardware recycling and office equipment management.",
     features: ["IT asset disposal", "Hardware recycling", "Data destruction", "Equipment decommission"],
+    href: "/services/e-waste-management",
+    price: "Contact for Quote",
   },
   {
     icon: "🤖",
     title: "AI Automation",
     desc: "AI-powered tools, workflow automation, reporting utilities and smart business solutions.",
     features: ["Workflow automation", "AI document generation", "IT reporting tools", "Smart monitoring utilities"],
+    href: "/services/ai-automation",
+    price: "₹4,999 onwards",
   },
 ];
 
@@ -69,21 +81,28 @@ export default function ServicesPage() {
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {services.map((s) => (
-            <div
+            <Link
               key={s.title}
-              className="bg-black/40 backdrop-blur-sm border border-gray-700/60 rounded-3xl p-8 hover:border-cyan-400 transition duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.12)] group"
+              href={s.href}
+              className="bg-black/40 backdrop-blur-sm border border-gray-700/60 rounded-3xl p-8 hover:border-cyan-400 transition duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.12)] group block"
             >
-              <div className="text-5xl mb-6">{s.icon}</div>
+              <div className="flex items-start justify-between mb-6">
+                <div className="text-5xl">{s.icon}</div>
+                <span className="text-xs bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 px-3 py-1.5 rounded-full whitespace-nowrap">{s.price}</span>
+              </div>
               <h2 className="text-2xl font-semibold mb-4 text-cyan-400">{s.title}</h2>
               <p className="text-gray-400 leading-relaxed mb-6">{s.desc}</p>
-              <ul className="space-y-2">
+              <ul className="space-y-2 mb-4">
                 {s.features.map((f) => (
                   <li key={f} className="text-gray-500 text-sm flex items-center gap-2">
                     <span className="text-cyan-500">✓</span> {f}
                   </li>
                 ))}
               </ul>
-            </div>
+              <span className="text-cyan-400 text-sm font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                Learn More →
+              </span>
+            </Link>
           ))}
         </div>
 
