@@ -4,6 +4,8 @@ import { use, useEffect, useState } from "react";
 import Link from "next/link";
 import { db } from "@/lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface Blog {
   title: string;
@@ -98,8 +100,8 @@ export default function BlogDetailClient({ params }: { params: Promise<{ id: str
         {/* Content */}
         {blog.content && (
           <div className="bg-black/50 backdrop-blur-sm border border-zinc-700/60 rounded-2xl p-8 mb-8">
-            <div className="prose-custom text-gray-300 leading-8 whitespace-pre-wrap text-base">
-              {blog.content}
+            <div className="prose-custom text-gray-300 leading-8 text-base">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{blog.content}</ReactMarkdown>
             </div>
           </div>
         )}

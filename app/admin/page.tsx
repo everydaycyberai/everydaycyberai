@@ -1,5 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 import {
   onAuthStateChanged,
@@ -67,6 +69,7 @@ export default function AdminPage() {
   const [blogContent, setBlogContent] = useState("");
   const [blogCategory, setBlogCategory] = useState("Cyber Security");
   const [blogTags, setBlogTags] = useState("");
+  const [showPreview, setShowPreview] = useState(false);
   useEffect(() => {
 
   const unsubscribe = onAuthStateChanged(
@@ -359,13 +362,36 @@ const handleCreateBlog = async () => {
       rows={5}
       className="bg-black border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-cyan-400"
     />
+<div className="bg-black/40 border border-cyan-500/20 rounded-xl px-4 py-3 text-xs text-gray-400 space-y-1">
+  <p className="text-cyan-400 font-semibold mb-1">✍️ Formatting Guide (copy-paste style karo):</p>
+  <p><code className="text-cyan-300"># Heading</code> — bada heading &nbsp;|&nbsp; <code className="text-cyan-300">## Heading</code> — chhota heading</p>
+  <p><code className="text-cyan-300">**bold text**</code> — <b>bold</b> banega &nbsp;|&nbsp; <code className="text-cyan-300">*italic*</code> — <i>italic</i> banega</p>
+  <p><code className="text-cyan-300">- point one</code> — bullet list (har line pe <code className="text-cyan-300">-</code> laga do)</p>
+  <p><code className="text-cyan-300">![description](image-url)</code> — image lagane ke liye (koi bhi image link paste karo)</p>
+  <p><code className="text-cyan-300">[link text](https://...)</code> — clickable link</p>
+</div>
 <textarea
-  placeholder="Full Blog Content"
+  placeholder="Full Blog Content — Markdown formatting supported, see guide above"
   value={blogContent}
   onChange={(e) => setBlogContent(e.target.value)}
-  rows={10}
-  className="bg-black border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-cyan-400"
+  rows={14}
+  className="bg-black border border-zinc-700 rounded-xl px-4 py-3 outline-none focus:border-cyan-400 font-mono text-sm"
 />
+<button
+  type="button"
+  onClick={() => setShowPreview((p) => !p)}
+  className="bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-cyan-400 px-4 py-2.5 rounded-xl text-sm font-medium transition w-fit"
+>
+  {showPreview ? "🙈 Hide Preview" : "👁️ Show Preview"}
+</button>
+{showPreview && (
+  <div className="bg-black/60 border border-zinc-700 rounded-xl p-6">
+    <p className="text-xs text-gray-500 mb-3 uppercase tracking-wide">Preview — is tarah dikhega blog page pe</p>
+    <div className="prose-custom text-gray-300 leading-8 text-base">
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>{blogContent || "*Content yahan preview hoga...*"}</ReactMarkdown>
+    </div>
+  </div>
+)}
     <select
       value={blogCategory}
       onChange={(e) => setBlogCategory(e.target.value)}
