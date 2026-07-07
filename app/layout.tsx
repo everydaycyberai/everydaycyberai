@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "@/lib/firebase";
@@ -76,6 +77,18 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }}
         />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-1GHNWY5TDV"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-1GHNWY5TDV');
+          `}
+        </Script>
       </head>
       <body className="min-h-full flex flex-col">
         <CyberBackground />
