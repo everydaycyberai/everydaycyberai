@@ -26,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/services/e-waste-management", 0.8),
     page("/services/ai-automation", 0.85),
     page("/tools", 0.9, "weekly"),
+    page("/trending-scams", 0.88, "daily"),
     page("/downloads", 0.92, "weekly"),
     page("/pricing", 0.95),
     page("/products", 0.88, "weekly"),

@@ -129,6 +129,21 @@ export default function ToolsPage() {
           </p>
         </div>
 
+        {/* Trending Scams Banner */}
+        <Link href="/trending-scams"
+          className="block bg-red-500/10 border border-red-500/30 hover:border-red-400 rounded-2xl p-5 mb-16 transition group">
+          <div className="flex items-center justify-between flex-wrap gap-3">
+            <div className="flex items-center gap-3">
+              <span className="text-2xl">🚨</span>
+              <div>
+                <p className="text-white font-bold">See Trending Scams Right Now</p>
+                <p className="text-gray-400 text-sm">Real anonymized scam patterns reported this month — know what to watch for</p>
+              </div>
+            </div>
+            <span className="text-red-400 text-sm font-medium whitespace-nowrap group-hover:translate-x-1 transition-transform">View Trends →</span>
+          </div>
+        </Link>
+
         {/* Categories */}
         <div className="space-y-16">
           {categories.map((cat) => (

@@ -1,7 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import { useEffect } from "react";
+import { db } from "@/lib/firebase";
+import { doc, setDoc, increment } from "firebase/firestore";
 
 export default function ToolPageWrapper({
   children,
@@ -11,6 +14,23 @@ export default function ToolPageWrapper({
   badge?: string;
 }) {
   const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (!pathname) return;
+    const sessionKey = `tool_tracked_${pathname}`;
+    if (sessionStorage.getItem(sessionKey)) return;
+    sessionStorage.setItem(sessionKey, "1");
+
+    const slug = pathname.replace("/tools/", "").replace(/\//g, "") || "tools-index";
+    setDoc(
+      doc(db, "tool_usage", slug),
+      { path: pathname, views: increment(1), lastViewed: new Date() },
+      { merge: true }
+    ).catch(() => {
+      // Silently ignore — analytics should never break the page for the user
+    });
+  }, [pathname]);
 
   return (
     <div className="relative min-h-screen text-white overflow-hidden z-10">

@@ -21,8 +21,29 @@ export default function ServiceDetailTemplate({ service }: { service: ServiceDet
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hi! I'm interested in ${service.title}. Can you share more details?`)}`;
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: service.faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: service.title,
+    provider: { "@type": "ProfessionalService", name: "Everyday Cyber AI" },
+    areaServed: { "@type": "City", name: "Mumbai" },
+    description: service.intro,
+  };
+
   return (
     <main className="min-h-screen text-white px-6 py-12 relative z-10">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <div className="max-w-5xl mx-auto">
 
         {/* Breadcrumb */}

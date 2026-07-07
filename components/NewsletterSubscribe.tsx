@@ -6,9 +6,10 @@ import emailjs from "@emailjs/browser";
 
 interface Props {
   variant?: "inline" | "banner" | "minimal";
+  sourceLabel?: string;
 }
 
-export default function NewsletterSubscribe({ variant = "inline" }: Props) {
+export default function NewsletterSubscribe({ variant = "inline", sourceLabel = "website" }: Props) {
   const [name, setName]     = useState("");
   const [email, setEmail]   = useState("");
   const [loading, setLoading] = useState(false);
@@ -34,7 +35,7 @@ export default function NewsletterSubscribe({ variant = "inline" }: Props) {
       await addDoc(collection(db, "subscribers"), {
         name:      name.trim(),
         email:     email.trim().toLowerCase(),
-        source:    "website",
+        source:    sourceLabel,
         page:      typeof window !== "undefined" ? window.location.pathname : "/",
         createdAt: new Date(),
         active:    true,

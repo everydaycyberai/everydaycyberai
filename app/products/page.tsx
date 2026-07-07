@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import NewsletterSubscribe from "@/components/NewsletterSubscribe";
 
 export const metadata: Metadata = {
   title: "Digital Products — Cyber Security Guides & Checklists | Everyday Cyber AI",
@@ -92,19 +93,21 @@ export default function ProductsPage() {
           </p>
         </div>
 
-        {/* Coming Soon Banner */}
-        <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-2xl p-5 mb-10 text-center">
-          <p className="text-yellow-400 font-bold text-lg mb-2">🚀 Launching Soon!</p>
-          <p className="text-gray-400 text-sm">Our digital products are being finalized. Register your interest and get <strong className="text-white">50% launch discount!</strong></p>
-          <div className="flex gap-3 justify-center mt-4">
+        {/* Coming Soon Banner — real waitlist capture */}
+        <div className="mb-10">
+          <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-2xl p-5 mb-5 text-center">
+            <p className="text-yellow-400 font-bold text-lg mb-2">🚀 Launching Soon!</p>
+            <p className="text-gray-400 text-sm">Join the waitlist below and get <strong className="text-white">50% launch discount</strong> — we&apos;ll email you the moment these go live.</p>
+          </div>
+          <div className="max-w-xl mx-auto">
+            <NewsletterSubscribe variant="inline" sourceLabel="products-waitlist" />
+          </div>
+          <div className="flex gap-3 justify-center mt-5">
             <a href="https://wa.me/918454031225?text=Hi!%20I%20am%20interested%20in%20your%20cyber%20security%20PDF%20guides.%20Please%20notify%20me%20on%20launch."
               target="_blank" rel="noopener noreferrer"
-              className="bg-green-600 hover:bg-green-500 text-white px-6 py-2.5 rounded-xl font-bold text-sm transition">
-              💬 Notify Me on WhatsApp
+              className="text-green-400 hover:text-green-300 text-sm font-medium transition">
+              💬 Or notify me on WhatsApp instead
             </a>
-            <Link href="/contact" className="border border-cyan-500/40 text-cyan-400 px-6 py-2.5 rounded-xl font-semibold text-sm transition hover:border-cyan-400">
-              Contact Us
-            </Link>
           </div>
         </div>
 

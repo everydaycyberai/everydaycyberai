@@ -53,11 +53,30 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const businessSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "Everyday Cyber AI",
+    description: "IT support, cyber security, CCTV surveillance and AI automation services for businesses in Mumbai, India.",
+    url: "https://everydaycyberai.in",
+    telephone: "+918454031225",
+    areaServed: { "@type": "City", name: "Mumbai" },
+    address: { "@type": "PostalAddress", addressLocality: "Mumbai", addressRegion: "Maharashtra", addressCountry: "IN" },
+    priceRange: "₹₹",
+    sameAs: [],
+  };
+
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <CyberBackground />
         {/* Sticky header wrapper — both bars stay fixed together */}

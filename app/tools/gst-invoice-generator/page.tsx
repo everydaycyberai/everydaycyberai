@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import ToolPageWrapper from "@/components/ToolPageWrapper";
 
 type Item = { id: string; desc: string; hsn: string; qty: string; rate: string; gst: number };
@@ -57,7 +57,15 @@ export default function GSTInvoiceGeneratorPage() {
   const previewRef = useRef<HTMLDivElement>(null);
   const [downloading, setDownloading] = useState(false);
 
-  const [seller, setSeller] = useState({ name: "", address: "", gstin: "", state: "Maharashtra", phone: "", email: "" });
+  const [seller, setSeller] = useState(() => {
+    if (typeof window === "undefined") return { name: "", address: "", gstin: "", state: "Maharashtra", phone: "", email: "" };
+    try {
+      const saved = localStorage.getItem("gst_invoice_seller");
+      return saved ? JSON.parse(saved) : { name: "", address: "", gstin: "", state: "Maharashtra", phone: "", email: "" };
+    } catch {
+      return { name: "", address: "", gstin: "", state: "Maharashtra", phone: "", email: "" };
+    }
+  });
   const [buyer, setBuyer]   = useState({ name: "", address: "", gstin: "", state: "Maharashtra" });
   const [meta, setMeta] = useState(() => ({
     invoiceNo: "INV-" + Math.floor(1000 + Math.random() * 9000),
@@ -65,8 +73,25 @@ export default function GSTInvoiceGeneratorPage() {
     dueDate: "",
   }));
   const [items, setItems] = useState<Item[]>(() => [EMPTY_ITEM()]);
-  const [bank, setBank]   = useState({ accName: "", accNumber: "", ifsc: "", bankName: "" });
+  const [bank, setBank] = useState(() => {
+    if (typeof window === "undefined") return { accName: "", accNumber: "", ifsc: "", bankName: "" };
+    try {
+      const saved = localStorage.getItem("gst_invoice_bank");
+      return saved ? JSON.parse(saved) : { accName: "", accNumber: "", ifsc: "", bankName: "" };
+    } catch {
+      return { accName: "", accNumber: "", ifsc: "", bankName: "" };
+    }
+  });
   const [notes, setNotes] = useState("Thank you for your business.");
+
+  // Save business + bank details to this browser as they're typed
+  useEffect(() => {
+    localStorage.setItem("gst_invoice_seller", JSON.stringify(seller));
+  }, [seller]);
+
+  useEffect(() => {
+    localStorage.setItem("gst_invoice_bank", JSON.stringify(bank));
+  }, [bank]);
 
   const updateItem = (id: string, field: keyof Item, value: string | number) => {
     setItems(prev => prev.map(it => it.id === id ? { ...it, [field]: value } : it));
@@ -141,7 +166,24 @@ export default function GSTInvoiceGeneratorPage() {
             <div className="space-y-6">
 
               <div className="bg-black/40 backdrop-blur-sm border border-zinc-700/60 rounded-3xl p-6 space-y-4">
-                <h2 className="text-lg font-bold text-cyan-400">Your Business (Seller)</h2>
+                <div className="flex items-center justify-between">
+                  <h2 className="text-lg font-bold text-cyan-400">Your Business (Seller)</h2>
+                  {(seller.name || bank.accName) && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        localStorage.removeItem("gst_invoice_seller");
+                        localStorage.removeItem("gst_invoice_bank");
+                        setSeller({ name: "", address: "", gstin: "", state: "Maharashtra", phone: "", email: "" });
+                        setBank({ accName: "", accNumber: "", ifsc: "", bankName: "" });
+                      }}
+                      className="text-xs text-gray-500 hover:text-red-400 transition"
+                    >
+                      Clear saved info
+                    </button>
+                  )}
+                </div>
+                <p className="text-xs text-gray-600 -mt-2">💾 Saved in this browser only — auto-fills next time, never sent anywhere.</p>
                 <div><label className={labelCls}>Business Name</label>
                   <input className={inputCls} value={seller.name} onChange={e => setSeller({ ...seller, name: e.target.value })} placeholder="Everyday Cyber AI Services" /></div>
                 <div><label className={labelCls}>Address</label>

@@ -1,5 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -81,6 +82,9 @@ export default function AdminPage() {
       } else {
         fetchRequests();
         fetchBlogs();
+        fetchLeads();
+        fetchSubscribers();
+        fetchToolUsage();
       }
 
     }
@@ -120,6 +124,7 @@ export default function AdminPage() {
   };
 
   const [subscribers, setSubscribers] = useState<{id:string;name:string;email:string;createdAt:any}[]>([]);
+  const [toolUsage, setToolUsage] = useState<{id:string;path:string;views:number;lastViewed:any}[]>([]);
   const [newsletterSubject, setNewsletterSubject] = useState("");
   const [newsletterBody, setNewsletterBody] = useState("");
   const [sendingNewsletter, setSendingNewsletter] = useState(false);
@@ -130,6 +135,14 @@ export default function AdminPage() {
       const { collection: col, getDocs: gd, query: q, orderBy: ob } = await import("firebase/firestore");
       const snap = await gd(q(col(db, "subscribers"), ob("createdAt","desc")));
       setSubscribers(snap.docs.map(d => ({id:d.id,...d.data()} as any)));
+    } catch(e){console.error(e);}
+  };
+
+  const fetchToolUsage = async () => {
+    try {
+      const { collection: col, getDocs: gd, query: q, orderBy: ob } = await import("firebase/firestore");
+      const snap = await gd(q(col(db, "tool_usage"), ob("views","desc")));
+      setToolUsage(snap.docs.map(d => ({id:d.id,...d.data()} as any)));
     } catch(e){console.error(e);}
   };
 
@@ -449,6 +462,103 @@ const handleCreateBlog = async () => {
             </p>
           </div>
 
+        </div>
+
+        {/* ── Leads (from consultation popup) ── */}
+        <div className="mb-10">
+          <h2 className="text-2xl font-bold mb-4">📞 Consultation Leads ({leads.length})</h2>
+          {leads.length === 0 ? (
+            <p className="text-gray-500 bg-zinc-900 border border-zinc-800 rounded-2xl p-6">No leads yet.</p>
+          ) : (
+            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-zinc-800 text-gray-400 text-left">
+                    <th className="p-3">Name</th>
+                    <th className="p-3">Phone</th>
+                    <th className="p-3">Page</th>
+                    <th className="p-3">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {leads.map((l) => (
+                    <tr key={l.id} className="border-t border-zinc-800">
+                      <td className="p-3">{l.name}</td>
+                      <td className="p-3">
+                        <a href={`https://wa.me/91${l.phone.replace(/\D/g,"").slice(-10)}`} target="_blank" rel="noopener noreferrer" className="text-green-400 hover:underline">
+                          {l.phone}
+                        </a>
+                      </td>
+                      <td className="p-3 text-gray-500">{l.page}</td>
+                      <td className="p-3 text-gray-500">{l.createdAt?.toDate?.().toLocaleDateString?.("en-IN") ?? "-"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+
+        {/* ── Newsletter Subscribers ── */}
+        <div className="mb-10">
+          <h2 className="text-2xl font-bold mb-4">📧 Newsletter Subscribers ({subscribers.length})</h2>
+          {subscribers.length === 0 ? (
+            <p className="text-gray-500 bg-zinc-900 border border-zinc-800 rounded-2xl p-6">No subscribers yet.</p>
+          ) : (
+            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden max-h-96 overflow-y-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-zinc-800 text-gray-400 text-left">
+                    <th className="p-3">Name</th>
+                    <th className="p-3">Email</th>
+                    <th className="p-3">Source</th>
+                    <th className="p-3">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {subscribers.map((s) => (
+                    <tr key={s.id} className="border-t border-zinc-800">
+                      <td className="p-3">{s.name}</td>
+                      <td className="p-3 text-cyan-400">{s.email}</td>
+                      <td className="p-3 text-gray-500">{(s as any).source ?? "website"}</td>
+                      <td className="p-3 text-gray-500">{s.createdAt?.toDate?.().toLocaleDateString?.("en-IN") ?? "-"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+
+        {/* ── Tool Usage ── */}
+        <div className="mb-10">
+          <h2 className="text-2xl font-bold mb-4">🛠️ Tool Usage — Most Popular First</h2>
+          {toolUsage.length === 0 ? (
+            <p className="text-gray-500 bg-zinc-900 border border-zinc-800 rounded-2xl p-6">No tool usage data yet — this fills up as visitors use your tools.</p>
+          ) : (
+            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-zinc-800 text-gray-400 text-left">
+                    <th className="p-3">Tool</th>
+                    <th className="p-3">Views</th>
+                    <th className="p-3">Last Viewed</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {toolUsage.map((t) => (
+                    <tr key={t.id} className="border-t border-zinc-800">
+                      <td className="p-3">
+                        <Link href={t.path} target="_blank" className="text-cyan-400 hover:underline">{t.id}</Link>
+                      </td>
+                      <td className="p-3 font-bold">{t.views}</td>
+                      <td className="p-3 text-gray-500">{t.lastViewed?.toDate?.().toLocaleDateString?.("en-IN") ?? "-"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
 
         {/* Loading */}

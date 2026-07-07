@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import ToolPageWrapper from "@/components/ToolPageWrapper";
+import { db } from "@/lib/firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 type Source = "sms" | "email" | "whatsapp" | "other";
 
@@ -61,7 +63,18 @@ Respond ONLY with a valid JSON object in this exact format:
       const text = data.text || "";
       const jsonMatch = text.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
-        setResult(JSON.parse(jsonMatch[0]));
+        const parsed: Result = JSON.parse(jsonMatch[0]);
+        setResult(parsed);
+        // Anonymized logging only — never the message text, sender, or any personal detail —
+        // used purely to power the public "Trending Scams" page.
+        if (parsed.verdict !== "safe") {
+          addDoc(collection(db, "scam_reports"), {
+            scamType: parsed.scamType || "Unknown",
+            verdict: parsed.verdict,
+            source,
+            createdAt: new Date(),
+          }).catch(() => {});
+        }
       } else {
         throw new Error("Invalid AI response");
       }
@@ -117,7 +130,7 @@ Respond ONLY with a valid JSON object in this exact format:
                 <textarea value={message} onChange={e => setMessage(e.target.value)} rows={6}
                   placeholder="Paste the full SMS / email / WhatsApp message text here..."
                   className="w-full bg-black/80 border border-zinc-700 rounded-2xl px-5 py-4 text-white outline-none focus:border-cyan-400 transition resize-none" />
-                <p className="text-xs text-gray-600 mt-2">🔒 Not stored — analyzed only to give you a verdict</p>
+                <p className="text-xs text-gray-600 mt-2">🔒 Your message text is never stored — only an anonymous scam-type tag (no message, no sender, no personal info) is logged to power our public <a href="/trending-scams" className="underline text-cyan-400">Trending Scams</a> page.</p>
               </div>
 
               {error && <p className="text-red-400 text-sm">⚠️ {error}</p>}
