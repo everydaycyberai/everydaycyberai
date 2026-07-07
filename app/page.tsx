@@ -26,10 +26,10 @@ function useFadeUp() {
 }
 
 const services = [
-  { icon: "💻", title: "IT Support", desc: "Remote troubleshooting, desktop support, software installation and office IT assistance." },
-  { icon: "🛡️", title: "Firewall & Security", desc: "Firewall configuration, VPN support, network security and access management solutions." },
-  { icon: "📹", title: "Surveillance Support", desc: "CCTV systems, DVR/NVR troubleshooting, ATM surveillance and remote monitoring support." },
-  { icon: "🖥️", title: "Data Center Support", desc: "Rack installation, hardware replacement, smart hands and remote infrastructure assistance." },
+  { icon: "💻", title: "IT Support", desc: "Remote troubleshooting, desktop support, software installation and office IT assistance.", href: "/services/remote-it-support" },
+  { icon: "🛡️", title: "Firewall & Security", desc: "Firewall configuration, VPN support, network security and access management solutions.", href: "/services/cyber-security" },
+  { icon: "📹", title: "Surveillance Support", desc: "CCTV systems, DVR/NVR troubleshooting, ATM surveillance and remote monitoring support.", href: "/services/surveillance-support" },
+  { icon: "🖥️", title: "Data Center Support", desc: "Rack installation, hardware replacement, smart hands and remote infrastructure assistance.", href: "/services/data-center-support" },
 ];
 
 const tools = [
@@ -141,14 +141,15 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((s) => (
-              <div
+              <Link
                 key={s.title}
-                className="bg-black/40 backdrop-blur-sm border border-gray-700/60 hover:border-cyan-400 rounded-3xl p-8 transition duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)]"
+                href={s.href}
+                className="bg-black/40 backdrop-blur-sm border border-gray-700/60 hover:border-cyan-400 rounded-3xl p-8 transition duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)] block"
               >
                 <div className="text-cyan-400 text-4xl mb-6">{s.icon}</div>
                 <h3 className="text-2xl font-semibold mb-4">{s.title}</h3>
                 <p className="text-gray-400 leading-relaxed">{s.desc}</p>
-              </div>
+              </Link>
             ))}
           </div>
 
