@@ -102,14 +102,17 @@ export default function Home() {
               <div className="absolute -top-10 -right-10 w-40 h-40 bg-cyan-400/10 blur-3xl rounded-full" />
               <div className="space-y-6">
                 {[
-                  { cls: "float-card", title: "Remote IT Support", desc: "Fast troubleshooting & support for offices and businesses." },
-                  { cls: "float-card-delay", title: "Data Center Support", desc: "Rack, hardware replacement & remote hands assistance." },
-                  { cls: "float-card-slow", title: "AI Utility Tools", desc: "Smart automation tools to simplify IT operations." },
+                  { cls: "float-card", title: "Remote IT Support", desc: "Fast troubleshooting & support for offices and businesses.", href: "/services/remote-it-support" },
+                  { cls: "float-card-delay", title: "Cyber Security", desc: "Firewall, VPN setup and network security audits.", href: "/services/cyber-security" },
+                  { cls: "float-card-slow", title: "Data Center Support", desc: "Rack, hardware replacement & remote hands assistance.", href: "/services/data-center-support" },
+                  { cls: "float-card", title: "Surveillance Support", desc: "CCTV installation, DVR/NVR troubleshooting & monitoring.", href: "/services/surveillance-support" },
+                  { cls: "float-card-delay", title: "AI Utility Tools", desc: "Smart automation tools to simplify IT operations.", href: "/services/ai-automation" },
                 ].map((card) => (
-                  <div key={card.title} className={`bg-black/40 border border-gray-800 rounded-2xl p-5 ${card.cls}`}>
+                  <Link key={card.title} href={card.href}
+                    className={`block bg-black/40 border border-gray-800 hover:border-cyan-400 rounded-2xl p-5 transition duration-300 ${card.cls}`}>
                     <h3 className="text-cyan-400 font-semibold mb-2">{card.title}</h3>
                     <p className="text-gray-400 text-sm">{card.desc}</p>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
