@@ -338,6 +338,30 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Service Areas — Local SEO ── */}
+      <section className="py-20 px-6 border-t border-zinc-800/60">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Areas We Serve</h2>
+          <p className="text-gray-400 mb-10 max-w-xl mx-auto">
+            On-site and remote IT support across Mumbai and nearby business hubs — same-day response.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {[
+              "Mumbai", "Bandra Kurla Complex (BKC)", "Lower Parel", "Andheri",
+              "Powai", "Malad", "Borivali", "Navi Mumbai", "Thane", "Vashi",
+            ].map((area) => (
+              <span key={area}
+                className="bg-black/40 border border-zinc-700/60 hover:border-cyan-400 text-gray-300 px-5 py-2.5 rounded-full text-sm transition">
+                📍 {area}
+              </span>
+            ))}
+          </div>
+          <p className="text-gray-500 text-sm mt-8">
+            Don&apos;t see your area listed? <Link href="/contact" className="text-cyan-400 hover:underline">Contact us</Link> — we likely still cover it.
+          </p>
+        </div>
+      </section>
+
       {/* Scroll To Top */}
       <a href="#home" aria-label="Scroll to top"
         className="fixed bottom-24 right-5 bg-zinc-800/90 backdrop-blur-md border border-zinc-600 hover:border-cyan-400 hover:text-cyan-400 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-2xl z-50 transition duration-300 text-sm">
