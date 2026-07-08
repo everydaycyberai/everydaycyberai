@@ -56,6 +56,46 @@ const services = [
     href: "/services/ai-automation",
     price: "₹4,999 onwards",
   },
+  {
+    icon: "🌐",
+    title: "Network Support Engineer",
+    desc: "On-site and remote network support — router/switch config, LAN/WAN troubleshooting, downtime fixes.",
+    features: ["Router & switch config", "LAN/WAN troubleshooting", "VLAN setup", "WiFi issues"],
+    href: "/services/network-support-engineer",
+    price: "₹1,499 per visit",
+  },
+  {
+    icon: "🔧",
+    title: "Data Center Hardware Replacement",
+    desc: "On-site technician support for swapping faulty server hardware — disks, RAM, PSUs, network cards.",
+    features: ["Disk/RAM/PSU swap", "Pre & post diagnostics", "Same-day visits", "Written report"],
+    href: "/services/data-center-hardware-replacement",
+    price: "₹2,999 per visit",
+  },
+  {
+    icon: "💻",
+    title: "Laptop Configuration & Setup",
+    desc: "New employee laptop setup — OS install, software, security settings, ready on day one.",
+    features: ["OS install", "Software setup", "Security baseline", "Bulk onboarding"],
+    href: "/services/laptop-configuration",
+    price: "₹799 per device",
+  },
+  {
+    icon: "🚀",
+    title: "Windows Autopilot Support",
+    desc: "Zero-touch device provisioning setup — Intune enrollment, deployment profiles, troubleshooting.",
+    features: ["Autopilot tenant setup", "Intune enrollment", "Deployment profiles", "Fix broken setups"],
+    href: "/services/windows-autopilot-support",
+    price: "₹2,999 onwards",
+  },
+  {
+    icon: "📹",
+    title: "CCTV / DVR Camera Support",
+    desc: "DVR/NVR troubleshooting, camera-not-recording fixes, remote viewing setup for existing systems.",
+    features: ["DVR/NVR fixes", "Camera not recording", "Remote viewing setup", "Storage troubleshooting"],
+    href: "/services/cctv-dvr-support",
+    price: "₹999 per visit",
+  },
 ];
 
 export default function ServicesPage() {
