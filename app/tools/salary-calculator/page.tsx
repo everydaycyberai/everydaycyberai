@@ -15,20 +15,25 @@ export default function SalaryCalculatorPage() {
     const gratuity = annual * 0.0481;
     const grossSalary = annual - pf - gratuity;
 
-    // Tax calculation (FY 2024-25)
-    const taxableIncome = regime === "old" ? Math.max(0, grossSalary - 50000 - 150000) : grossSalary; // std deduction 50k + 80C 1.5L for old
+    // Tax calculation — FY 2026-27 (unchanged from FY 2025-26 per Budget 2026)
+    const standardDeduction = regime === "new" ? 75000 : 50000;
+    const taxableIncome = regime === "old"
+      ? Math.max(0, grossSalary - standardDeduction - 150000) // std deduction + 80C estimate
+      : Math.max(0, grossSalary - standardDeduction);
     let tax = 0;
 
     if (regime === "new") {
-      // New regime slabs 2024-25
-      if (taxableIncome > 1500000)      tax = 150000 + (taxableIncome-1500000)*0.30;
-      else if (taxableIncome > 1200000) tax = 90000  + (taxableIncome-1200000)*0.20;
-      else if (taxableIncome > 900000)  tax = 45000  + (taxableIncome-900000)*0.15;
-      else if (taxableIncome > 600000)  tax = 15000  + (taxableIncome-600000)*0.10;
-      else if (taxableIncome > 300000)  tax = (taxableIncome-300000)*0.05;
-      if (taxableIncome <= 700000) tax = 0; // rebate u/s 87A
+      // New regime slabs — FY 2026-27
+      if (taxableIncome > 2400000)      tax = 500000 + (taxableIncome-2400000)*0.30;
+      else if (taxableIncome > 2000000) tax = 400000 + (taxableIncome-2000000)*0.25;
+      else if (taxableIncome > 1600000) tax = 320000 + (taxableIncome-1600000)*0.20;
+      else if (taxableIncome > 1200000) tax = 200000 + (taxableIncome-1200000)*0.15;
+      else if (taxableIncome > 800000)  tax = 60000  + (taxableIncome-800000)*0.10;
+      else if (taxableIncome > 400000)  tax = (taxableIncome-400000)*0.05;
+      // Section 87A rebate — taxable income up to ₹12L means zero tax
+      if (taxableIncome <= 1200000) tax = 0;
     } else {
-      // Old regime slabs
+      // Old regime slabs (unchanged for years)
       if (taxableIncome > 1000000)      tax = 112500 + (taxableIncome-1000000)*0.30;
       else if (taxableIncome > 500000)  tax = 12500  + (taxableIncome-500000)*0.20;
       else if (taxableIncome > 250000)  tax = (taxableIncome-250000)*0.05;
@@ -60,7 +65,7 @@ export default function SalaryCalculatorPage() {
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-10">
             <h1 className="text-5xl font-bold mb-4">Salary Calculator</h1>
-            <p className="text-gray-400">Calculate in-hand salary from CTC with PF, tax and deductions — India FY 2024-25</p>
+            <p className="text-gray-400">Calculate in-hand salary from CTC with PF, tax and deductions — India FY 2026-27</p>
           </div>
 
           <div className="bg-black/40 backdrop-blur-sm border border-zinc-700/60 rounded-3xl p-8 space-y-6">
@@ -77,7 +82,7 @@ export default function SalaryCalculatorPage() {
                 {(["new","old"] as const).map(reg=>(
                   <button key={reg} onClick={()=>setRegime(reg)}
                     className={`py-3 rounded-xl font-medium border transition text-sm ${regime===reg?"bg-cyan-500/20 border-cyan-500/50 text-cyan-400":"bg-zinc-800 border-zinc-700 text-gray-400"}`}>
-                    {reg==="new"?"New Regime (2024-25)":"Old Regime"}
+                    {reg==="new"?"New Regime (2026-27)":"Old Regime"}
                   </button>
                 ))}
               </div>

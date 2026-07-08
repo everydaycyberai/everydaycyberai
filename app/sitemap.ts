@@ -50,6 +50,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Cyber Security Help Tools
     page("/tools/scam-analyzer", 0.95),
     page("/tools/scam-message-checker", 0.93),
+    page("/tools/job-scam-checker", 0.9),
     page("/tools/hack-checker", 0.92),
     page("/tools/safety-score", 0.9),
     page("/tools/emergency-response", 0.95),
@@ -58,10 +59,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/tools/password-strength", 0.88),
     page("/tools/ip-calculator", 0.85),
     page("/tools/ssl-checker", 0.85),
+    page("/tools/wifi-security-checklist", 0.83),
 
     // AI Tools
     page("/tools/ai-writer", 0.9),
     page("/tools/ai-email", 0.9),
+    page("/tools/mock-interview", 0.88),
+    page("/tools/cover-letter-generator", 0.88),
+    page("/tools/caption-generator", 0.85),
 
     // Study Tools
     page("/tools/word-counter", 0.85),
@@ -69,6 +74,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/tools/age-calculator", 0.85),
     page("/tools/percentage-calculator", 0.85),
     page("/tools/typing-test", 0.88),
+    page("/tools/exam-age-calculator", 0.87),
 
     // Daily Use Tools
     page("/tools/resume-builder", 0.9),
@@ -78,6 +84,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/tools/passport-photo", 0.9),
     page("/tools/color-picker", 0.85),
     page("/tools/bmi-calculator", 0.88),
+    page("/tools/pc-build-checker", 0.86),
+    page("/tools/username-checker", 0.85),
 
     // Finance Tools
     page("/tools/gst-calculator", 0.88),

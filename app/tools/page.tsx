@@ -25,6 +25,7 @@ const categories = [
     tools: [
       { icon: "🔍", title: "Scam Analyzer",          desc: "Scam ho gaya? Describe karo — AI batayega kaunsa scam hua, turant kya karo, kahan report karo aur paisa wapas milne ke chances kitne hain. India ka sabse useful cyber help tool.", tags: ["UPI Fraud","Digital Arrest","Phishing Help","1930"],    href: "/tools/scam-analyzer",       status: "live" as Status },
       { icon: "🚩", title: "Scam Message Checker",   desc: "Suspicious SMS, email ya WhatsApp message mila? Paste karo aur turant pata karo scam hai ya nahi — click karne se pehle check karo. Free AI-powered scam message detector India.", tags: ["SMS Scam","Phishing Check","KYC Fraud","Before You Click"], href: "/tools/scam-message-checker", status: "live" as Status },
+      { icon: "💼", title: "Fake Job Offer Checker", desc: "WFH job offer mila jo suspicious lag raha hai? Paste karo aur turant pata karo scam hai ya legitimate — paisa maangne se pehle check karo. Freshers ke liye zaroori tool.", tags: ["Job Scam","WFH Fraud","Fresher Safety"], href: "/tools/job-scam-checker", status: "live" as Status },
       { icon: "🛡️", title: "Hack Checker",           desc: "Pata karo aapka phone ya account hack hua hai ya nahi — 14 simple questions ka jawab do aur instant risk report pao. Free system security check India.", tags: ["Phone Hacked","Account Check","Risk Report"],              href: "/tools/hack-checker",        status: "live" as Status },
       { icon: "🔒", title: "Digital Safety Score",   desc: "Aap online kitne safe hain? 12 questions ka jawab do — apna cyber security score janiye aur personalized improvement tips pao. Free security audit India.", tags: ["Security Score","Safety Tips","Cyber Audit"],              href: "/tools/safety-score",        status: "live" as Status },
       { icon: "🆘", title: "Emergency Response Guide",desc: "UPI fraud, account hack, digital arrest, SIM swap — kisi bhi cyber emergency mein exact step-by-step action plan aur India ke official helpline numbers.", tags: ["1930 Helpline","UPI Fraud Steps","Emergency Plan"],       href: "/tools/emergency-response",  status: "live" as Status },
@@ -36,6 +37,9 @@ const categories = [
     tools: [
       { icon: "✍️", title: "AI Writing Assistant",    desc: "Free AI tool to write emails, essays, cover letters, product descriptions instantly. Powered by Groq + Llama — fastest free AI writer India 2025. No login needed.", tags: ["Email Writer","Essay Helper","Free AI India"], href: "/tools/ai-writer",  status: "live" as Status },
       { icon: "📧", title: "AI Email Generator",       desc: "Generate professional emails in seconds — leave application, job application, complaint, resignation. Free AI email writer for students and professionals India.", tags: ["Leave Application","Job Apply","Office Email"], href: "/tools/ai-email",   status: "live" as Status },
+      { icon: "🎤", title: "AI Mock Interview Generator", desc: "Practice before the real thing — get realistic interview questions with answer tips for any role. Free AI interview prep tool for freshers and professionals India.", tags: ["Interview Prep","Freshers","Practice Questions"], href: "/tools/mock-interview", status: "live" as Status },
+      { icon: "✉️", title: "AI Cover Letter Generator", desc: "Generate a ready-to-send cover letter in seconds — pairs perfectly with our Resume Builder. Free AI cover letter writer for job applications India.", tags: ["Job Application","Cover Letter","Freshers"], href: "/tools/cover-letter-generator", status: "live" as Status },
+      { icon: "📸", title: "AI Instagram Caption Generator", desc: "Free AI caption generator — get catchy Instagram captions and hashtags for any post in seconds. Multiple vibes: funny, aesthetic, motivational and more.", tags: ["Instagram Captions","Hashtags","Social Media"], href: "/tools/caption-generator", status: "live" as Status },
 
     ],
   },
@@ -58,17 +62,18 @@ const categories = [
       { icon: "📧", title: "Email Header Analyzer",   desc: "Trace email origin IP, detect phishing and spoofing — paste email headers to get sender location, SPF/DKIM/DMARC results, delivery path and full forensic analysis. Free email forensics tool India.", tags: ["Phishing Check","Email Trace","SPF DKIM","Forensics"], href: "/tools/email-header-analyzer", status: "live" as Status },
       { icon: "🌐", title: "IP / Subnet Calculator",           desc: "Free IP subnet calculator — find network address, broadcast, host range, CIDR notation and IP class. Essential tool for network engineers India.", tags: ["Subnet Mask","CIDR","Network Engineers"],        href: "/tools/ip-calculator",         status: "live" as Status },
       { icon: "🔒", title: "SSL Certificate Checker",         desc: "Check if any website has valid SSL certificate and HTTPS enabled. Free online SSL checker — verify website security before entering your data.", tags: ["HTTPS Check","SSL Valid","Website Safety"],     href: "/tools/ssl-checker",           status: "live" as Status },
+      { icon: "📶", title: "Hostel/PG WiFi Security Checklist", desc: "Practical security checklist for students on shared hostel/PG WiFi networks — router safety, network hygiene and device protection. Free, saves your progress.", tags: ["Student Safety","Shared WiFi","Hostel"],        href: "/tools/wifi-security-checklist", status: "live" as Status },
     ],
   },
   {
     name: "📚 Study Tools",
     desc: "Free tools for students — word counter, unit converter, plagiarism checker and more",
     tools: [
-      { icon: "📝", title: "Word Counter",                    desc: "Free online word counter — count words, characters, sentences, reading time instantly. Check Twitter, Instagram, LinkedIn character limits. Best tool for students writing assignments.", tags: ["Word Count","Reading Time","Assignment Help"],  href: "/tools/word-counter",        status: "live" as Status },
       { icon: "📐", title: "Unit Converter",                  desc: "Free unit converter India — convert length, weight, temperature, area, speed and data units instantly. Covers metric and imperial units. Best for science students.", tags: ["Length","Weight","Temperature","CBSE"],         href: "/tools/unit-converter",       status: "live" as Status },
       { icon: "🧮", title: "Age Calculator",                  desc: "Calculate your exact age in years, months and days — with zodiac sign, day of birth and next birthday countdown. Free age calculator India for Aadhaar, passport forms.", tags: ["Exact Age","Zodiac","Birthday Countdown"],      href: "/tools/age-calculator",       status: "live" as Status },
       { icon: "📊", title: "Percentage Calculator",           desc: "Free percentage calculator — calculate marks percentage, discount, percentage change and more. Most useful tool for students, shoppers and professionals in India.", tags: ["Marks %","Discount","Grade Calculator"],        href: "/tools/percentage-calculator",status: "live" as Status },
       { icon: "⌨️", title: "Typing Speed Test",               desc: "Test your typing speed in WPM (words per minute) free online — improve your typing for government exams, bank jobs, SSC, data entry and office work.", tags: ["WPM Test","Govt Exam","Data Entry","SSC"],       href: "/tools/typing-test",          status: "live" as Status },
+      { icon: "🎓", title: "Exam Age Eligibility Calculator", desc: "Check your age eligibility for UPSC, SSC CGL, Bank PO, NEET, JEE and more — instant category-wise (General/OBC/SC-ST/PWD) eligibility check for Indian competitive exams.", tags: ["UPSC Age Limit","SSC CGL","NEET","Bank PO"],   href: "/tools/exam-age-calculator",  status: "live" as Status },
       { icon: "🔎", title: "Plagiarism Checker",              desc: "Free plagiarism checker for students — check your essay, assignment or article for duplicate content. Browser-based, no file upload needed.", tags: ["Duplicate Content","Assignment","College"],     href: "/tools/plagiarism-checker",   status: "coming" as Status },
     ],
   },
@@ -83,6 +88,8 @@ const categories = [
       { icon: "📸", title: "Passport Size Photo Maker",       desc: "Free passport size photo maker online India — resize any photo to 35x45mm passport size. Download instantly for Aadhaar, PAN, visa, exam forms. No watermark.", tags: ["Passport Photo","Aadhaar","Visa Form","35x45"], href: "/tools/passport-photo",       status: "live" as Status },
       { icon: "🎨", title: "Color Picker",                    desc: "Free online color picker — pick any color and get HEX, RGB, HSL, CMYK codes instantly. Includes shade generator and popular palettes for designers and developers.", tags: ["HEX Code","RGB","Color Codes","Designers"],    href: "/tools/color-picker",         status: "live" as Status },
       { icon: "🏃", title: "BMI Calculator",                  desc: "Free BMI calculator India — calculate Body Mass Index for adults and children. Know if you are underweight, normal, overweight or obese with health tips.", tags: ["Body Mass Index","Health Check","Weight"],      href: "/tools/bmi-calculator",       status: "live" as Status },
+      { icon: "🖥️", title: "PC Build Compatibility Checker", desc: "Get an AI-suggested, compatible PC build for your budget and use case — gaming, editing, coding. Free tool for Indian PC builders, explains CPU/GPU/RAM compatibility.", tags: ["Gaming PC","Budget Build","Compatibility"],    href: "/tools/pc-build-checker",     status: "live" as Status },
+      { icon: "🔎", title: "Username Availability Checker",   desc: "Check if a username is free across Instagram, YouTube, X and GitHub — all at once. Free social media username checker for creating a consistent online identity.", tags: ["Instagram Handle","Social Media","GitHub"],     href: "/tools/username-checker",     status: "live" as Status },
     ],
   },
   {
@@ -100,10 +107,7 @@ const categories = [
     name: "⌨️ Text & Developer Tools",
     desc: "For developers, writers and content creators — code formatters, converters and more",
     tools: [
-      { icon: "🔡", title: "Case Converter",                  desc: "Free text case converter — convert to UPPERCASE, lowercase, Title Case, camelCase, snake_case, kebab-case and more. Useful for developers and content writers.", tags: ["camelCase","snake_case","UPPERCASE","Devs"],    href: "/tools/case-converter",       status: "live" as Status },
-      { icon: "📋", title: "JSON Formatter",                  desc: "Free JSON formatter and validator online — format, beautify, minify and validate JSON data instantly. Useful for developers and API testing in India.", tags: ["JSON Validate","Beautify","API Testing","Dev"],  href: "/tools/json-formatter",       status: "live" as Status },
       { icon: "🔐", title: "Base64 Encoder / Decoder",        desc: "Free Base64 encoder and decoder online — encode text to Base64 or decode Base64 to text instantly in browser. Used for JWT tokens and API authentication.", tags: ["Base64 Encode","JWT Token","API Auth"],         href: "/tools/base64",               status: "live" as Status },
-      { icon: "📄", title: "Lorem Ipsum Generator",           desc: "Free Lorem Ipsum text generator — generate placeholder text for websites, UI mockups and design projects. Choose paragraphs, sentences or words count.", tags: ["Placeholder Text","UI Design","Mockup","Web"],  href: "/tools/lorem-ipsum",          status: "live" as Status },
     ],
   },
 ];
