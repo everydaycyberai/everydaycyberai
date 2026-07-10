@@ -104,5 +104,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/tools/json-formatter", 0.85),
     page("/tools/base64", 0.85),
     page("/tools/lorem-ipsum", 0.85),
+    page("/tools/windows-commands", 0.88),
+    page("/tools/linux-commands", 0.88),
   ];
 }
