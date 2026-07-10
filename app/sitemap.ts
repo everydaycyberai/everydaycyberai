@@ -106,5 +106,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/tools/lorem-ipsum", 0.85),
     page("/tools/windows-commands", 0.88),
     page("/tools/linux-commands", 0.88),
+    page("/tools/firewall-switch-commands", 0.87),
   ];
 }

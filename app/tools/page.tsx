@@ -110,6 +110,7 @@ const categories = [
       { icon: "🔐", title: "Base64 Encoder / Decoder",        desc: "Free Base64 encoder and decoder online — encode text to Base64 or decode Base64 to text instantly in browser. Used for JWT tokens and API authentication.", tags: ["Base64 Encode","JWT Token","API Auth"],         href: "/tools/base64",               status: "live" as Status },
       { icon: "⌨️", title: "Windows CMD & PowerShell Commands", desc: "Free reference list of essential Windows CMD and PowerShell commands — searchable, click to copy. Covers network, system, disk and user management commands.", tags: ["CMD Commands","PowerShell","Windows","IT Reference"], href: "/tools/windows-commands", status: "live" as Status },
       { icon: "🐧", title: "Linux Commands Cheat Sheet",       desc: "Free reference list of essential Linux commands — searchable, click to copy. Covers file management, network, permissions, package management and systemd.", tags: ["Linux Commands","Bash","sudo","IT Reference"],  href: "/tools/linux-commands",       status: "live" as Status },
+      { icon: "🔌", title: "Firewall & Switch Commands",       desc: "Free CLI command reference for popular firewall and switch brands — Cisco, Fortinet, Sophos, MikroTik, Juniper, Aruba, Palo Alto. Searchable, click to copy.", tags: ["Cisco","Fortinet","MikroTik","Network Admin"], href: "/tools/firewall-switch-commands", status: "live" as Status },
     ],
   },
 ];
