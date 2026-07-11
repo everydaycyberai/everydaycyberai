@@ -23,15 +23,6 @@ export const metadata: Metadata = {
   verification: {
     google: "hwPUvQ6gV-_FoIXs7c2DbEeC5D3XqCmJ8QUybBoF5Is",
   },
-  icons: {
-    icon: [
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
-      { url: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png" },
-    ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-  },
   title: "Everyday Cyber AI — IT Support, Surveillance & Security Mumbai",
   description:
     "Professional IT support, firewall management, CCTV surveillance, data center assistance and AI-powered business tools for modern businesses in Mumbai.",
