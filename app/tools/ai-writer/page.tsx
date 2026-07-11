@@ -2,22 +2,72 @@
 import { useState } from "react";
 import ToolPageWrapper from "@/components/ToolPageWrapper";
 
-const TEMPLATES = [
-  { id: "email",        label: "📧 Professional Email",   prompt: (t: string) => `Write a professional email about: ${t}. Include subject line, greeting, body and closing.` },
-  { id: "essay",        label: "📝 Essay / Article",      prompt: (t: string) => `Write a well-structured essay on: ${t}. Include introduction, body paragraphs and conclusion.` },
-  { id: "cover_letter", label: "📄 Cover Letter",         prompt: (t: string) => `Write a compelling job cover letter for: ${t}. Highlight relevant skills, experience and enthusiasm. Format professionally.` },
-  { id: "paraphrase",   label: "🔄 Paraphraser",          prompt: (t: string) => `Rewrite the following text in different words while keeping the same meaning. Make it clear and natural:\n\n${t}` },
-  { id: "product_desc", label: "🛍️ Product Description",  prompt: (t: string) => `Write an engaging product description for: ${t}. Focus on features, benefits and call to action.` },
-  { id: "social_post",  label: "📱 Social Media Post",    prompt: (t: string) => `Write an engaging social media post about: ${t}. Add relevant hashtags.` },
-  { id: "summary",      label: "📋 Summarize Text",       prompt: (t: string) => `Summarize the following text in clear bullet points:\n\n${t}` },
-  { id: "complaint",    label: "⚠️ Complaint Letter",     prompt: (t: string) => `Write a formal complaint letter about: ${t}. Be firm but professional.` },
-  { id: "custom",       label: "✨ Custom Prompt",         prompt: (t: string) => t },
+type TemplateId = "email" | "essay" | "cover_letter" | "paraphrase" | "product_desc" | "social_post" | "summary" | "complaint" | "custom";
+
+const TEMPLATES: { id: TemplateId; label: string; instructions: (t: string, wc: number) => string }[] = [
+  {
+    id: "email", label: "📧 Professional Email",
+    instructions: (t, wc) => `Write a professional email about: ${t}
+
+Structure it as a real email: a clear subject line, an appropriate greeting, a body that gets to the point in the first sentence or two (don't bury the ask), and a proper sign-off. Match the level of formality to the context — a leave request and a client escalation should not sound the same. Keep it around ${wc} words including the subject line.`,
+  },
+  {
+    id: "essay", label: "📝 Essay / Article",
+    instructions: (t, wc) => `Write a well-structured essay on: ${t}
+
+Open with a specific, concrete point — not a broad generalization like "In today's world..." or "Since the beginning of time...". Each paragraph should carry one clear idea forward. Use specific examples or reasoning rather than vague claims. End with a conclusion that adds a final thought, not just a summary of what was already said. Target length: approximately ${wc} words.`,
+  },
+  {
+    id: "cover_letter", label: "📄 Cover Letter",
+    instructions: (t, wc) => `Write a job cover letter for: ${t}
+
+Open with something specific to this role or company — not "I am writing to express my interest in...". Connect the candidate's actual experience to what the role likely needs, using concrete examples rather than generic claims like "hard-working" or "team player" without evidence. Keep paragraphs short. Close with a direct, confident final line. Approximately ${wc} words.`,
+  },
+  {
+    id: "paraphrase", label: "🔄 Paraphraser",
+    instructions: (t) => `Rewrite the following text in different words while preserving its exact meaning and all key facts/numbers. Vary sentence structure, not just swap synonyms — a good paraphrase reads like it was written independently, not word-substituted. Keep the same approximate length as the original.\n\nText to paraphrase:\n"""${t}"""`,
+  },
+  {
+    id: "product_desc", label: "🛍️ Product Description",
+    instructions: (t, wc) => `Write a product description for: ${t}
+
+Lead with the single most compelling benefit, not a feature list. Translate features into what they actually mean for the buyer (e.g. not "10000mAh battery" but "lasts a full day without charging"). End with a clear reason to act now. Approximately ${wc} words.`,
+  },
+  {
+    id: "social_post", label: "📱 Social Media Post",
+    instructions: (t, wc) => `Write a social media post about: ${t}
+
+Hook the reader in the first line — no slow build-up. Write like a real person posting, not a brand press release. Add 3-5 relevant hashtags at the end, not stuffed mid-sentence. Keep it tight: approximately ${wc} words.`,
+  },
+  {
+    id: "summary", label: "📋 Summarize Text",
+    instructions: (t) => `Summarize the following text in clear, specific bullet points. Each bullet should capture one distinct point — don't repeat the same idea in different words across bullets. Preserve key numbers, names and facts exactly. Cut anything that's filler in the original.\n\nText to summarize:\n"""${t}"""`,
+  },
+  {
+    id: "complaint", label: "⚠️ Complaint Letter",
+    instructions: (t, wc) => `Write a formal complaint letter about: ${t}
+
+State the issue factually in the first paragraph — what happened, when, and the impact — without emotional language. Reference any relevant order/reference numbers if mentioned. State clearly what resolution is expected. Stay firm without being aggressive. Approximately ${wc} words.`,
+  },
+  {
+    id: "custom", label: "✨ Custom Prompt",
+    instructions: (t) => t,
+  },
 ];
 
 const TONES = ["Professional", "Friendly", "Formal", "Casual", "Persuasive", "Simple"];
 
+const QUALITY_RULES = `Writing quality rules — follow these strictly:
+- Never open with generic phrases like "In today's fast-paced world", "In the ever-evolving landscape of...", "Since time immemorial", or similar throat-clearing.
+- Avoid AI-sounding filler words: "moreover", "furthermore", "in conclusion", "it is important to note that", "delve into", "tapestry", "unleash", "unlock the power of".
+- Be specific and concrete rather than vague — use real examples, numbers, or details instead of generic claims.
+- Vary sentence length naturally — don't make every sentence the same length and structure.
+- Don't repeat the same point in different words to pad length — every sentence should add something new.
+- Write like a skilled human professional, not like a template being filled in.
+- Output ONLY the final written content — no meta-commentary, no "Here's your email:", no explanations before or after.`;
+
 export default function AIWriterPage() {
-  const [template, setTemplate]   = useState(TEMPLATES[0].id);
+  const [template, setTemplate]   = useState<TemplateId>(TEMPLATES[0].id);
   const [topic, setTopic]         = useState("");
   const [tone, setTone]           = useState("Professional");
   const [output, setOutput]       = useState("");
@@ -25,8 +75,7 @@ export default function AIWriterPage() {
   const [copied, setCopied]       = useState(false);
   const [wordCount, setWordCount] = useState(200);
 
-  const generate = async () => {
-    if (!topic.trim()) return;
+  const buildAndSend = async (extraInstruction?: string) => {
     setLoading(true); setOutput("");
     const tmpl = TEMPLATES.find(t => t.id === template)!;
     try {
@@ -34,8 +83,8 @@ export default function AIWriterPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          systemPrompt: `You are a professional writer. Write in a ${tone.toLowerCase()} tone. Be clear, helpful and direct. Output only the written content with no meta-commentary or explanations.`,
-          userPrompt: tmpl.prompt(topic) + `\n\nTarget length: approximately ${wordCount} words.`,
+          systemPrompt: `You are an excellent, experienced human writer — not a generic AI assistant. Write in a ${tone.toLowerCase()} tone.\n\n${QUALITY_RULES}`,
+          userPrompt: tmpl.instructions(topic, wordCount) + (extraInstruction ? `\n\n${extraInstruction}` : ""),
         }),
       });
       const data = await res.json();
@@ -44,6 +93,11 @@ export default function AIWriterPage() {
       setOutput("Something went wrong. Please try again.");
     } finally { setLoading(false); }
   };
+
+  const generate = () => { if (topic.trim()) buildAndSend(); };
+  const regenerate = () => buildAndSend("Write a fresh version — different opening, different structure than a typical response, same requirements.");
+  const makeShorter = () => buildAndSend(`Here is a previous version to revise:\n"""${output}"""\n\nMake it noticeably shorter and tighter while keeping the key points.`);
+  const makeLonger = () => buildAndSend(`Here is a previous version to revise:\n"""${output}"""\n\nExpand it with more relevant detail and depth while keeping the same quality rules.`);
 
   const copy = () => { navigator.clipboard.writeText(output); setCopied(true); setTimeout(() => setCopied(false), 2000); };
 
@@ -136,7 +190,20 @@ export default function AIWriterPage() {
                     <pre className="text-gray-200 text-sm leading-relaxed whitespace-pre-wrap font-sans">{output}</pre>
                   )}
                 </div>
-                {output && <p className="text-gray-600 text-xs mt-2">{output.split(/\s+/).filter(Boolean).length} words generated</p>}
+                {output && !loading && (
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    <button onClick={regenerate} className="text-xs px-3 py-2 rounded-lg bg-zinc-800 border border-zinc-700 text-gray-300 hover:border-cyan-400 hover:text-cyan-400 transition">
+                      🔄 Try Again
+                    </button>
+                    <button onClick={makeShorter} className="text-xs px-3 py-2 rounded-lg bg-zinc-800 border border-zinc-700 text-gray-300 hover:border-cyan-400 hover:text-cyan-400 transition">
+                      ✂️ Make Shorter
+                    </button>
+                    <button onClick={makeLonger} className="text-xs px-3 py-2 rounded-lg bg-zinc-800 border border-zinc-700 text-gray-300 hover:border-cyan-400 hover:text-cyan-400 transition">
+                      ➕ Make Longer
+                    </button>
+                  </div>
+                )}
+                {output && !loading && <p className="text-gray-600 text-xs mt-2">{output.split(/\s+/).filter(Boolean).length} words generated</p>}
               </div>
             )}
           </div>
