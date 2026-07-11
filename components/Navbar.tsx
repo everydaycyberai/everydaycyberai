@@ -44,11 +44,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
         {/* Logo */}
-        <Link href="/" className="group">
-          <h1 className="text-2xl font-bold text-cyan-400 group-hover:text-cyan-300 transition duration-200">
-            Everyday Cyber AI
-          </h1>
-          <p className="text-xs text-gray-500">IT Support & Cyber Security — Mumbai</p>
+        <Link href="/" className="group flex items-center gap-3">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-icon.svg" alt="Everyday Cyber AI logo" className="w-10 h-10 shrink-0" />
+          <div>
+            <h1 className="text-2xl font-bold text-cyan-400 group-hover:text-cyan-300 transition duration-200">
+              Everyday Cyber AI
+            </h1>
+            <p className="text-xs text-gray-500">IT Support & Cyber Security — Mumbai</p>
+          </div>
         </Link>
 
         {/* Desktop Menu */}
