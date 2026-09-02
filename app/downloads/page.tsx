@@ -8,7 +8,37 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://everydaycyberai.in/downloads" },
 };
 
-const tools = [
+type Tool = {
+  id: string; icon: string; title: string; desc: string;
+  version: string; size: string; filename: string;
+  badge: string; badgeColor: string; checks: string[];
+  requirements: string; downloadUrl?: string;
+};
+
+const tools: Tool[] = [
+  {
+    id: "asset-inventory",
+    icon: "🖥️",
+    title: "IT Asset Inventory Manager",
+    desc: "Track all IT assets — computers, servers, network devices, licenses, warranties and AMC details in one place. Perfect for IT managers and system administrators managing office equipment.",
+    version: "v1.0",
+    size: "77.6 MB",
+    filename: "IT.Asset.Register.Setup.3.1.1.exe",
+    badge: "🆕 New",
+    badgeColor: "bg-green-500/20 text-green-400 border-green-500/30",
+    checks: [
+      "Track computers, servers, printers, network devices",
+      "Manage software licenses and expiry dates",
+      "AMC and warranty tracking with alerts",
+      "Asset assignment to employees/departments",
+      "Generate asset reports and export to Excel",
+      "Barcode/serial number management",
+      "Purchase date, cost and vendor details",
+      "Windows 10/11 compatible installer",
+    ],
+    requirements: "Windows 10/11 | 77.6 MB | Double-click to install",
+    downloadUrl: "https://github.com/everydaycyberai/everydaycyberai/releases/download/v1.0/IT.Asset.Register.Setup.3.1.1.exe",
+  },
   {
     id: "security-audit",
     icon: "🛡️",
@@ -151,7 +181,7 @@ export default function DownloadsPage() {
                   </div>
                 </div>
                 <a
-                  href={`/tools/windows/${tool.filename}`}
+                  href={tool.downloadUrl || `/tools/windows/${tool.filename}`}
                   download={tool.filename}
                   className="bg-cyan-500 hover:bg-cyan-400 text-black px-6 py-3 rounded-xl font-bold transition hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] text-sm whitespace-nowrap flex items-center gap-2">
                   ⬇ Download Free
