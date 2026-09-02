@@ -24,31 +24,26 @@ export default function ContactPage() {
     try {
       setLoading(true);
 
+      // 1. Save to Firebase first (most important)
       await addDoc(collection(db, "support_requests"), {
         name, email, mobile, message, serviceType,
         status: "Pending",
         createdAt: new Date(),
       });
 
-      await emailjs.send(
+      // 2. Send admin notification (non-blocking - won't break form if fails)
+      emailjs.send(
         "service_nlc4m47",
         "template_kokt6xh",
         { name, email, mobile, message, serviceType },
         "2nt6KxxekpR_yNTb_"
-      );
-
-      await emailjs.send(
-        "service_nlc4m47",
-        "template_u4ejosm",
-        { name, email, mobile, message, serviceType },
-        "2nt6KxxekpR_yNTb_"
-      );
+      ).catch((err: unknown) => console.warn("Email notification failed:", err));
 
       setSubmitted(true);
       setName(""); setEmail(""); setMobile(""); setMessage("");
     } catch (error) {
-      console.error(error);
-      alert("Something went wrong. Please try again or contact via WhatsApp.");
+      console.error("Form error:", error);
+      alert("Request could not be saved. Please WhatsApp us directly: +91 84540 31225");
     } finally {
       setLoading(false);
     }

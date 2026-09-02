@@ -34,18 +34,18 @@ export default function LeadCapturePopup() {
         createdAt: new Date(),
       });
 
-      // Send email notification via EmailJS (using existing template)
-      await emailjs.send(
+      // Send email notification (non-blocking)
+      emailjs.send(
         "service_nlc4m47",
         "template_kokt6xh",
         {
           name:    name.trim(),
           mobile:  phone.trim(),
           message: `New Lead from Website!\nPage: ${window.location.pathname}\nTime: ${new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}`,
-          email:   "lead@everydaycyberai.com",
+          email:   "lead@everydaycyberai.in",
         },
         "2nt6KxxekpR_yNTb_"
-      );
+      ).catch((err: unknown) => console.warn("Lead email failed:", err));
 
       sessionStorage.setItem("lead_popup_seen", "1");
       setDone(true);
