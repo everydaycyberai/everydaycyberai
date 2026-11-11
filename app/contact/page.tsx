@@ -1,5 +1,4 @@
 "use client";
-import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { db } from "@/lib/firebase";
 import { collection, addDoc } from "firebase/firestore";
@@ -10,6 +9,7 @@ export default function ContactPage() {
   const [mobile, setMobile] = useState("");
   const [serviceType, setServiceType] = useState("IT Support");
   const [message, setMessage] = useState("");
+  const [website, setWebsite] = useState(""); // honeypot field for bots
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -31,13 +31,17 @@ export default function ContactPage() {
         createdAt: new Date(),
       });
 
-      // 2. Send admin notification (non-blocking - won't break form if fails)
-      emailjs.send(
-        "service_nlc4m47",
-        "template_kokt6xh",
-        { name, email, mobile, message, serviceType },
-        "2nt6KxxekpR_yNTb_"
-      ).catch((err: unknown) => console.warn("Email notification failed:", err));
+      // 2. Email support inbox + send thank-you to the user (non-blocking for the saved request)
+      try {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, mobile, message, serviceType, website }),
+        });
+        if (!res.ok) console.warn("Email notification failed:", await res.text());
+      } catch (err) {
+        console.warn("Email notification failed:", err);
+      }
 
       setSubmitted(true);
       setName(""); setEmail(""); setMobile(""); setMessage("");
@@ -107,9 +111,9 @@ export default function ContactPage() {
                   <span className="text-xl">📧</span>
                   <div>
                     <p className="text-white font-medium">Email</p>
-                    <a href="mailto:systemengineerbkc@gmail.com"
+                    <a href="mailto:support@everydaycyberai.in"
                       className="text-cyan-400 hover:text-cyan-300 transition">
-                      systemengineerbkc@gmail.com
+                      support@everydaycyberai.in
                     </a>
                   </div>
                 </div>
@@ -147,6 +151,18 @@ export default function ContactPage() {
             ) : (
               <div className="bg-black/40 backdrop-blur-sm border border-gray-700/60 rounded-3xl p-10">
                 <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
+
+                  {/* Honeypot: hidden from users, catches spam bots */}
+                  <input
+                    type="text"
+                    name="website"
+                    value={website}
+                    onChange={(e) => setWebsite(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+                  />
 
                   <div>
                     <label className="block mb-2 text-gray-300 text-sm">Full Name *</label>
